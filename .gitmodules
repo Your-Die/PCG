@@ -1,6 +1,9 @@
 [submodule "Assets/Scripts/Utilities"]
 	path = Assets/Scripts/Utilities
 	url = https://github.com/CrowControl/Utilities.git
+[submodule "Assets/Externals"]
+	path = Assets/Externals
+	url = https://github.com/CrowControl/Externals.git
 [submodule "Assets/Plugins"]
 	path = Assets/Plugins
 	url = https://github.com/CrowControl/Plugins.git
