@@ -7,3 +7,6 @@
 [submodule "Assets/Plugins"]
 	path = Assets/Plugins
 	url = https://github.com/CrowControl/Plugins.git
+[submodule "Assets/Scripts/Distributions"]
+	path = Assets/Scripts/Distributions
+	url = https://github.com/CrowControl/Distributions.git
