@@ -1,8 +1,5 @@
-using System;
 using Chinchillada.Distributions;
-using Chinchillada.Generation.CellularAutomata;
 using Chinchillada.Utilities;
-using UnityEngine;
 
 namespace Chinchillada.Generation
 {

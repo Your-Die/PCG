@@ -1,4 +1,6 @@
-namespace Chinchillada.Generation.CellularAutomata
+using UnityEngine;
+
+namespace Chinchillada.Generation
 {
     public class Coordinate2D
     {
@@ -8,7 +10,7 @@ namespace Chinchillada.Generation.CellularAutomata
         public int Get(Grid2D grid) => grid.Items[this.X, this.Y];
 
         public void Set(int value, Grid2D grid) => grid.Items[this.X, this.Y] = value;
-        
-        
+
+        public Vector3 ToVector() => new Vector3(this.X, this.Y);
     }
 }

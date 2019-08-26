@@ -1,11 +1,10 @@
-using Chinchillada.Generation;
-using Chinchillada.Generation.CellularAutomata;
-using Chinchillada.Utilities;
+using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Generation.Grid
+namespace Chinchillada.Generation
 {
-    public class GridGeneratorComponent : ChinchilladaBehaviour, IGenerator<Grid2D>
+    public class GridGeneratorComponent : SerializedMonoBehaviour, IGenerator<Grid2D>
     {
         [SerializeField] private int width = 10;
         [SerializeField] private int height = 10;
@@ -15,9 +14,12 @@ namespace Generation.Grid
         
         public Grid2D Generate() => this.generator.Generate();
 
-        protected override void Awake()
+        private void Awake() => this.ConstructGenerator();
+
+        private void OnValidate() => this.ConstructGenerator();
+
+        private void ConstructGenerator()
         {
-            base.Awake();
             this.generator = new RandomGridGenerator(this.width, this.height, this.fillPercentage);
         }
     }

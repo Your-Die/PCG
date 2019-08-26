@@ -6,9 +6,9 @@ namespace Chinchillada.Generation.CellularAutomata
     [Serializable]
     public class Settings
     {
-        [SerializeField] private int underPopulation;
-        [SerializeField] private int reproduction;
-        [SerializeField] private int overPopulation;
+        [SerializeField] private int underPopulation = 3;
+        [SerializeField] private int reproduction = 4;
+        [SerializeField] private int overPopulation = 5;
 
         public int UnderPopulation
         {

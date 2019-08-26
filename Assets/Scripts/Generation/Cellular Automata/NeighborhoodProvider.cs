@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Chinchillada.Utilities;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Chinchillada.Generation.CellularAutomata
@@ -9,7 +11,8 @@ namespace Chinchillada.Generation.CellularAutomata
     {
         [SerializeField] private int radius = 1;
 
-        [SerializeField] private INeighborhoodFunction function;
+        [OdinSerialize, DefaultAsset("Full")] 
+        private INeighborhoodFunction function;
 
         public NeighborhoodProvider()
         {

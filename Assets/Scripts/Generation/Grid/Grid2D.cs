@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Chinchillada.Generation.CellularAutomata
+namespace Chinchillada.Generation
 {
     public class Grid2D
     {
@@ -34,5 +34,7 @@ namespace Chinchillada.Generation.CellularAutomata
                 yield return new Coordinate2D {X = x, Y = y};
             }
         }
+
+        public Grid2D CopyShape() => new Grid2D(this.Width, this.Height);
     }
 }

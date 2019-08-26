@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Chinchillada.Generation.CellularAutomata
+namespace Chinchillada
 {
     public interface IGrid<out TCoordinates>
     {
