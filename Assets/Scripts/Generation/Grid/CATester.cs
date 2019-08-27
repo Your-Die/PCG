@@ -35,13 +35,13 @@ namespace Generation.Grid
         private void OnEnable()
         {
             this.generator.GridGenerated += this.ShowGrid;
-            this.generator.Stepped += this.ShowGrid;
+            this.generator.StepPerformed += this.ShowGrid;
         }
 
         private void OnDisable()
         {
             this.generator.GridGenerated -= this.ShowGrid;
-            this.generator.Stepped -= this.ShowGrid;
+            this.generator.StepPerformed -= this.ShowGrid;
         }
     }
 }

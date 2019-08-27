@@ -5,14 +5,22 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.CellularAutomata
 {
+    /// <summary>
+    /// <see cref="NeighhoodFunction"/> that looks at diagonal neighbors.
+    /// </summary>
     [CreateAssetMenu]
     public class DiagonalNeighborhood : NeighhoodFunction
     {
+        /// <inheritdoc/>
         public override IEnumerable<Coordinate2D> GetNeighborhood(Coordinate2D center, int radius, Grid2D grid)
         {
             return GetDiagonalNeighbors(center, radius, grid);
         }
 
+        /// <summary>
+        /// Get the diagonal neighbors of <paramref name="center"/>  in the <paramref name="radius"/>
+        /// on the <paramref name="grid"/>.
+        /// </summary>
         public static IEnumerable<Coordinate2D> GetDiagonalNeighbors(Coordinate2D center, int radius, Grid2D grid)
         {
             var eastDiagonal = GetEastDiagonalNeighbors(center, radius, grid);
@@ -20,7 +28,12 @@ namespace Chinchillada.Generation.CellularAutomata
 
             return eastDiagonal.Concat(westDiagonal);
         }
-
+        
+        /// <summary>
+        /// Get the west-diagonal neighbors of <paramref name="center"/>  in the <paramref name="radius"/>
+        /// on the <paramref name="grid"/>.
+        /// </summary>
+        /// <remarks>The west diagonal starts in the north-west and goes to the south-east.</remarks>
         public static IEnumerable<Coordinate2D> GetWestDiagonalNeighbors(Coordinate2D center, int radius, Grid2D grid)
         {
             var (minX, maxX, minY, maxY) = GetNeighborhoodBounds(center, radius, grid);
@@ -37,6 +50,11 @@ namespace Chinchillada.Generation.CellularAutomata
                 yield return new Coordinate2D {X = i, Y = i};
         }
 
+        /// <summary>
+        /// Get the east-diagonal neighbors of <paramref name="center"/>  in the <paramref name="radius"/>
+        /// on the <paramref name="grid"/>.
+        /// </summary>
+        /// <remarks>The east diagonal starts in the north-east and goes to the south-west.</remarks>
         public static IEnumerable<Coordinate2D> GetEastDiagonalNeighbors(Coordinate2D center, int radius, Grid2D grid)
         {
             int minX, maxX, minY, maxY;
@@ -54,6 +72,10 @@ namespace Chinchillada.Generation.CellularAutomata
                 yield return new Coordinate2D {X = x, Y = y};
         }
 
+        /// <summary>
+        /// Get the bounds of the neighborhood of <paramref name="center"/>  in the <paramref name="radius"/>
+        /// on the <paramref name="grid"/>.
+        /// </summary>
         private static (int minX, int maxX, int minY, int maxY) GetNeighborhoodBounds(
             Coordinate2D center,
             int radius,
@@ -78,6 +100,14 @@ namespace Chinchillada.Generation.CellularAutomata
             return (minX, maxX, minY, maxY);
         }
 
+        /// <summary>
+        /// Check if the rectangle defined by the parameters is a square or not.
+        /// </summary>
+        /// <param name="minX">Left edge.</param>
+        /// <param name="maxX">Right edge.</param>
+        /// <param name="minY">Top edge.</param>
+        /// <param name="maxY">Bottom edge.</param>
+        /// <param name="center">The center.</param>
         private static bool IsSquare(int minX, int maxX, int minY, int maxY, Coordinate2D center)
         {
             var radius = center.X - minX;

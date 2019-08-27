@@ -4,14 +4,22 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.CellularAutomata
 {
+    /// <summary>
+    /// <see cref="NeighhoodFunction"/> that looks at orthogonal neighbors.
+    /// </summary>
     [CreateAssetMenu]
     public class OrthogonalNeighborhood : NeighhoodFunction
     {
+        /// <inheritdoc/>
         public override IEnumerable<Coordinate2D> GetNeighborhood(Coordinate2D center, int radius, Grid2D grid)
         {
             return GetOrthogonalNeighbors(center, radius, grid);
         }
 
+        /// <summary>
+        /// Get the orthogonal neighbors of <paramref name="center"/>  in the <paramref name="radius"/>
+        /// on the <paramref name="grid"/>.
+        /// </summary>
         public static IEnumerable<Coordinate2D> GetOrthogonalNeighbors(Coordinate2D center, int radius, Grid2D grid)
         {
             var horizontal = GetHorizontalNeighbors(center, radius, grid);
@@ -20,6 +28,10 @@ namespace Chinchillada.Generation.CellularAutomata
             return horizontal.Concat(vertical);
         }
         
+        /// <summary>
+        /// Get the horizontal neighbors of <paramref name="center"/>  in the <paramref name="radius"/>
+        /// on the <paramref name="grid"/>.
+        /// </summary>
         public static IEnumerable<Coordinate2D> GetHorizontalNeighbors(Coordinate2D center, int radius, Grid2D grid)
         {
             var minX = center.X - radius;
@@ -38,6 +50,10 @@ namespace Chinchillada.Generation.CellularAutomata
                 yield return new Coordinate2D {X = x, Y = center.Y};
         }
 
+        /// <summary>
+        /// Get the vertical neighbors of <paramref name="center"/>  in the <paramref name="radius"/>
+        /// on the <paramref name="grid"/>.
+        /// </summary>
         public static IEnumerable<Coordinate2D> GetVerticalNeighbors(Coordinate2D center, int radius, Grid2D grid)
         {
             var minY = center.Y - radius;
