@@ -7,6 +7,9 @@ using Random = Chinchillada.Utilities.Random;
 
 namespace Generation.Grid
 {
+    /// <summary>
+    /// Tests the <see cref="CellularAutomataGenerator"/>.
+    /// </summary>
     public class CATester : ChinchilladaBehaviour
     {
         [SerializeField, FindComponent, Required]
