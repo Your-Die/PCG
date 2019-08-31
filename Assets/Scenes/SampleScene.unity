@@ -516,17 +516,21 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 2062512343}
     - {fileID: 2062512342}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: gridGenerator
+    - Name: cellularAutomata
       Entry: 10
       Data: 0
-  iterations: 4
-  cellularAutomata: {fileID: 2062512343}
+    - Name: gridGenerator
+      Entry: 10
+      Data: 1
+  iterations: 5
+  inPlace: 0
 --- !u!114 &2062512342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,9 +552,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  width: 10
-  height: 10
-  fillPercentage: 0.5
+  width: 60
+  height: 80
+  fillPercentage: 0.43
 --- !u!114 &2062512343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,9 +590,9 @@ MonoBehaviour:
       Entry: 8
       Data: 
   settings:
-    underPopulation: 3
-    reproduction: 4
-    overPopulation: 5
+    underPopulation: 2
+    reproduction: 5
+    overPopulation: 9
 --- !u!4 &2062512344
 Transform:
   m_ObjectHideFlags: 0

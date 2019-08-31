@@ -15,6 +15,8 @@ namespace Chinchillada.Generation.CellularAutomata
         /// </summary>
         [SerializeField] private int iterations = 4;
 
+        [SerializeField] private bool inPlace = false;
+        
         /// <summary>
         /// The component that performs the <see cref="ICellularAutomata"/>.
         /// </summary>
@@ -61,7 +63,7 @@ namespace Chinchillada.Generation.CellularAutomata
         private void GenerateGrid()
         {
             this.grid = this.gridGenerator.Generate();
-            this.buffer = this.grid.CopyShape();
+            this.buffer = this.inPlace ? this.grid : this.grid.CopyShape();
 
             this.GridGenerated?.Invoke(this.grid);
         }

@@ -31,7 +31,7 @@ namespace Chinchillada.Generation.CellularAutomata
         /// <inheritdoc cref="ICellularAutomata"/>
         public Grid2D Step(Grid2D grid)
         {
-            var nextGrid = new Grid2D(grid.Width, grid.Height);
+            var nextGrid = grid.CopyShape();
 
             this.Step(ref grid, nextGrid);
             
