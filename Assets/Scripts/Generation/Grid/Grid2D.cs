@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
+using Generation.Grid;
 
 namespace Chinchillada.Generation
 {
-    public class Grid2D
+    public class Grid2D : IGrid<Coordinate2D>
     {
         public int[,] Items { get; }
 
@@ -26,6 +28,43 @@ namespace Chinchillada.Generation
             this.Items = new int[width, height];
         }
 
+        public void ForEach(Action<ICoordinate, int> action)
+        {
+            foreach (var coordinate in this.GetCoordinates())
+            {
+                var value = coordinate.Get(this);
+                action.Invoke(coordinate, value);
+            }
+        }
+
+        public IGrid Select(Func<int, int> selector)
+        {
+            var output = (Grid2D) this.CopyShape();
+            
+            foreach (var coordinate in this.GetCoordinates())
+            {
+                var value = coordinate.Get(this);
+                var newValue = selector.Invoke(value);
+                coordinate.Set(newValue, output);
+            }
+
+            return output;
+        }
+        
+        public IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector)
+        {
+            var output = (Grid2D) this.CopyShape();
+            
+            foreach (var coordinate in this.GetCoordinates())
+            {
+                var neighborhood = this.GetNeighborhood(coordinate, radius);
+                var value = selector.Invoke(neighborhood);
+                coordinate.Set(value, output);
+            }
+
+            return output;
+        }
+
         public IEnumerable<Coordinate2D> GetCoordinates()
         {
             for (var x = 0; x < this.Width; x++)
@@ -34,7 +73,16 @@ namespace Chinchillada.Generation
                 yield return new Coordinate2D {X = x, Y = y};
             }
         }
+        
+        public INeighborhood GetNeighborhood(Coordinate2D coordinate, int radius)
+        {
+            return new Neighborhood2D(coordinate, this, radius);
+        }
 
-        public Grid2D CopyShape() => new Grid2D(this.Width, this.Height);
+        IGrid IGrid.CopyShape() => this.CopyShape();
+
+        IEnumerable<ICoordinate> IGrid.GetCoordinates() => this.GetCoordinates();
+
+        public IGrid<Coordinate2D> CopyShape() => new Grid2D(this.Width, this.Height);
     }
 }

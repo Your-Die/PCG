@@ -1,3 +1,4 @@
+using Chinchillada;
 using Chinchillada.Generation;
 using Chinchillada.Generation.CellularAutomata;
 using Chinchillada.Utilities;
@@ -33,7 +34,7 @@ namespace Generation.Grid
             this.ShowGrid(grid);
         }
         
-        private void ShowGrid(Grid2D grid) => this.gridDrawer.Show(grid);
+        private void ShowGrid(IGrid grid) => this.gridDrawer.Show(grid);
 
         private void OnEnable()
         {

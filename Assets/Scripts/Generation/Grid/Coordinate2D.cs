@@ -5,7 +5,7 @@ namespace Chinchillada.Generation
     /// <summary>
     /// Defines a coordinate on a <see cref="Grid2D"/>.
     /// </summary>
-    public class Coordinate2D
+    public class Coordinate2D : ICoordinate
     {
         /// <summary>
         /// The horizontal coordinate.

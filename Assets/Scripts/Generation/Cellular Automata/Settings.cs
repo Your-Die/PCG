@@ -9,6 +9,8 @@ namespace Chinchillada.Generation.CellularAutomata
     [Serializable]
     public class Settings
     {
+        [SerializeField] private int radius = 1;
+        
         /// <summary>
         /// How many neighbors is too little?
         /// </summary>
@@ -27,28 +29,18 @@ namespace Chinchillada.Generation.CellularAutomata
         /// <summary>
         /// How many neighbors is too little?
         /// </summary>
-        public int UnderPopulation
-        {
-            get => this.underPopulation;
-            set => this.underPopulation = value;
-        }
+        public int UnderPopulation => this.underPopulation;
 
         /// <summary>
         /// From how many neighbors is enough to reproduce?
         /// </summary>
-        public int Reproduction
-        {
-            get => this.reproduction;
-            set => this.reproduction = value;
-        }
+        public int Reproduction => this.reproduction;
 
         /// <summary>
         /// How many neighbors is too little?
         /// </summary>
-        public int OverPopulation
-        {
-            get => this.overPopulation;
-            set => this.overPopulation = value;
-        }
+        public int OverPopulation => this.overPopulation;
+
+        public int Radius => this.radius;
     }
 }

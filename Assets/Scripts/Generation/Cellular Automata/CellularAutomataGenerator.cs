@@ -8,14 +8,12 @@ namespace Chinchillada.Generation.CellularAutomata
     /// <summary>
     /// Uses <see cref="ICellularAutomata"/> to generate <see cref="Grid2D"/>.
     /// </summary>
-    public class CellularAutomataGenerator : ChinchilladaBehaviour, IGenerator<Grid2D>
+    public class CellularAutomataGenerator : ChinchilladaBehaviour, IGenerator<IGrid>
     {
         /// <summary>
         /// Amount of iterations of <see cref="ICellularAutomata"/> to perform.
         /// </summary>
         [SerializeField] private int iterations = 4;
-
-        [SerializeField] private bool inPlace = false;
         
         /// <summary>
         /// The component that performs the <see cref="ICellularAutomata"/>.
@@ -25,30 +23,25 @@ namespace Chinchillada.Generation.CellularAutomata
         /// <summary>
         /// Generates an initial grid to perform the <see cref="ICellularAutomata"/> on.
         /// </summary>
-        [SerializeField] private IGenerator<Grid2D> gridGenerator;
+        [SerializeField] private IGenerator<IGrid> gridGenerator;
 
         /// <summary>
         /// The current grid.
         /// </summary>
-        private Grid2D grid;
-
-        /// <summary>
-        /// Buffer used to store intermediate results.
-        /// </summary>
-        private Grid2D buffer;
+        private IGrid grid;
 
         /// <summary>
         /// Event invoked when a grid is generated.
         /// </summary>
-        public event Action<Grid2D> GridGenerated;
+        public event Action<IGrid> GridGenerated;
         
         /// <summary>
         /// Event invoked when a step of <see cref="ICellularAutomata"/> has been performed.
         /// </summary>
-        public event Action<Grid2D> StepPerformed;
+        public event Action<IGrid> StepPerformed;
 
         /// <inheritdoc/>
-        public Grid2D Generate()
+        public IGrid Generate()
         {
             this.GenerateGrid();
             this.PerformIterations();
@@ -63,8 +56,6 @@ namespace Chinchillada.Generation.CellularAutomata
         private void GenerateGrid()
         {
             this.grid = this.gridGenerator.Generate();
-            this.buffer = this.inPlace ? this.grid : this.grid.CopyShape();
-
             this.GridGenerated?.Invoke(this.grid);
         }
 
@@ -75,7 +66,7 @@ namespace Chinchillada.Generation.CellularAutomata
         private void PerformIterations()
         {
             for (var i = 0; i < this.iterations; i++)
-                this.cellularAutomata.Step(ref this.grid, this.buffer);
+                this.grid = this.cellularAutomata.Step(this.grid);
 
             this.StepPerformed?.Invoke(this.grid);
         }
@@ -86,7 +77,7 @@ namespace Chinchillada.Generation.CellularAutomata
         [Button]
         private void Step()
         {
-            this.cellularAutomata.Step(ref this.grid, this.buffer);
+            this.grid = this.cellularAutomata.Step(this.grid);
             this.StepPerformed?.Invoke(this.grid);
         }
     }

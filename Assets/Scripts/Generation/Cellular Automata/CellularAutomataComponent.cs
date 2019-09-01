@@ -7,15 +7,13 @@ namespace Chinchillada.Generation.CellularAutomata
 {
     public class CellularAutomataComponent : SerializedMonoBehaviour, ICellularAutomata
     {
-        [OdinSerialize] private NeighborhoodProvider neighborhoodProvider;
+        [OdinSerialize] private NeighborFunction neighborhoodFunction;
 
         [SerializeField] private Settings settings;
 
         private CellularAutomata cellularAutomata;
         
-        public Grid2D Step(Grid2D grid) => this.cellularAutomata.Step(grid);
-
-        public void Step(ref Grid2D grid, Grid2D buffer) => this.cellularAutomata.Step(ref grid, buffer);
+        public IGrid Step(IGrid grid) => this.cellularAutomata.Step(grid);
 
         private  void Awake() => this.ConstructAutomata();
 
@@ -23,7 +21,7 @@ namespace Chinchillada.Generation.CellularAutomata
 
         private void ConstructAutomata()
         {
-            this.cellularAutomata = new CellularAutomata(this.settings, this.neighborhoodProvider);
+            this.cellularAutomata = new CellularAutomata(this.settings, this.neighborhoodFunction);
         }
     }
 }

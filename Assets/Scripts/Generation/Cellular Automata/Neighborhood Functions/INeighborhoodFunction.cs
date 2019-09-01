@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Generation.Grid;
 
 namespace Chinchillada.Generation.CellularAutomata
 {
@@ -11,6 +12,6 @@ namespace Chinchillada.Generation.CellularAutomata
         /// Get the neighborhood on the <paramref name="grid"/> of <paramref name="radius"/>
         /// surrounding <paramref name="center"/>
         /// </summary>
-        IEnumerable<Coordinate2D> GetNeighborhood(Coordinate2D center, int radius, Grid2D grid);
+        IEnumerable<int> SelectNeighbors(INeighborhood neighborhood);
     }
 }

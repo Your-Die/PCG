@@ -15,9 +15,9 @@ namespace Chinchillada.Generation
 
         [OdinSerialize] private Dictionary<int, Color> colors;
 
-        private Grid2D grid;
+        private IGrid grid;
         
-        public void Show(Grid2D grid) => this.grid = grid;
+        public void Show(IGrid grid) => this.grid = grid;
 
         public void Hide() => this.grid = null;
 
@@ -28,19 +28,18 @@ namespace Chinchillada.Generation
             if (this.grid == null)
                 return;
 
-            foreach (var coordinate in this.grid.GetCoordinates())
+            this.grid.ForEach((coordinate, value) =>
             {
                 // Set color.
-                var value = coordinate.Get(this.grid);
                 Gizmos.color = this.colors[value];
-                
+
                 // Calculate position.
                 var offset = this.spacing * coordinate.ToVector();
                 var position = this.topLeft.position + offset;
-                
+
                 // Draw cell.
                 Gizmos.DrawCube(position, this.cellSize);
-            }
+            });
         }
     }
 }
