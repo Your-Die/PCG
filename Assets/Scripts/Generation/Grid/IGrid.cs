@@ -7,6 +7,8 @@ namespace Chinchillada
 {
     public interface IGrid<TCoordinates> : IGrid
     {
+        int this[TCoordinates coordinate] { get; set; }
+        
         IEnumerable<TCoordinates> GetCoordinates();
 
         INeighborhood GetNeighborhood(TCoordinates coordinate, int radius);

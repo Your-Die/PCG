@@ -3,18 +3,18 @@ using Chinchillada.Utilities;
 
 namespace Chinchillada.Generation
 {
-    public class RandomGridGenerator : IGenerator<Grid2D>
+    public class Grid2DGenerator : IGenerator<Grid2D>
     {
         private readonly int width;
         private readonly int height;
         private IDistribution<bool> fillDistribution;
 
-        public RandomGridGenerator(int width, int height, float fillPercentage)
+        public Grid2DGenerator(int width, int height, float fillPercentage)
             : this(width, height, Flip.Boolean(fillPercentage))
         {
         }
 
-        public RandomGridGenerator(int width, int height, IDistribution<bool> fillDistribution)
+        public Grid2DGenerator(int width, int height, IDistribution<bool> fillDistribution)
         {
             this.width = width;
             this.height = height;

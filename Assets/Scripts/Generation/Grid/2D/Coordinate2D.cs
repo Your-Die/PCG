@@ -20,17 +20,17 @@ namespace Chinchillada.Generation
         /// <summary>
         /// Get the value on the <paramref name="grid"/> at this <see cref="Coordinate2D"/>.
         /// </summary>
-        public int Get(Grid2D grid) => grid.Items[this.X, this.Y];
+        public int Get(Grid2D grid) => grid[this];
 
         /// <summary>
         /// Set the value on the <paramref name="grid"/> at this <see cref="Coordinate2D"/>.
         /// </summary>
-        public void Set(int value, Grid2D grid) => grid.Items[this.X, this.Y] = value;
+        public void Set(int value, Grid2D grid) => grid[this] = value;
 
         /// <summary>
         /// Convert this <see cref="Coordinate2D"/> to a <see cref="Vector3"/>.
         /// </summary>
         /// <returns></returns>
-        public Vector3 ToVector() => new Vector3(this.X, this.Y);
+        public virtual Vector3 ToVector() => new Vector3(this.X, this.Y);
     }
 }

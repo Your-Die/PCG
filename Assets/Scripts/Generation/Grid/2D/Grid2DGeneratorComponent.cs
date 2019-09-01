@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation
 {
-    public class GridGeneratorComponent : SerializedMonoBehaviour, IGenerator<Grid2D>
+    public class Grid2DGeneratorComponent : SerializedMonoBehaviour, IGenerator<Grid2D>
     {
         [SerializeField] private int width = 10;
         [SerializeField] private int height = 10;
@@ -20,7 +20,7 @@ namespace Chinchillada.Generation
 
         private void ConstructGenerator()
         {
-            this.generator = new RandomGridGenerator(this.width, this.height, this.fillPercentage);
+            this.generator = new Grid2DGenerator(this.width, this.height, this.fillPercentage);
         }
     }
 }

@@ -6,11 +6,17 @@ namespace Chinchillada.Generation
 {
     public class Grid2D : IGrid<Coordinate2D>
     {
-        public int[,] Items { get; }
+        private int[,] Items { get; }
 
         public int Width { get; }
 
         public int Height { get; }
+        
+        public int this[Coordinate2D coordinate]
+        {
+            get => this.Items[coordinate.X, coordinate.Y];
+            set => this.Items[coordinate.X, coordinate.Y] = value;
+        }
 
         public Grid2D(int[,] items)
         {
