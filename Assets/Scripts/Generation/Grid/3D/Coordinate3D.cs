@@ -3,16 +3,20 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
+    /// <summary>
+    /// 3D Implementation of <see cref="ICoordinate"/>.
+    /// </summary>
     public class Coordinate3D : Coordinate2D
     {
+        /// <summary>
+        /// The position on the depth axis.
+        /// </summary>
         public int Z { get; set; }
 
-        int Get(Grid3D grid) => grid[this];
-
-        void Set(Grid3D grid, int value) => grid[this] = value;
-        
+        /// <inheritdoc />
         public override Vector3 ToVector() => new Vector3(this.X, this.Y, this.Z);
 
+        /// <inheritdoc />
         public override string ToString() => $"({this.X}, {this.Y}, {this.Z})";
     }
 }

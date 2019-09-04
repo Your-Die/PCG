@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Chinchillada.Generation.Grid
 {
+    /// <summary>
+    /// 3D implementation of <see cref="INeighborhood"/>.
+    /// </summary>
     public class Neighborhood3D : INeighborhood
     {
         private readonly Grid3D grid;

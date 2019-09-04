@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
+    /// <summary>
+    /// <see cref="MonoBehaviour"/> wrapper of <see cref="Grid3DGenerator"/>.
+    /// </summary>
     public class Grid3DGeneratorComponent : MonoBehaviour, IGenerator<Grid3D>
     {
         [SerializeField] private int width;
