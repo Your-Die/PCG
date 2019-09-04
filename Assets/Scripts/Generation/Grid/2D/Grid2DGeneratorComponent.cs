@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.Generation.Grid
 {
     public class Grid2DGeneratorComponent : SerializedMonoBehaviour, IGenerator<Grid2D>
     {

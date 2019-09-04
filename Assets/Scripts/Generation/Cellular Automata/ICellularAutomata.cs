@@ -1,3 +1,5 @@
+using Chinchillada.Generation.Grid;
+
 namespace Chinchillada.Generation.CellularAutomata
 {
     /// <summary>

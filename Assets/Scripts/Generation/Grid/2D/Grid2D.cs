@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Generation.Grid;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.Generation.Grid
 {
     public class Grid2D : IGrid<Coordinate2D>
     {
@@ -84,10 +84,6 @@ namespace Chinchillada.Generation
         {
             return new Neighborhood2D(coordinate, this, radius);
         }
-
-        IGrid IGrid.CopyShape() => this.CopyShape();
-
-        IEnumerable<ICoordinate> IGrid.GetCoordinates() => this.GetCoordinates();
 
         public IGrid<Coordinate2D> CopyShape() => new Grid2D(this.Width, this.Height);
     }

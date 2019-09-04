@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Chinchillada.Generation.Grid;
 using Generation.Grid;
 
 namespace Chinchillada.Generation.CellularAutomata

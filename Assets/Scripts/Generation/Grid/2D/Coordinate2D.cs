@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.Generation.Grid
 {
     /// <summary>
     /// Defines a coordinate on a <see cref="Grid2D"/>.
@@ -32,5 +32,7 @@ namespace Chinchillada.Generation
         /// </summary>
         /// <returns></returns>
         public virtual Vector3 ToVector() => new Vector3(this.X, this.Y);
+
+        public override string ToString() => $"({this.X}, {this.Y})";
     }
 }

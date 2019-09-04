@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Chinchillada.Generation;
 
-namespace Generation.Grid
+namespace Chinchillada.Generation.Grid
 {
     public class Neighborhood2D : INeighborhood
     {

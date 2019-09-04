@@ -481,129 +481,206 @@ Transform:
   m_Father: {fileID: 81705294}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2062512340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2062512344}
-  - component: {fileID: 2062512341}
-  - component: {fileID: 2062512343}
-  - component: {fileID: 2062512342}
-  m_Layer: 0
-  m_Name: Cellular Automata Generator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2062512341
+--- !u!114 &2062512341 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7630245413937160972}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062512340}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c848f1b1de34ca399288012fd753554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 2062512343}
-    - {fileID: 2062512342}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: cellularAutomata
-      Entry: 10
-      Data: 0
-    - Name: gridGenerator
-      Entry: 10
-      Data: 1
-  iterations: 5
-  inPlace: 0
---- !u!114 &2062512342
+--- !u!114 &2062512342 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7630245412148368346, guid: bf6b7890567c953428455b320999515f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7630245413937160972}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062512340}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cca330fb12b4e7bbe97bfde3c982706, type: 3}
+  m_Script: {fileID: 11500000, guid: b6bc33aeac8d46d6b1f014f7997afc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  width: 60
-  height: 80
-  fillPercentage: 0.43
---- !u!114 &2062512343
+--- !u!114 &2062512343 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7630245413937160972}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062512340}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f4baec37275422cb98b90d1a568dc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 7b26f99ca152feb488808aad940f0cce, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: neighborhoodProvider
-      Entry: 7
-      Data: 0|Chinchillada.Generation.CellularAutomata.NeighborhoodProvider, Assembly-CSharp
-    - Name: radius
-      Entry: 3
-      Data: 1
-    - Name: function
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-  settings:
-    underPopulation: 2
-    reproduction: 5
-    overPopulation: 9
---- !u!4 &2062512344
+--- !u!4 &2062512344 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7630245413937160972}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2062512340}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 81705294}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7630245413937160972
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 81705294}
+    m_Modifications:
+    - target: {fileID: 7630245412148368344, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_Name
+      value: Cellular Automata 3D
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2062512343}
+    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 2062512342}
+    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"cellularAutomata","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"gridGenerator","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b26f99ca152feb488808aad940f0cce,
+        type: 2}
+    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"neighborhoodFunction","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: settings.underPopulation
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: settings.reproduction
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: settings.overPopulation
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368346, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: width
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368346, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: height
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7630245412148368346, guid: bf6b7890567c953428455b320999515f,
+        type: 3}
+      propertyPath: depth
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf6b7890567c953428455b320999515f, type: 3}

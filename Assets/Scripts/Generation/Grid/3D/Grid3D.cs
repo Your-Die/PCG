@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Generation.Grid;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.Generation.Grid
 {
     public class Grid3D : IGrid<Coordinate3D>
     {
@@ -41,8 +39,6 @@ namespace Chinchillada.Generation
 
         public void ForEach(Action<ICoordinate, int> action)
         {
-            var output = this.CopyShape();
-
             foreach (var coordinate in this.GetCoordinates())
             {
                 var value = this[coordinate];
@@ -91,19 +87,6 @@ namespace Chinchillada.Generation
             }
         }
 
-        IEnumerable<ICoordinate> IGrid.GetCoordinates()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IGrid<Coordinate3D> CopyShape()
-        {
-            throw new NotImplementedException();
-        }
-
-        IGrid IGrid.CopyShape()
-        {
-            return this.CopyShape();
-        }
+        public IGrid<Coordinate3D> CopyShape() => new Grid3D(this.Width, this.Height, this.Depth);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using Chinchillada.Generation.Grid;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;

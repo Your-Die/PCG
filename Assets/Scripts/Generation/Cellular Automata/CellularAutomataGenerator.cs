@@ -1,6 +1,8 @@
 using System;
+using Chinchillada.Generation.Grid;
 using Chinchillada.Utilities;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Chinchillada.Generation.CellularAutomata
@@ -23,7 +25,7 @@ namespace Chinchillada.Generation.CellularAutomata
         /// <summary>
         /// Generates an initial grid to perform the <see cref="ICellularAutomata"/> on.
         /// </summary>
-        [SerializeField] private IGenerator<IGrid> gridGenerator;
+        [OdinSerialize] private IGenerator<IGrid> gridGenerator;
 
         /// <summary>
         /// The current grid.

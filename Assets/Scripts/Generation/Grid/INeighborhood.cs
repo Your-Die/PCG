@@ -1,18 +1,16 @@
 using System.Collections.Generic;
-using Chinchillada.Generation;
 
-namespace Generation.Grid
+namespace Chinchillada.Generation.Grid
 {
+    /// <summary>
+    /// Represents a neighborhood on a <see cref="IGrid"/>.
+    /// </summary>
     public interface INeighborhood
     {
         int Center { get; }
         
-        IEnumerable<int> Horizontal();
-        IEnumerable<int> Vertical();
         IEnumerable<int> Orthogonal();
         
-        IEnumerable<int> EastDiagonal();
-        IEnumerable<int> WestDiagonal();
         IEnumerable<int> Diagonal();
         
         IEnumerable<int> Full();

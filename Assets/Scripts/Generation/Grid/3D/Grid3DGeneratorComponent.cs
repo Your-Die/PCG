@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.Generation.Grid
 {
     public class Grid3DGeneratorComponent : MonoBehaviour, IGenerator<Grid3D>
     {

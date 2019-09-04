@@ -1,7 +1,7 @@
 using Chinchillada.Distributions;
 using Chinchillada.Utilities;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.Generation.Grid
 {
     public class Grid3DGenerator : IGenerator<Grid3D>
     {
