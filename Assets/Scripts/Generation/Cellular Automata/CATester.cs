@@ -18,23 +18,23 @@ namespace Generation.Grid
         private CellularAutomataGenerator generator;
 
         [SerializeField, FindComponent, Required]
-        private GridDrawer gridDrawer; 
-        
+        private GridDrawer gridDrawer;
+
         [SerializeField] private bool specifySeed;
-        
+
         [SerializeField, ShowIf(nameof(specifySeed))]
         private int seed;
-        
+
         [Button]
         public void Test()
         {
-            if (this.specifySeed) 
+            if (this.specifySeed)
                 Random.SetSeed(this.seed);
 
             var grid = this.generator.Generate();
             this.ShowGrid(grid);
         }
-        
+
         private void ShowGrid(IGrid grid) => this.gridDrawer.Show(grid);
 
         private void OnEnable()

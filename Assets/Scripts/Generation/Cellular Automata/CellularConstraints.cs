@@ -7,7 +7,7 @@ namespace Chinchillada.Generation.CellularAutomata
     /// Settings for <see cref="ICellularAutomata"/>.
     /// </summary>
     [Serializable]
-    public class Settings
+    public class CellularConstraints
     {
         [SerializeField] private int radius = 1;
         
@@ -41,6 +41,15 @@ namespace Chinchillada.Generation.CellularAutomata
         /// </summary>
         public int OverPopulation => this.overPopulation;
 
-        public int Radius => this.radius;
+        public int Apply(int value, int neighbors)
+        {
+            if (neighbors < this.underPopulation || neighbors > this.overPopulation)
+                return 0;
+
+            if (neighbors >= this.reproduction)
+                return 1;
+
+            return value;
+        }
     }
 }

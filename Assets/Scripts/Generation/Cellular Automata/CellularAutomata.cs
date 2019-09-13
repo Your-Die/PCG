@@ -12,7 +12,9 @@ namespace Chinchillada.Generation.CellularAutomata
         /// <summary>
         /// The settings for the operations.
         /// </summary>
-        private readonly Settings settings;
+        private readonly CellularConstraints constraints;
+
+        private readonly int radius;
 
         /// <summary>
         /// The function that defines the neighborhood for any given cell.
@@ -22,18 +24,19 @@ namespace Chinchillada.Generation.CellularAutomata
         /// <summary>
         /// Construct a new instance of <see cref="CellularAutomata"/>.
         /// </summary>
-        /// <param name="settings">The settings for the operations.</param>
-        /// <param name="neighborhoodProvider">The function that defines the neighborhood for any given cell.</param>
-        public CellularAutomata(Settings settings, NeighborFunction neighborSelector)
+        /// <param name="constraints">The settings for the operations.</param>
+        /// <param name="neighborSelector">The function that defines the neighborhood for any given cell.</param>
+        public CellularAutomata(CellularConstraints constraints, int radius, NeighborFunction neighborSelector)
         {
-            this.settings = settings;
+            this.constraints = constraints;
+            this.radius = radius;
             this.neighborSelector = neighborSelector;
         }
 
         /// <inheritdoc cref="ICellularAutomata"/>
         public IGrid Step(IGrid grid)
         {
-            return grid.SelectNeighborhood(this.settings.Radius, this.ApplyRules);
+            return grid.SelectNeighborhood(this.radius, this.ApplyRules);
         }
 
         private int ApplyRules(INeighborhood neighborhood)
@@ -41,16 +44,7 @@ namespace Chinchillada.Generation.CellularAutomata
             var neighbors = this.neighborSelector.SelectNeighbors(neighborhood);
             var neighborCount = neighbors.Sum();
 
-            if (neighborCount < this.settings.UnderPopulation)
-                return 0;
-
-            if (neighborCount > this.settings.OverPopulation)
-                return 0;
-
-            if (neighborCount >= this.settings.Reproduction)
-                return 1;
-
-            return neighborhood.Center;
+            return this.constraints.Apply(neighborhood.Center, neighborCount);
         }
     }
 }

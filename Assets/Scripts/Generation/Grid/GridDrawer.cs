@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Chinchillada.Utilities;
 using Sirenix.Serialization;
@@ -30,37 +31,50 @@ namespace Chinchillada.Generation.Grid
         /// </summary>
         [OdinSerialize] private Dictionary<int, Color> colors;
 
-        /// <summary>
-        /// The grid we are currently drawing.
-        /// </summary>
-        private IGrid grid;
-        
+        public event Action<IGrid> NewGridRegistered;
+
+        public IGrid Grid { get; private set; }
+
         /// <summary>
         /// Draw the <paramref name="grid"/>.
         /// </summary>
-        public void Show(IGrid grid) => this.grid = grid;
+        public void Show(IGrid newGrid) => this.SetGrid(newGrid);
 
         /// <summary>
         /// Hide the current grid.
         /// </summary>
-        public void Hide() => this.grid = null;
+        public void Hide() => this.SetGrid(null);
 
         private void OnDisable() => this.Hide();
-
+        
+        public Vector3 CalculatePosition(ICoordinate coordinate)
+        {
+            var offset = this.spacing * coordinate.ToVector();
+            return this.topLeft.position + offset;
+        }
+        
         private void OnDrawGizmos()
         {
-            this.grid?.ForEach((coordinate, value) =>
+            this.Grid?.ForEach((coordinate, value) =>
             {
                 // Set color.
                 Gizmos.color = this.colors[value];
 
                 // Calculate position.
-                var offset = this.spacing * coordinate.ToVector();
-                var position = this.topLeft.position + offset;
+                var position = this.CalculatePosition(coordinate);
 
                 // Draw cell.
                 Gizmos.DrawCube(position, this.cellSize);
             });
+        }
+
+        private void SetGrid(IGrid newGrid)
+        {
+            if (newGrid == this.Grid)
+                return;
+
+            this.Grid = newGrid;
+            this.NewGridRegistered?.Invoke(this.Grid);
         }
     }
 }
