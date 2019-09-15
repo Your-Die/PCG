@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using Generation.Grid;
-
 namespace Chinchillada.Generation.Grid
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Grid2D : IGrid<Coordinate2D>
     {
         private int[,] Items { get; }
@@ -11,7 +10,7 @@ namespace Chinchillada.Generation.Grid
         public int Width { get; }
 
         public int Height { get; }
-        
+
         public int this[Coordinate2D coordinate]
         {
             get => this.Items[coordinate.X, coordinate.Y];
@@ -22,7 +21,7 @@ namespace Chinchillada.Generation.Grid
         {
             this.Width = items.GetLength(0);
             this.Height = items.GetLength(1);
-            
+
             this.Items = items;
         }
 
@@ -30,7 +29,7 @@ namespace Chinchillada.Generation.Grid
         {
             this.Width = width;
             this.Height = height;
-            
+
             this.Items = new int[width, height];
         }
 
@@ -43,10 +42,12 @@ namespace Chinchillada.Generation.Grid
             }
         }
 
+        public IEnumerable<INeighborhood> GetNeighborhoods(int radius) => Grid.GetNeighborhoods(this, radius);
+
         public IGrid Select(Func<int, int> selector)
         {
             var output = (Grid2D) this.CopyShape();
-            
+
             foreach (var coordinate in this.GetCoordinates())
             {
                 var value = coordinate.Get(this);
@@ -56,11 +57,11 @@ namespace Chinchillada.Generation.Grid
 
             return output;
         }
-        
+
         public IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector)
         {
             var output = (Grid2D) this.CopyShape();
-            
+
             foreach (var coordinate in this.GetCoordinates())
             {
                 var neighborhood = this.GetNeighborhood(coordinate, radius);
@@ -79,7 +80,7 @@ namespace Chinchillada.Generation.Grid
                 yield return new Coordinate2D {X = x, Y = y};
             }
         }
-        
+
         public INeighborhood GetNeighborhood(Coordinate2D coordinate, int radius)
         {
             return new Neighborhood2D(coordinate, this, radius);

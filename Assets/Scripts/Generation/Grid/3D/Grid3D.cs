@@ -60,7 +60,7 @@ namespace Chinchillada.Generation.Grid
 
             this.Items = items;
         }
-        
+
         /// <inheritdoc />
         public void ForEach(Action<ICoordinate, int> action)
         {
@@ -70,7 +70,9 @@ namespace Chinchillada.Generation.Grid
                 action.Invoke(coordinate, value);
             }
         }
-        
+
+        public IEnumerable<INeighborhood> GetNeighborhoods(int radius) => Grid.GetNeighborhoods(this, radius);
+
         /// <inheritdoc />
         public IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector)
         {
@@ -90,7 +92,7 @@ namespace Chinchillada.Generation.Grid
         /// </summary>
         /// <param name="coordinate">The center of the neighborhood.</param>
         /// <param name="radius">The radius of the neighborhood.</param>
-        private INeighborhood GetNeighborhood(Coordinate3D coordinate, int radius)
+        public INeighborhood GetNeighborhood(Coordinate3D coordinate, int radius)
         {
             return new Neighborhood3D(this, coordinate, radius);
         }
@@ -98,7 +100,7 @@ namespace Chinchillada.Generation.Grid
         /// <summary>
         /// Get an <see cref="IEnumerable{T}"/> of all the coordinates in this <see cref="Grid3D"/>.
         /// </summary>
-        private IEnumerable<Coordinate3D> GetCoordinates()
+        public IEnumerable<Coordinate3D> GetCoordinates()
         {
             for (var x = 0; x < this.Width; x++)
             for (var y = 0; y < this.Height; y++)

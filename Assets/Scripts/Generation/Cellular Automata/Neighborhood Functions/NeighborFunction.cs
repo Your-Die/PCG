@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Chinchillada.Generation.Grid;
-using Generation.Grid;
 using UnityEngine;
 
 namespace Chinchillada.Generation.CellularAutomata

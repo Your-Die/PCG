@@ -1,0 +1,19 @@
+{
+    "name": "CellularAutomata.Editor",
+    "references": [
+        "GUID:dcb0e5b17acb1e444aa23b7e1a33171f",
+        "GUID:1eaec2d7d70f722408cb2417d51f1005",
+        "GUID:28885418faf14264f8c0e8e1f5891fe4"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

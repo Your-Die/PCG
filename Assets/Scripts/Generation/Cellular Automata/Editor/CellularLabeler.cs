@@ -1,13 +1,15 @@
-using System;
-using Chinchillada.Generation.CellularAutomata;
-using Chinchillada.Utilities;
-using Sirenix.OdinInspector;
-using UnityEngine;
-
 namespace Chinchillada.Generation.Grid
 {
+    using UnityEditor;
+    using UnityEngine;
+    
+    using Sirenix.OdinInspector;
+    
+    using Utilities;
+    using CellularAutomata;
+
     [RequireComponent(typeof(GridDrawer))]
-    public class GridLabeler : ChinchilladaBehaviour
+    public class CellularLabeler : ChinchilladaBehaviour
     {
         [SerializeField, FindComponent, Required]
         private GridDrawer drawer;
@@ -33,7 +35,13 @@ namespace Chinchillada.Generation.Grid
 
         private void OnDrawGizmos()
         {
-            this.grid.Neighborhoods
+            foreach (var neighborhood in this.grid.GetNeighborhoods(this.automata.Radius))
+            {
+                var position = this.drawer.CalculatePosition(neighborhood.Center);
+                var neighbors = this.automata.CountNeighbors(neighborhood);
+                
+                Handles.Label(position, neighbors.ToString());
+            }
         }
     }
 }

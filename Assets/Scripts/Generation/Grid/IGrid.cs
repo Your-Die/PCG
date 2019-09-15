@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Chinchillada.Generation.Grid
 {
@@ -7,9 +9,11 @@ namespace Chinchillada.Generation.Grid
     /// That can be used to index on the grid.
     /// </summary>
     /// <typeparam name="TIndex">The type that can be used to index on the grid.</typeparam>
-    public interface IGrid<in TIndex> : IGrid
+    public interface IGrid<TIndex> : IGrid
     {
         int this[TIndex index] { set; }
+        INeighborhood GetNeighborhood(TIndex coordinate, int radius);
+        IEnumerable<TIndex> GetCoordinates();
     }
 
     /// <summary>
@@ -22,10 +26,20 @@ namespace Chinchillada.Generation.Grid
         /// </summary>
         void ForEach(Action<ICoordinate, int> action);
 
+        IEnumerable<INeighborhood> GetNeighborhoods(int radius);
+
         /// <summary>
         /// Iterates over each neighborhood patch with the given <paramref name="radius"/>
         /// and applies the <paramref name="selector"/>.
         /// </summary>
         IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector);
+    }
+
+    public static class Grid
+    {
+        public static IEnumerable<INeighborhood> GetNeighborhoods<TIndex>(this IGrid<TIndex> grid, int radius)
+        {
+            return grid.GetCoordinates().Select(coordinate => grid.GetNeighborhood(coordinate, radius));
+        }
     }
 }
