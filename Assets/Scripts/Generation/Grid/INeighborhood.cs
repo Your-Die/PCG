@@ -7,23 +7,25 @@ namespace Chinchillada.Generation.Grid
     /// </summary>
     public interface INeighborhood
     {
+        ICoordinate Center { get; }
+        
         /// <summary>
         /// The value at the center of this <see cref="INeighborhood"/>.
         /// </summary>
-        int Center { get; }
+        int CenterValue { get; }
         
         /// <summary>
-        /// The Orthogonal neighborhood around the <see cref="Center"/>.
+        /// The Orthogonal neighborhood around the <see cref="CenterValue"/>.
         /// </summary>
         IEnumerable<int> Orthogonal();
         
         /// <summary>
-        /// The diagonal neighborhood around the <see cref="Center"/>.
+        /// The diagonal neighborhood around the <see cref="CenterValue"/>.
         /// </summary>
         IEnumerable<int> Diagonal();
         
         /// <summary>
-        /// The full neighborhood around the <see cref="Center"/>.
+        /// The full neighborhood around the <see cref="CenterValue"/>.
         /// </summary>
         IEnumerable<int> Full();
     }

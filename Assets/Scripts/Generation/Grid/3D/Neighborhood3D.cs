@@ -13,7 +13,9 @@ namespace Chinchillada.Generation.Grid
         private readonly Coordinate3D center;
         private readonly int radius;
 
-        public int Center => this.grid[this.center];
+        public ICoordinate Center => this.center;
+
+        public int CenterValue => this.grid[this.center];
 
         public Neighborhood3D(Grid3D grid, Coordinate3D center, int radius)
         {

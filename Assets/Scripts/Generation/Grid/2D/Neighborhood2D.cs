@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Chinchillada.Generation;
 
 namespace Chinchillada.Generation.Grid
 {
@@ -11,14 +10,16 @@ namespace Chinchillada.Generation.Grid
         private readonly Grid2D grid;
         private readonly int radius;
 
+        public ICoordinate Center => this.center;    
+        
+        public int CenterValue => this.center.Get(this.grid);
+        
         public Neighborhood2D(Coordinate2D center, Grid2D grid, int radius)
         {
             this.center = center;
             this.grid = grid;
             this.radius = radius;
         }
-
-        public int Center => this.center.Get(this.grid);
 
         public IEnumerable<int> Horizontal()
         {
