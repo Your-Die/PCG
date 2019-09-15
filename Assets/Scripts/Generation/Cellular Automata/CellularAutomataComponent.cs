@@ -1,11 +1,12 @@
-using System;
-using Chinchillada.Generation.Grid;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
-using UnityEngine;
-
 namespace Chinchillada.Generation.CellularAutomata
 {
+    using UnityEngine;
+    
+    using Sirenix.OdinInspector;
+    using Sirenix.Serialization;
+    
+    using Grid;
+    
     public class CellularAutomataComponent : SerializedMonoBehaviour, ICellularAutomata
     {
         [SerializeField] private int radius = 1;
@@ -16,9 +17,11 @@ namespace Chinchillada.Generation.CellularAutomata
 
         private CellularAutomata cellularAutomata;
 
-        public NeighborFunction NeighborhoodFunction => this.neighborhoodFunction;
-
+        public int Radius => this.radius;
+        
         public IGrid Step(IGrid grid) => this.cellularAutomata.Step(grid);
+        public int ApplyRules(INeighborhood neighborhood) => this.cellularAutomata.ApplyRules(neighborhood);
+        public int CountNeighbors(INeighborhood neighborhood) => this.cellularAutomata.CountNeighbors(neighborhood);
 
         private  void Awake() => this.ConstructAutomata();
 
@@ -26,7 +29,7 @@ namespace Chinchillada.Generation.CellularAutomata
 
         private void ConstructAutomata()
         {
-            this.cellularAutomata = new CellularAutomata(this.constraints, this.radius, this.NeighborhoodFunction);
+            this.cellularAutomata = new CellularAutomata(this.constraints, this.Radius, this.neighborhoodFunction);
         }
     }
 }

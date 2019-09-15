@@ -12,5 +12,8 @@ namespace Chinchillada.Generation.CellularAutomata
         /// </summary>
         /// <returns>The result of the step.</returns>
         IGrid Step(IGrid grid);
+
+        int ApplyRules(INeighborhood neighborhood);
+        int CountNeighbors(INeighborhood neighborhood);
     }
 }

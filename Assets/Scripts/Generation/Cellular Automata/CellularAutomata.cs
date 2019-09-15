@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using Chinchillada.Generation.Grid;
-using Generation.Grid;
-
-namespace Chinchillada.Generation.CellularAutomata
+﻿namespace Chinchillada.Generation.CellularAutomata
 {
+    using System.Linq;
+    using Grid;
+
     /// <summary>
     /// Performs cellular automata operations on <see cref="Grid2D"/>.
     /// </summary>
@@ -39,12 +38,16 @@ namespace Chinchillada.Generation.CellularAutomata
             return grid.SelectNeighborhood(this.radius, this.ApplyRules);
         }
 
-        private int ApplyRules(INeighborhood neighborhood)
+        public int ApplyRules(INeighborhood neighborhood)
+        {
+            var neighborCount = this.CountNeighbors(neighborhood);
+            return this.constraints.Apply(neighborhood.CenterValue, neighborCount);
+        }
+
+        public int CountNeighbors(INeighborhood neighborhood)
         {
             var neighbors = this.neighborSelector.SelectNeighbors(neighborhood);
-            var neighborCount = neighbors.Sum();
-
-            return this.constraints.Apply(neighborhood.Center, neighborCount);
+            return neighbors.Sum();
         }
     }
 }
