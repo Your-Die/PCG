@@ -20,22 +20,29 @@
         /// </summary>
         private readonly NeighborFunction neighborSelector;
 
+        private readonly bool inPlace;
+
         /// <summary>
         /// Construct a new instance of <see cref="CellularAutomata"/>.
         /// </summary>
         /// <param name="constraints">The settings for the operations.</param>
         /// <param name="neighborSelector">The function that defines the neighborhood for any given cell.</param>
-        public CellularAutomata(CellularConstraints constraints, int radius, NeighborFunction neighborSelector)
+        /// <param name="inPlace">Whether the automata operations should be performed in place.
+        /// Setting this to true will make the result of operations of neighboring cells in the same step impact that of the current operation.</param>
+        public CellularAutomata(CellularConstraints constraints, int radius, NeighborFunction neighborSelector,
+            bool inPlace = false)
         {
             this.constraints = constraints;
             this.radius = radius;
             this.neighborSelector = neighborSelector;
+            this.inPlace = inPlace;
         }
 
         /// <inheritdoc cref="ICellularAutomata"/>
         public IGrid Step(IGrid grid)
         {
-            return grid.SelectNeighborhood(this.radius, this.ApplyRules);
+            var output = this.inPlace ? grid : null;
+            return grid.SelectNeighborhood(this.radius, this.ApplyRules, output);
         }
 
         public int ApplyRules(INeighborhood neighborhood)

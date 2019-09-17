@@ -22,5 +22,12 @@ namespace Chinchillada.Generation.Grid
         {
             this.generator = new Grid2DGenerator(this.width, this.height, this.fillPercentage);
         }
+
+        public void ApplySettings(int width, int height, float fillPercentage)
+        {
+            this.width = width;
+            this.height = height;
+            this.fillPercentage = fillPercentage;
+        }
     }
 }

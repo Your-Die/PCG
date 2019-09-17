@@ -1,3 +1,4 @@
+using Chinchillada.Utilities;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
@@ -30,5 +31,10 @@ namespace Chinchillada.Generation.Grid
                 this.fillPercentage);
         }
 
+        public void ApplySettings(Vector3Int dimensions, float fill)
+        {
+            (this.width, this.height, this.depth) = dimensions.ToTuple();
+            this.fillPercentage = fill;
+        }
     }
 }

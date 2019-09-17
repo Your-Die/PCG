@@ -31,6 +31,15 @@ namespace Chinchillada.Generation.CellularAutomata
         /// The current grid.
         /// </summary>
         private IGrid grid;
+        
+        /// <summary>
+        /// Amount of iterations of <see cref="ICellularAutomata"/> to perform.
+        /// </summary>
+        public int Iterations
+        {
+            get => this.iterations;
+            set => this.iterations = value;
+        }
 
         /// <summary>
         /// Event invoked when a grid is generated.
@@ -55,7 +64,7 @@ namespace Chinchillada.Generation.CellularAutomata
         /// Generate a grid using the <see cref="gridGenerator"/>.
         /// </summary>
         [Button]
-        private void GenerateGrid()
+        public void GenerateGrid()
         {
             this.grid = this.gridGenerator.Generate();
             this.GridGenerated?.Invoke(this.grid);
@@ -65,9 +74,9 @@ namespace Chinchillada.Generation.CellularAutomata
         /// Perform the <see cref="iterations"/> of <see cref="ICellularAutomata"/> on the <see cref="grid"/>.
         /// </summary>
         [Button]
-        private void PerformIterations()
+        public void PerformIterations()
         {
-            for (var i = 0; i < this.iterations; i++)
+            for (var i = 0; i < this.Iterations; i++)
                 this.grid = this.cellularAutomata.Step(this.grid);
 
             this.StepPerformed?.Invoke(this.grid);
@@ -77,7 +86,7 @@ namespace Chinchillada.Generation.CellularAutomata
         /// Perform a single step of <see cref="ICellularAutomata"/> on the <see cref="grid"/>.
         /// </summary>
         [Button]
-        private void Step()
+        public void Step()
         {
             this.grid = this.cellularAutomata.Step(this.grid);
             this.StepPerformed?.Invoke(this.grid);

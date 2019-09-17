@@ -74,17 +74,17 @@ namespace Chinchillada.Generation.Grid
         public IEnumerable<INeighborhood> GetNeighborhoods(int radius) => Grid.GetNeighborhoods(this, radius);
 
         /// <inheritdoc />
-        public IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector)
+        public IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector, IGrid output = null)
         {
-            var output = this.CopyShape();
+            var outputGrid = output as Grid3D ?? this.CopyShape();
 
             foreach (var coordinate in this.GetCoordinates())
             {
                 var neighborhood = this.GetNeighborhood(coordinate, radius);
-                output[coordinate] = selector.Invoke(neighborhood);
+                outputGrid[coordinate] = selector.Invoke(neighborhood);
             }
 
-            return output;
+            return outputGrid;
         }
 
         /// <summary>

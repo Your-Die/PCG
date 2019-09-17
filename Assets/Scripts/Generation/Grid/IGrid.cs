@@ -26,13 +26,14 @@ namespace Chinchillada.Generation.Grid
         /// </summary>
         void ForEach(Action<ICoordinate, int> action);
 
+
         IEnumerable<INeighborhood> GetNeighborhoods(int radius);
 
         /// <summary>
         /// Iterates over each neighborhood patch with the given <paramref name="radius"/>
         /// and applies the <paramref name="selector"/>.
         /// </summary>
-        IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector);
+        IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector, IGrid output = null);
     }
 
     public static class Grid

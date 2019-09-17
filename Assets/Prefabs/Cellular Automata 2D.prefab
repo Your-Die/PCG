@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1171977166926236993}
   - component: {fileID: 8185348313323160152}
   m_Layer: 0
-  m_Name: Cellular Automata
+  m_Name: Cellular Automata 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,11 +55,16 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
+    - Name: cellularAutomata
+      Entry: 7
+      Data: 0|Chinchillada.Generation.CellularAutomata.CellularAutomata, Chinchillada.Generation
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: gridGenerator
       Entry: 10
       Data: 0
   iterations: 4
-  cellularAutomata: {fileID: 1171977166926236993}
 --- !u!114 &1171977166926236993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,22 +87,14 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: neighborhoodProvider
-      Entry: 7
-      Data: 0|Chinchillada.Generation.CellularAutomata.NeighborhoodProvider, Assembly-CSharp
-    - Name: radius
-      Entry: 3
-      Data: 1
-    - Name: function
+    - Name: neighborhoodFunction
       Entry: 10
       Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-  settings:
-    underPopulation: 3
+  radius: 1
+  constraints:
+    underPopulation: 2
     reproduction: 4
-    overPopulation: 5
+    overPopulation: 6
 --- !u!114 &8185348313323160152
 MonoBehaviour:
   m_ObjectHideFlags: 0

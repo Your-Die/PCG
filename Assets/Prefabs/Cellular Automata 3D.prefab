@@ -78,20 +78,21 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 87fa9cc08c1d9284dae327a098cede06, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: neighborhoodFunction
-      Entry: 6
-      Data: 
-  settings:
-    radius: 1
-    underPopulation: 2
-    reproduction: 5
-    overPopulation: 9
+      Entry: 10
+      Data: 0
+  radius: 1
+  constraints:
+    underPopulation: 3
+    reproduction: 4
+    overPopulation: 5
 --- !u!114 &7630245412148368346
 MonoBehaviour:
   m_ObjectHideFlags: 0

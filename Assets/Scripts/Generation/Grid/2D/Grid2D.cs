@@ -58,18 +58,18 @@ namespace Chinchillada.Generation.Grid
             return output;
         }
 
-        public IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector)
+        public IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector, IGrid output = null)
         {
-            var output = (Grid2D) this.CopyShape();
+            var outputGrid = output as Grid2D ?? (Grid2D) this.CopyShape();
 
             foreach (var coordinate in this.GetCoordinates())
             {
                 var neighborhood = this.GetNeighborhood(coordinate, radius);
                 var value = selector.Invoke(neighborhood);
-                coordinate.Set(value, output);
+                coordinate.Set(value, outputGrid);
             }
 
-            return output;
+            return outputGrid;
         }
 
         public IEnumerable<Coordinate2D> GetCoordinates()
