@@ -41,6 +41,8 @@ namespace Chinchillada.Generation.CellularAutomata
             set => this.iterations = value;
         }
 
+        public bool HasGrid => this.grid != null;
+
         /// <summary>
         /// Event invoked when a grid is generated.
         /// </summary>
