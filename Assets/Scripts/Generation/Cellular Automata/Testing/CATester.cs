@@ -1,3 +1,4 @@
+using Chinchillada;
 using Chinchillada.Generation.CellularAutomata;
 using Chinchillada.Generation.Grid;
 using Chinchillada.Utilities;

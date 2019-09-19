@@ -4,7 +4,7 @@ namespace Chinchillada.Generation.CellularAutomata
 {
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Settings/CA2D")]
+    [CreateAssetMenu(menuName = "Settings/CA3D")]
     public class CA3DSettings : ScriptableObject
     {
         [Header("Iterations")]
