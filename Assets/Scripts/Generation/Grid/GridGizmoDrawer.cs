@@ -9,7 +9,7 @@ namespace Chinchillada.Generation.Grid
     /// <summary>
     /// Draws a <see cref="IGrid"/> using <see cref="Gizmos"/>.
     /// </summary>
-    public class GridDrawer : ChinchilladaBehaviour
+    public class GridGizmoDrawer : ChinchilladaBehaviour, IGridDrawer
     {
         /// <summary>
         /// Size of a cube.

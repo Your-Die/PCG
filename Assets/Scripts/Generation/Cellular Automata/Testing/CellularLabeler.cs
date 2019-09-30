@@ -10,7 +10,7 @@ namespace Chinchillada.Generation.Grid
     using Utilities;
     using CellularAutomata;
 
-    [RequireComponent(typeof(GridDrawer))]
+    [RequireComponent(typeof(GridGizmoDrawer))]
     public class CellularLabeler : ChinchilladaBehaviour
     {
         [SerializeField] private Vector3 offset;
@@ -18,7 +18,7 @@ namespace Chinchillada.Generation.Grid
         [SerializeField] private Color color = Color.yellow;
 
         [SerializeField, FindComponent, Required]
-        private GridDrawer drawer;
+        private IGridDrawer gridDrawer;
 
         [SerializeField, FindComponent(SearchStrategy.InChildren), Required]
         private CellularAutomataComponent automata;
@@ -29,14 +29,14 @@ namespace Chinchillada.Generation.Grid
 
         private void OnEnable()
         {
-            this.RegisterGrid(this.drawer.Grid);
-            this.drawer.NewGridRegistered += this.RegisterGrid;
+            this.RegisterGrid(this.gridDrawer.Grid);
+            this.gridDrawer.NewGridRegistered += this.RegisterGrid;
         }
 
         private void OnDisable()
         {
             this.RegisterGrid(null);
-            this.drawer.NewGridRegistered -= this.RegisterGrid;
+            this.gridDrawer.NewGridRegistered -= this.RegisterGrid;
         }
 
         protected override void Awake()
@@ -64,7 +64,7 @@ namespace Chinchillada.Generation.Grid
             
             foreach (var neighborhood in this.grid.GetNeighborhoods(this.automata.Radius))
             {
-                var position = this.drawer.CalculatePosition(neighborhood.Center);
+                var position = this.gridDrawer.CalculatePosition(neighborhood.Center);
                 var neighbors = this.automata.CountNeighbors(neighborhood);
 
                 position += this.offset;
