@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
@@ -114,5 +116,28 @@ namespace Chinchillada.Generation.Grid
         /// Create a new <see cref="Grid3D"/> with the same dimensions.
         /// </summary>
         private IGrid<Coordinate3D> CopyShape() => new Grid3D(this.Width, this.Height, this.Depth);
+
+        public void Print()
+        {
+            var stringBuilder = new StringBuilder();
+
+            for (var z = 0; z < this.Depth; z++)
+            {
+                Debug.Log($"Z: {z}");
+                for (var y = 0; y < this.Height; y++)
+                {
+                    for (var x = 0; x < this.Width; x++)
+                    {
+                        var coordinate = new Coordinate3D {X = x, Y = y, Z = z};
+                        var cell = this[coordinate];
+
+                        stringBuilder.Append($"{cell} ");
+                    }
+
+                    Debug.Log(stringBuilder.ToString());
+                    stringBuilder.Clear();
+                }
+            }
+        }
     }
 }

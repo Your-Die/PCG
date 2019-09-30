@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1079e1f714ad4f7ea53ef494d67eb5e9, type: 3}
   m_Name: Basic
   m_EditorClassIdentifier: 
-  iterations: 1
-  inPlace: 0
-  dimensions: {x: 10, y: 10, z: 10}
+  iterations: 50
+  inPlace: 1
+  dimensions: {x: 30, y: 10, z: 30}
   fillPercentage: 0.5
   neighborhoodRadius: 1
-  neighborFunction: {fileID: 0}
+  neighborFunction: {fileID: 11400000, guid: 7b26f99ca152feb488808aad940f0cce, type: 2}
   constraints:
-    underPopulation: 3
+    underPopulation: 2
     reproduction: 4
     overPopulation: 5

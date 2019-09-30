@@ -254,7 +254,7 @@ namespace Chinchillada.Generation.Grid
         {
             var minX = center.X - radius;
             var minY = center.Y - radius;
-            var minZ = center.Z = radius;
+            var minZ = center.Z - radius;
 
             var maxX = center.X + radius;
             var maxY = center.Y + radius;

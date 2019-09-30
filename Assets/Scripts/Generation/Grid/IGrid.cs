@@ -34,6 +34,8 @@ namespace Chinchillada.Generation.Grid
         /// and applies the <paramref name="selector"/>.
         /// </summary>
         IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector, IGrid output = null);
+        
+        void Print();
     }
 
     public static class Grid

@@ -1,3 +1,6 @@
+using System.Text;
+using UnityEngine;
+
 namespace Chinchillada.Generation.Grid
 {
     using System;
@@ -87,5 +90,24 @@ namespace Chinchillada.Generation.Grid
         }
 
         public IGrid<Coordinate2D> CopyShape() => new Grid2D(this.Width, this.Height);
+
+        public void Print()
+        {
+            var stringBuilder = new StringBuilder();
+
+            for (var y = 0; y < this.Height; y++)
+            {
+                for (var x = 0; x < this.Width; x++)
+                {
+                    var coordinate = new Coordinate2D{X = x, Y = y};
+                    var cell = this[coordinate];
+                    
+                    stringBuilder.Append($"{cell} ");
+                }
+                
+                Debug.Log(stringBuilder.ToString());
+                stringBuilder.Clear();
+            }
+        }
     }
 }
