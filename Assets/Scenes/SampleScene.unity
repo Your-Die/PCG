@@ -94,8 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -294,155 +294,374 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1626398252 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2081108778424186228, guid: d3c5a69895342aa429da48d1e5f9d31c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2081108776799923039}
+--- !u!1001 &1484184666
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1626398250}
+    m_Modifications:
+    - target: {fileID: 2095555605495610911, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_Name
+      value: Cellular Automata 2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+    - target: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1904158087}
+    - target: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 1904158090}
+    - target: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"cellularAutomata","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"gridGenerator","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171977166926236993, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1171977166926236993, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+    - target: {fileID: 8185348313323160152, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 8185348313323160152, guid: 354b9f741c0cde54bbe920f1f9137c38,
+        type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 354b9f741c0cde54bbe920f1f9137c38, type: 3}
+--- !u!1 &1626398249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626398250}
+  - component: {fileID: 9178895305785560213}
+  - component: {fileID: 1626398251}
+  - component: {fileID: 1626398252}
+  - component: {fileID: 1626398253}
+  m_Layer: 0
+  m_Name: Cellular Debugger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1626398250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626398249}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1904158088}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1626398251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626398249}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 856ceb38787d4666a1e573b892474025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &2081108776799923039
-PrefabInstance:
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: colors
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.Int32, mscorlib],[UnityEngine.Color,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.Int32,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  cellSize: {x: 1, y: 1, z: 1}
+  spacing: 1
+  topLeft: {fileID: 1626398250}
+--- !u!114 &1626398252
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6968034905594499549, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 6968034905594499549, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-    - target: {fileID: 2081108778424186230, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_Name
-      value: Cellular Debugger
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186229, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.ReferencedUnityObjects.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-    - target: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 1626398252}
-    - target: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"gridDrawer","value":$eref:0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.SerializationNodes.Array.data[0].Entry
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7169846940656609226, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.SerializationNodes.Array.data[0].Data
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2081108778424186228, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 2081108778424186228, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-    - target: {fileID: 2081108778424186227, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 2081108778424186227, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-    - target: {fileID: 8432293961842894259, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 8432293961842894259, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-    - target: {fileID: 8432293961842894257, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 8432293961842894257, guid: d3c5a69895342aa429da48d1e5f9d31c,
-        type: 3}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d3c5a69895342aa429da48d1e5f9d31c, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626398249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14ac2053754e40ac9a1350a9ecad0a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1626398251}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: gridDrawer
+      Entry: 10
+      Data: 0
+  offset: {x: 0, y: 0, z: 0}
+  color: {r: 1, g: 0, b: 0, a: 1}
+  automata: {fileID: 1904158087}
+--- !u!114 &1626398253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626398249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81dd4b05c0b443e9a8fbb2a4d8f908d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  settings: {fileID: 11400000, guid: 4001875caf328b24cba7f4a737df686d, type: 2}
+  gridGenerator: {fileID: 1904158090}
+  automataGenerator: {fileID: 1904158089}
+  automata: {fileID: 1904158087}
+--- !u!114 &1904158087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1171977166926236993, guid: 354b9f741c0cde54bbe920f1f9137c38,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484184666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4baec37275422cb98b90d1a568dc5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1904158088 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8521612520497234430, guid: 354b9f741c0cde54bbe920f1f9137c38,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484184666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1904158089 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2857881230742547770, guid: 354b9f741c0cde54bbe920f1f9137c38,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484184666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c848f1b1de34ca399288012fd753554, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1904158090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8185348313323160152, guid: 354b9f741c0cde54bbe920f1f9137c38,
+    type: 3}
+  m_PrefabInstance: {fileID: 1484184666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cca330fb12b4e7bbe97bfde3c982706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9178895305785560213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626398249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad21b80d3f1e4f39aa7603a26fae38d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1626398251}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: gridDrawer
+      Entry: 10
+      Data: 0
+  generator: {fileID: 1904158089}

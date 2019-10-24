@@ -49,6 +49,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 1171977166926236993}
     - {fileID: 8185348313323160152}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -56,14 +57,11 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: cellularAutomata
-      Entry: 7
-      Data: 0|Chinchillada.Generation.CellularAutomata.CellularAutomata, Chinchillada.Generation
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: gridGenerator
       Entry: 10
       Data: 0
+    - Name: gridGenerator
+      Entry: 10
+      Data: 1
   iterations: 4
 --- !u!114 &1171977166926236993
 MonoBehaviour:
@@ -95,6 +93,7 @@ MonoBehaviour:
     underPopulation: 2
     reproduction: 4
     overPopulation: 6
+  inPlace: 0
 --- !u!114 &8185348313323160152
 MonoBehaviour:
   m_ObjectHideFlags: 0

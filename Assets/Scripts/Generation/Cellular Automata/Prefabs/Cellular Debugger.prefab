@@ -211,156 +211,113 @@ MonoBehaviour:
   gridGenerator: {fileID: 8432293961842894256}
   automataGenerator: {fileID: 8432293961842894259}
   automata: {fileID: 8432293961842894257}
---- !u!1001 &2081108777024190058
-PrefabInstance:
+--- !u!1 &8432293961842894258
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2081108778424186229}
-    m_Modifications:
-    - target: {fileID: 7630245412148368344, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_Name
-      value: Cellular Automata 3D
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 8432293961842894257}
-    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
-      value: 
-      objectReference: {fileID: 8432293961842894256}
-    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"cellularAutomata","value":$eref:0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[1]
-      value: '"path":"gridGenerator","value":$eref:1'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bf6b7890567c953428455b320999515f, type: 3}
---- !u!4 &8432293961842894270 stripped
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8432293961842894270}
+  - component: {fileID: 8432293961842894259}
+  - component: {fileID: 8432293961842894257}
+  - component: {fileID: 8432293961842894256}
+  m_Layer: 0
+  m_Name: Cellular Automata 3D
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8432293961842894270
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7630245412148368340, guid: bf6b7890567c953428455b320999515f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2081108777024190058}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8432293961842894259 stripped
+  m_GameObject: {fileID: 8432293961842894258}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2081108778424186229}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8432293961842894259
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7630245412148368345, guid: bf6b7890567c953428455b320999515f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2081108777024190058}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8432293961842894258}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c848f1b1de34ca399288012fd753554, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8432293961842894257 stripped
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 8432293961842894257}
+    - {fileID: 8432293961842894256}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: cellularAutomata
+      Entry: 10
+      Data: 0
+    - Name: gridGenerator
+      Entry: 10
+      Data: 1
+  iterations: 5
+--- !u!114 &8432293961842894257
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7630245412148368347, guid: bf6b7890567c953428455b320999515f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2081108777024190058}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8432293961842894258}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f4baec37275422cb98b90d1a568dc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8432293961842894256 stripped
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 87fa9cc08c1d9284dae327a098cede06, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: neighborhoodFunction
+      Entry: 10
+      Data: 0
+  radius: 1
+  constraints:
+    underPopulation: 3
+    reproduction: 4
+    overPopulation: 5
+  inPlace: 0
+--- !u!114 &8432293961842894256
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7630245412148368346, guid: bf6b7890567c953428455b320999515f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2081108777024190058}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8432293961842894258}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6bc33aeac8d46d6b1f014f7997afc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  width: 40
+  height: 40
+  depth: 40
+  fillPercentage: 0.5
