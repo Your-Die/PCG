@@ -20,6 +20,12 @@ namespace Chinchillada.Generation.Grid
             set => this.Items[coordinate.X, coordinate.Y] = value;
         }
 
+        public int this[int x, int y]
+        {
+            get => this.Items[x, y];
+            set => this.Items[x, y] = value;
+        }
+
         public Grid2D(int[,] items)
         {
             this.Width = items.GetLength(0);
@@ -89,7 +95,7 @@ namespace Chinchillada.Generation.Grid
             return new Neighborhood2D(coordinate, this, radius);
         }
 
-        public IGrid<Coordinate2D> CopyShape() => new Grid2D(this.Width, this.Height);
+        public Grid2D CopyShape() => new Grid2D(this.Width, this.Height);
 
         public void Print()
         {
