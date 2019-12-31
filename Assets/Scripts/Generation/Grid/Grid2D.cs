@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace Chinchillada.Generation.Grid
 {
     public class Grid2D
@@ -7,6 +9,8 @@ namespace Chinchillada.Generation.Grid
         public int Width { get; }
 
         public int Height { get; }
+        
+        public Vector2Int Shape => new Vector2Int(this.Width, this.Height);
 
         public int this[int x, int y]
         {

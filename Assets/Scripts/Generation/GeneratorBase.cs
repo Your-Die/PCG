@@ -1,6 +1,7 @@
 using System;
 using Chinchillada;
 using Chinchillada.Generation;
+using Chinchillada.Generation.Grid;
 using Sirenix.OdinInspector;
 
 namespace DefaultNamespace
@@ -20,5 +21,6 @@ namespace DefaultNamespace
 
         protected abstract T GenerateInternal();
 
+        protected void OnGenerated(T result) => this.Generated?.Invoke(result);
     }
 }
