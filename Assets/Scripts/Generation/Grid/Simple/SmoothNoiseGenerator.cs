@@ -1,21 +1,16 @@
 using Chinchillada.Utilities;
+using DefaultNamespace;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class SmoothNoiseGenerator : IGenerator<Grid2D>
+    public class SmoothNoiseGenerator : GeneratorBase<Grid2D>
     {
-        private readonly int samplePeriod;
+        [SerializeField] private int samplePeriod = 1;
 
-        private readonly IGenerator<Grid2D> gridGenerator;
+        [SerializeField] private IGenerator<Grid2D> gridGenerator;
 
-        public SmoothNoiseGenerator(IGenerator<Grid2D> gridGenerator, int samplePeriod)
-        {
-            this.gridGenerator = gridGenerator;
-            this.samplePeriod = samplePeriod;
-        }
-        
-        public Grid2D Generate()
+        protected override Grid2D GenerateInternal()
         {
             var grid = this.gridGenerator.Generate();
             return SmoothNoise(grid, this.samplePeriod);
@@ -48,7 +43,7 @@ namespace Chinchillada.Generation.Grid
                     var top = Mathf.Lerp(topLeft, topRight, horizontalBlend);
                     var bottom = Mathf.Lerp(bottomLeft, bottomRight, horizontalBlend);
 
-                    output[x, y] = (int)Mathf.Lerp(top, bottom, verticalBlend);
+                    output[x, y] = (int) Mathf.Lerp(top, bottom, verticalBlend);
                 }
             }
 
