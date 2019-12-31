@@ -9,7 +9,7 @@ namespace Chinchillada.Generation.Grid
     /// <summary>
     /// Draws a <see cref="IGrid"/> using <see cref="Gizmos"/>.
     /// </summary>
-    public class GridGizmoDrawer : ChinchilladaBehaviour, IGridDrawer
+    public class GridGizmoDrawer : GridRendererBase
     {
         /// <summary>
         /// Size of a cube.
@@ -31,25 +31,10 @@ namespace Chinchillada.Generation.Grid
         /// </summary>
         [OdinSerialize] private Dictionary<int, Color> colors;
 
-        public event Action<IGrid> NewGridRegistered;
-
-        public IGrid Grid { get; private set; }
-
-        /// <summary>
-        /// Top-left point to draw the cubes from.
-        /// </summary>
-        public Transform TopLeft => this.topLeft;
-
-        /// <summary>
-        /// Spacing between the cubes.
-        /// </summary>
-        public float Spacing => this.spacing;
-
-        /// <summary>
-        /// Draw the <paramref name="grid"/>.
-        /// </summary>
-        public void Show(IGrid newGrid) => this.SetGrid(newGrid);
-
+        protected override void RenderGrid(Grid2D newGrid)
+        {
+        }
+        
         private void OnDrawGizmos()
         {
             this.Grid?.ForEach((coordinate, value) =>
@@ -65,13 +50,10 @@ namespace Chinchillada.Generation.Grid
             });
         }
 
-        private void SetGrid(IGrid newGrid)
+        private Vector3 CalculatePosition(ICoordinate coordinate)
         {
-            if (newGrid == this.Grid)
-                return;
-
-            this.Grid = newGrid;
-            this.NewGridRegistered?.Invoke(this.Grid);
+            var offset = this.spacing * coordinate.ToVector();
+            return this.topLeft.position + offset;
         }
     }
 }

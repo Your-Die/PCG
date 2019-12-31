@@ -16,6 +16,7 @@ namespace Chinchillada.Generation.Grid
         
         public event Action<Grid2D> Generated;
 
+        [Button]
         public Grid2D Generate()
         {
             var grid =  this.generator.Generate();

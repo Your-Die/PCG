@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class GridRenderer : ChinchilladaBehaviour, IGridDrawer
+    public class PixelWiseRenderer : GridRendererBase
     {
         [SerializeField] private float spacing;
 
@@ -20,17 +20,8 @@ namespace Chinchillada.Generation.Grid
 
         private readonly LinkedList<SpriteRenderer> inactivePixels = new LinkedList<SpriteRenderer>();
 
-        public IGrid Grid { get; private set; }
-        public Transform TopLeft => this.topLeft;
-        public float Spacing => this.spacing;
-
-        public event Action<IGrid> NewGridRegistered;
-
-        public void Show(IGrid newGrid)
+        protected override void RenderGrid(Grid2D grid)
         {
-            var grid = (Grid2D) newGrid;
-            this.Grid = grid;
-            
             this.PreparePixels(grid.Width, grid.Height);
 
             for (var x = 0; x < grid.Width; x++)
@@ -42,6 +33,7 @@ namespace Chinchillada.Generation.Grid
                 this.pixels[x, y].color = color;
             }
         }
+
 
         private void PreparePixels(int width, int height)
         {

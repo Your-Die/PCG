@@ -1,4 +1,5 @@
 using System.Text;
+using Chinchillada.Colors;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
@@ -52,20 +53,6 @@ namespace Chinchillada.Generation.Grid
         }
 
         public IEnumerable<INeighborhood> GetNeighborhoods(int radius) => Grid.GetNeighborhoods(this, radius);
-
-        public IGrid Select(Func<int, int> selector)
-        {
-            var output = (Grid2D) this.CopyShape();
-
-            foreach (var coordinate in this.GetCoordinates())
-            {
-                var value = coordinate.Get(this);
-                var newValue = selector.Invoke(value);
-                coordinate.Set(newValue, output);
-            }
-
-            return output;
-        }
 
         public IGrid SelectNeighborhood(int radius, Func<INeighborhood, int> selector, IGrid output = null)
         {

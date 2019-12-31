@@ -1,4 +1,5 @@
 using System;
+using Chinchillada.Utilities;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
@@ -7,10 +8,11 @@ namespace Chinchillada.Generation.Grid
     {
         [SerializeField] private IObservableGenerator<Grid2D> generator;
 
-        [SerializeField] private IGridDrawer drawer;
+        [SerializeField, FindComponent(SearchStrategy.InChildren)]
+        private IGridRenderer drawer;
 
-        private void OnEnable() => this.generator.Generated += this.drawer.Show;
+        private void OnEnable() => this.generator.Generated += this.drawer.Render;
 
-        private void OnDisable() => this.generator.Generated -= this.drawer.Show;
+        private void OnDisable() => this.generator.Generated -= this.drawer.Render;
     }
 }
