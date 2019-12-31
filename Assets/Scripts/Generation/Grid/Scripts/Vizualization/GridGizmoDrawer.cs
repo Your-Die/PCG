@@ -36,23 +36,20 @@ namespace Chinchillada.Generation.Grid
         public IGrid Grid { get; private set; }
 
         /// <summary>
+        /// Top-left point to draw the cubes from.
+        /// </summary>
+        public Transform TopLeft => this.topLeft;
+
+        /// <summary>
+        /// Spacing between the cubes.
+        /// </summary>
+        public float Spacing => this.spacing;
+
+        /// <summary>
         /// Draw the <paramref name="grid"/>.
         /// </summary>
         public void Show(IGrid newGrid) => this.SetGrid(newGrid);
 
-        /// <summary>
-        /// Hide the current grid.
-        /// </summary>
-        public void Hide() => this.SetGrid(null);
-
-        private void OnDisable() => this.Hide();
-        
-        public Vector3 CalculatePosition(ICoordinate coordinate)
-        {
-            var offset = this.spacing * coordinate.ToVector();
-            return this.topLeft.position + offset;
-        }
-        
         private void OnDrawGizmos()
         {
             this.Grid?.ForEach((coordinate, value) =>

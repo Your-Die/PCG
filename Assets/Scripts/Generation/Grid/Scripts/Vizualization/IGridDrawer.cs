@@ -9,15 +9,27 @@ namespace Chinchillada.Generation.Grid
         IGrid Grid { get; }
 
         /// <summary>
+        /// Top-left point to draw the cubes from.
+        /// </summary>
+        Transform TopLeft { get; }
+
+        /// <summary>
+        /// Spacing between the cubes.
+        /// </summary>
+        float Spacing { get; }
+
+        /// <summary>
         /// Draw the <paramref name="grid"/>.
         /// </summary>
         void Show(IGrid newGrid);
-
-        /// <summary>
-        /// Hide the current grid.
-        /// </summary>
-        void Hide();
-
-        Vector3 CalculatePosition(ICoordinate neighborhoodCenter);
     }
- }
+
+    public static class GridDrawerExtensions
+    {
+        public static Vector3 CalculatePosition(this IGridDrawer drawer, ICoordinate coordinate)
+        {
+            var offset = drawer.Spacing * coordinate.ToVector();
+            return drawer.TopLeft.position + offset;
+        }
+    }
+}
