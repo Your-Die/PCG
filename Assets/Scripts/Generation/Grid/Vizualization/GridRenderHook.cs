@@ -7,7 +7,9 @@ namespace Chinchillada.Generation.Grid
 {
     public class GridRenderHook : ChinchilladaBehaviour
     {
-        [SerializeField, OnValueChanged(nameof(UpdateGenerator))]
+        [SerializeField, 
+         FindComponent(SearchStrategy.InChildren), 
+         OnValueChanged(nameof(UpdateGenerator))]
         private IObservableGenerator<Grid2D> generator;
 
         [SerializeField, FindComponent(SearchStrategy.InChildren)]
