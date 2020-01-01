@@ -5,9 +5,11 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    [CreateAssetMenu(menuName = "Cellular Rules/Counting Rule")]
-    public class CountingRule : ScriptableObject, ICellularRule
+    [Serializable]
+    public class CountingRule : ICellularRule
     {
+        [SerializeField] private string name;
+        
         [SerializeField] private int output;
 
         [Header("Neighborhood")] [SerializeField]
@@ -17,7 +19,7 @@ namespace Chinchillada.Generation.Grid
 
         [SerializeField] private int constraintTarget = 0;
 
-        [SerializeField] private CountConstraint constraint;
+        [SerializeField] private CountConstraint constraint = new CountConstraint();
         
         public int Apply(int x, int y, Grid2D grid)
         {
