@@ -9,7 +9,7 @@ namespace Chinchillada.Generation.Grid
     public class CountingRule : ICellularRule
     {
         [SerializeField] private string name;
-        
+
         [SerializeField] private int output;
 
         [Header("Neighborhood")] [SerializeField]
@@ -20,100 +20,69 @@ namespace Chinchillada.Generation.Grid
         [SerializeField] private int constraintTarget = 0;
 
         [SerializeField] private CountConstraint constraint = new CountConstraint();
-        
+
         public int Apply(int x, int y, Grid2D grid)
         {
-            var count = this.CountNeighborhood(x, y, grid);
+            var count = CountNeighborhood(x, y, grid, this.constraintTarget, this.radius, this.neighborhoodType);
             var shouldApply = this.constraint.ValidateConstraint(count);
 
             return shouldApply ? this.output : grid[x, y];
         }
 
-        /// <summary>
-        /// Counts the amount of neighbors that satisfy the constraint.
-        /// </summary>
-        private int CountNeighborhood(int x, int y, Grid2D grid)
+        public static int CountNeighborhood(int x, int y, Grid2D grid, int targetValue, int radius,
+            NeighborhoodType neighborhoodType = NeighborhoodType.Full)
         {
-            // Count amount of target value in the neighborhood.
             IEnumerable<int> neighbors;
-            switch (this.neighborhoodType)
+            switch (neighborhoodType)
             {
                 case NeighborhoodType.Orthogonal:
-                    neighbors = this.GetOrthogonalNeighbors(x, y, grid);
+                    neighbors = GetOrthogonalNeighbors(x, y, grid, radius);
                     break;
                 case NeighborhoodType.Full:
-                    neighbors = this.GetAllNeighbors(x, y, grid);
+                    neighbors = GetAllNeighbors(x, y, grid, radius);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            return neighbors.Count(neighbor => neighbor == this.constraintTarget);
+            return neighbors.Count(neighbor => neighbor == targetValue);
         }
 
         /// <summary>
         /// Get the orthogonally connected neighbors around (<paramref name="x"/>, <paramref name="y"/>)
         /// on the <paramref name="grid"/>.
         /// </summary>
-        /// <param name="centerX"></param>
-        /// <param name="centerY"></param>
-        /// <param name="grid"></param>
-        /// <returns></returns>
-        private IEnumerable<int> GetOrthogonalNeighbors(int centerX, int centerY, Grid2D grid)
+        private static IEnumerable<int> GetOrthogonalNeighbors(int centerX, int centerY, Grid2D grid, int radius)
         {
-            var (xMin, xMax, yMin, yMax) = this.CalculateBounds(centerX, centerY, grid);
+            var region = grid.GetRegion(centerX, centerY, radius);
 
-            for (var x = xMin; x < centerX; x++)
+            for (var x = region.Left; x < centerX; x++)
                 yield return grid[x, centerY];
 
-            for (var x = centerX + 1; x <= xMax; x++)
+            for (var x = centerX + 1; x <= region.Right; x++)
                 yield return grid[x, centerY];
 
-            for (var y = yMin; y < centerY; y++)
+            for (var y = region.Top; y < centerY; y++)
                 yield return grid[centerX, y];
 
-            for (var y = centerY + 1; y <= yMax; y++)
+            for (var y = centerY + 1; y <= region.Bottom; y++)
                 yield return grid[centerX, y];
         }
 
         /// <summary>
         /// Get all neighbors around (<paramref name="x"/>, <paramref name="y"/>) on the <paramref name="grid"/>.
         /// </summary>
-        private IEnumerable<int> GetAllNeighbors(int centerX, int centerY, Grid2D grid)
+        private static IEnumerable<int> GetAllNeighbors(int centerX, int centerY, Grid2D grid, int radius)
         {
-            var (xMin, xMax, yMin, yMax) = this.CalculateBounds(centerX, centerY, grid);
+            var region = grid.GetRegion(centerX, centerY, radius);
 
-            for (var x = xMin; x <= xMax; x++)
-            for (var y = yMin; y <= yMax; y++)
+            foreach (var (x, y) in region)
             {
                 if (x == centerX && y == centerY)
                     continue;
 
                 yield return grid[x, y];
             }
-        }
-
-        /// <summary>
-        /// Calculates the bounds of the neighborhood around <paramref name="x"/> and <paramref name="y"/>
-        /// on the <paramref name="grid"/>.
-        /// </summary>
-        private (int xMin, int xMax, int yMin, int yMax) CalculateBounds(int x, int y, Grid2D grid)
-        {
-            var xMin = Mathf.Max(x - this.radius, 0);
-            var yMin = Mathf.Max(y - this.radius, 0);
-            var xMax = Mathf.Min(x + this.radius, grid.Width - 1);
-            var yMax = Mathf.Min(y + this.radius, grid.Height - 1);
-
-            return (xMin, xMax, yMin, yMax);
-        }
-
-        /// <summary>
-        /// Type/Shape of the neighborhood.
-        /// </summary>
-        private enum NeighborhoodType
-        {
-            Orthogonal,
-            Full
         }
     }
 }

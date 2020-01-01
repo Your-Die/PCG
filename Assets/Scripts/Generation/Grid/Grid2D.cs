@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
@@ -35,5 +36,7 @@ namespace Chinchillada.Generation.Grid
         }
 
         public Grid2D CopyShape() => new Grid2D(this.Width, this.Height);
+
+        public GridRegion GetRegion(int x, int y, int radius) => new GridRegion(this, x, y, radius);
     }
 }
