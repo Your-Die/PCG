@@ -2,6 +2,7 @@ using System;
 using Chinchillada.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Chinchillada.Generation.Grid
 {
@@ -16,6 +17,8 @@ namespace Chinchillada.Generation.Grid
         private IGridRenderer drawer;
 
         private IObservableGenerator<Grid2D> generatorCache;
+
+        public UnityEvent GenerationInvoked;
 
         [Button]
         public void InvokeGeneration() => this.generator.Generate();

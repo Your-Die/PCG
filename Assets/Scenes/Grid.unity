@@ -204,6 +204,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1134490804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1134490805}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1134490805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134490804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.15897918, y: 1.0269918, z: -1.5834162}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226984940
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +267,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
+    - {fileID: 342572765255907710}
     - {fileID: 1315737177}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -244,11 +275,11 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: generator
-      Entry: 6
-      Data: 
-    - Name: drawer
       Entry: 10
       Data: 0
+    - Name: drawer
+      Entry: 10
+      Data: 1
 --- !u!4 &1226984944
 Transform:
   m_ObjectHideFlags: 0
@@ -503,6 +534,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2831634079695787120}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &342572765255907710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2561119012656606478, guid: 7e9f6eca2e00aa647b72518317a49817,
+    type: 3}
+  m_PrefabInstance: {fileID: 2831634079695787120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603e360340ae4b4bbf6238264024063d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2350159048654957115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 564793845738896971, guid: 7e9f6eca2e00aa647b72518317a49817,
+    type: 3}
+  m_PrefabInstance: {fileID: 2831634079695787120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cca330fb12b4e7bbe97bfde3c982706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2831634079695787120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -512,16 +567,52 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 564793845738896971, guid: 7e9f6eca2e00aa647b72518317a49817,
         type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 564793845738896971, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 564793845738896971, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 564793845738896971, guid: 7e9f6eca2e00aa647b72518317a49817,
         type: 3}
+    - target: {fileID: 564793845738896971, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 4508060332762849837}
+    - target: {fileID: 564793845738896971, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"valueDistribution","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856649412331419229, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1856649412331419229, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1856649412331419229, guid: 7e9f6eca2e00aa647b72518317a49817,
         type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 1856649412331419229, guid: 7e9f6eca2e00aa647b72518317a49817,
         type: 3}
+    - target: {fileID: 1856649412331419229, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"colorScheme","value":{"$id":0,"$type":"ColorManagerReference,
+        Chinchillada.Generation"}'
+      objectReference: {fileID: 0}
     - target: {fileID: 2561119012656606475, guid: 7e9f6eca2e00aa647b72518317a49817,
         type: 3}
       propertyPath: m_Name
@@ -590,12 +681,44 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2561119012656606478, guid: 7e9f6eca2e00aa647b72518317a49817,
         type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561119012656606478, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2561119012656606478, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 2561119012656606478, guid: 7e9f6eca2e00aa647b72518317a49817,
         type: 3}
+    - target: {fileID: 2561119012656606478, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2350159048654957115}
+    - target: {fileID: 2561119012656606478, guid: 7e9f6eca2e00aa647b72518317a49817,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"gridGenerator","value":$eref:0'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e9f6eca2e00aa647b72518317a49817, type: 3}
+--- !u!114 &4508060332762849837 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1856649412331419229, guid: 7e9f6eca2e00aa647b72518317a49817,
+    type: 3}
+  m_PrefabInstance: {fileID: 2831634079695787120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02ebd8a06f04e43b7f52bbfe19626a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4786116551762409759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -605,10 +728,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 30313502910707394, guid: 58f2c0908ff28044aa246ab2f88b3d7f,
         type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 30313502910707394, guid: 58f2c0908ff28044aa246ab2f88b3d7f,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 30313502910707394, guid: 58f2c0908ff28044aa246ab2f88b3d7f,
+        type: 3}
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 30313502910707394, guid: 58f2c0908ff28044aa246ab2f88b3d7f,
         type: 3}
+    - target: {fileID: 30313502910707394, guid: 58f2c0908ff28044aa246ab2f88b3d7f,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"colorScheme","value":{"$id":0,"$type":"ColorManagerReference,
+        Chinchillada.Generation"}'
+      objectReference: {fileID: 0}
     - target: {fileID: 1469472819750223422, guid: 58f2c0908ff28044aa246ab2f88b3d7f,
         type: 3}
       propertyPath: m_LocalPosition.x

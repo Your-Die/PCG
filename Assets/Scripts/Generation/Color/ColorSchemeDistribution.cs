@@ -24,8 +24,6 @@ namespace Chinchillada.Colors
         
         private void BuildDistribution() => this.distribution = this.colorScheme.ToList().IndexDistribution();
 
-        private void Awake() => this.BuildDistribution();
-
-        private void OnValidate() => this.BuildDistribution();
+        private void Start() => this.BuildDistribution();
     }
 }

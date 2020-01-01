@@ -7,13 +7,13 @@ namespace Chinchillada.Colors
 {
     public class ColorschemeManager : SingleInstanceBehaviour<ColorschemeManager>, IColorScheme
     {
-        [SerializeField] private ColorScheme colorScheme;
+        [SerializeField] private IColorScheme colorScheme;
 
         public int Count => this.colorScheme.Count;
 
         public Color this[int index] => this.colorScheme[index];
         
-        public ColorScheme Scheme
+        public IColorScheme Scheme
         {
             get => this.colorScheme;
             set => this.colorScheme = value;
@@ -22,5 +22,6 @@ namespace Chinchillada.Colors
         public IEnumerator<Color> GetEnumerator() => this.colorScheme.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
+        protected override ColorschemeManager GetInstance() => this;
     }
 }
