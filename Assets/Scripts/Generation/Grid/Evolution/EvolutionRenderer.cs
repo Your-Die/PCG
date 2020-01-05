@@ -33,7 +33,7 @@ namespace Chinchillada.Generation.Evolution.Grid
             foreach (var genotype in this.evolution.EvolveGenerationWise())
             {
                 var grid = genotype.Candidate;
-                Debug.Log(genotype.Fitness);
+                Debug.Log("Best Fitness " + genotype.Fitness);
                 
                 this.gridRenderer.Render(grid);
                 

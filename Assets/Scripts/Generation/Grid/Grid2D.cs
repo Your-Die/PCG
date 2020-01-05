@@ -37,6 +37,6 @@ namespace Chinchillada.Generation.Grid
 
         public Grid2D CopyShape() => new Grid2D(this.Width, this.Height);
 
-        public GridRegion GetRegion(int x, int y, int radius) => new GridRegion(this, x, y, radius);
+        public GridNeighborhood GetRegion(int x, int y, int radius) => new GridNeighborhood(this, x, y, radius);
     }
 }

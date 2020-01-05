@@ -23,7 +23,7 @@ namespace Chinchillada.Generation.Evolution
     {
         public int Compare(IGenotype x, IGenotype y)
         {
-            return x.Fitness.CompareTo(y.Fitness);
+            return y.Fitness.CompareTo(x.Fitness);
         }
     }
 }

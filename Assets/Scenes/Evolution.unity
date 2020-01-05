@@ -329,6 +329,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 793317623}
+    - {fileID: 1916300938}
     - {fileID: 990120695}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -345,8 +346,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: offspringGenerator
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 1
     - Name: parentSelector
       Entry: 7
       Data: 1|Chinchillada.Generation.Evolution.WeightedParentSelector, Chinchillada.Generation
@@ -355,8 +356,9 @@ MonoBehaviour:
       Data: 
     - Name: terminationEvaluator
       Entry: 10
-      Data: 1
-  eliteCount: 0
+      Data: 2
+  offspringCount: 90
+  eliteCount: 10
   initialPopulationCount: 100
 --- !u!1 &1043726065
 GameObject:
@@ -506,7 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1226984944}
-  - component: {fileID: 1226984943}
+  - component: {fileID: 1226984941}
   m_Layer: 0
   m_Name: Grid Generation
   m_TagString: Untagged
@@ -514,7 +516,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1226984943
+--- !u!114 &1226984941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -523,7 +525,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1226984940}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14862c6e9a8c42aca0d011ad1a6d4fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a42fac45d04469da48715c1129b545e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -536,15 +538,11 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: generator
-      Entry: 6
-      Data: 
-    - Name: drawer
+    - Name: gridRenderer
       Entry: 10
       Data: 0
-  GenerationInvoked:
-    m_PersistentCalls:
-      m_Calls: []
+  updateInterval: 1
+  evolution: {fileID: 990120696}
 --- !u!4 &1226984944
 Transform:
   m_ObjectHideFlags: 0
@@ -786,8 +784,8 @@ MonoBehaviour:
     - Name: valueDistribution
       Entry: 10
       Data: 0
-  chance: 0
-  pixelMutationChance: 0.001
+  chance: 1
+  pixelMutationChance: 0.1
 --- !u!114 &1916300938
 MonoBehaviour:
   m_ObjectHideFlags: 0

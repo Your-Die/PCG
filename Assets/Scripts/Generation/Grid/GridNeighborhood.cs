@@ -5,9 +5,8 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class GridRegion : IEnumerable<(int, int)>
+    public class GridNeighborhood : IEnumerable<(int, int)>
     {
-        public Grid2D Grid { get; }
         public int CenterX { get; }
         public int CenterY { get; }
         public int Radius { get; }
@@ -17,9 +16,8 @@ namespace Chinchillada.Generation.Grid
         public int Right { get; }
         public int Bottom { get; }
 
-        public GridRegion(Grid2D grid, int centerX, int centerY, int radius)
+        public GridNeighborhood(Grid2D grid, int centerX, int centerY, int radius)
         {
-            this.Grid = grid;
             this.CenterX = centerX;
             this.CenterY = centerY;
             this.Radius = radius;
