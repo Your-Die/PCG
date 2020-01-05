@@ -1,12 +1,13 @@
 using Chinchillada.Generation;
 using Chinchillada.Utilities;
+using DefaultNamespace;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Chinchillada.Colors
 {
-    public class MonochromeSchemeGenerator : MonoBehaviour, IGenerator<ColorScheme>
+    public class MonochromeSchemeGenerator : GeneratorBase<ColorScheme>
     {
         [SerializeField] private int colorCount = 3;
 
@@ -15,12 +16,6 @@ namespace Chinchillada.Colors
 
         [SerializeField, MinMaxSlider(0, 1)] 
         private Vector2 saturationRange = new Vector2(1, 1);
-
-        public ColorScheme Generate()
-        {
-            var hue = HSVColor.RandomHue();
-            return this.Generate(hue, this.colorCount);
-        }
 
         public ColorScheme Generate(float hue) => this.Generate(hue, this.colorCount);
 
@@ -42,6 +37,12 @@ namespace Chinchillada.Colors
             }
 
             return new ColorScheme(colors);
+        }
+        
+        protected override ColorScheme GenerateInternal()
+        {
+            var hue = HSVColor.RandomHue();
+            return this.Generate(hue, this.colorCount);
         }
     }
 }

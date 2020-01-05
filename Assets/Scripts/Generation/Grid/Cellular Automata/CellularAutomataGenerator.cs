@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using Chinchillada.Utilities;
 using DefaultNamespace;
-using Rewired;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -24,7 +24,22 @@ namespace Chinchillada.Generation.Grid
 
             return this.grid;
         }
-       
+
+        public override IEnumerable<Grid2D> GenerateAsync()
+        {
+            foreach (var result in this.gridGenerator.GenerateAsync())
+            {
+                this.grid = result;
+                yield return this.grid;
+            }
+            
+            for (var i = 0; i < this.iterations; i++)
+            {
+                this.PerformIteration();
+                yield return this.grid;
+            }
+        }
+
         [Button]
         public Grid2D PerformIterations(Grid2D target, int iterationCount)
         {
@@ -33,7 +48,6 @@ namespace Chinchillada.Generation.Grid
             for (var i = 0; i < iterationCount; i++)
                 this.PerformIteration();
             
-            this.OnGenerated(this.grid);
             return this.grid;
         }
 
@@ -41,14 +55,12 @@ namespace Chinchillada.Generation.Grid
         public void GenerateGrid()
         {
             this.grid = this.gridGenerator.Generate();
-            this.OnGenerated(this.grid);
         }
 
         [Button]
         private void PerformIteration()
         {
             this.grid = this.cellularAutomata.Step(this.grid);
-            this.OnGenerated(this.grid);
         }
     }
 }

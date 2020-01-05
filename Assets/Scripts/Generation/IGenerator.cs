@@ -1,16 +1,19 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Chinchillada.Generation
 {
     public interface IGenerator<out T>
     {
-        T Generate();
-    }
-
-    public interface IObservableGenerator<out T> : IGenerator<T>
-    {
+        T Result { get; }
+        
         event Action<T> Generated;
+        
+        T Generate();
+
+        IEnumerable<T> GenerateAsync();
+        IEnumerator GenerateAsyncRoutine(Action<T> callback = null);
     }
 
     public static class GeneratorExtensions

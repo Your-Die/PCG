@@ -1,26 +1,27 @@
 using System;
+using System.Collections.Generic;
 using Chinchillada.Distributions;
+using DefaultNamespace;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class RandomGridGenerator : SerializedMonoBehaviour, IObservableGenerator<Grid2D>
+    public class RandomGridGenerator : GeneratorBase<Grid2D>
     {
         [SerializeField] private int width = 10;
         [SerializeField] private int height = 10;
 
         [SerializeField] private IDistribution<int> valueDistribution;
 
-        public event Action<Grid2D> Generated;
-
-        [Button]
-        public Grid2D Generate()
+        public override IEnumerable<Grid2D> GenerateAsync()
         {
-            var grid = GenerateGrid(this.width, this.height, this.valueDistribution);
+            yield return this.GenerateInternal();
+        }
 
-            this.Generated?.Invoke(grid);
-            return grid;
+        protected override Grid2D GenerateInternal()
+        {
+            return GenerateGrid(this.width, this.height, this.valueDistribution);
         }
 
         public static Grid2D GenerateGrid(int width, int height, IDistribution<int> valueDistribution)
@@ -34,4 +35,4 @@ namespace Chinchillada.Generation.Grid
             return new Grid2D(items);
         }
     }
-}
+}    

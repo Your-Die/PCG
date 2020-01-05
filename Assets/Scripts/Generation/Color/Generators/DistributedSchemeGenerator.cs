@@ -1,6 +1,7 @@
 using System.Linq;
 using Chinchillada.Generation;
 using Chinchillada.Utilities;
+using DefaultNamespace;
 using UnityEngine;
 
 namespace Chinchillada.Colors
@@ -8,20 +9,20 @@ namespace Chinchillada.Colors
     /// <summary>
     /// Generates a color scheme where the hues are evenly distributed along the hue wheel.
     /// </summary>
-    public class DistributedSchemeGenerator : ChinchilladaBehaviour, IGenerator<ColorScheme>
+    public class DistributedSchemeGenerator : GeneratorBase<ColorScheme>
     {
         [SerializeField] private int hueCount = 2;
 
         [SerializeField, FindComponent]
         private MonochromeSchemeGenerator monochromeGenerator;
-        
-        public ColorScheme Generate()
+
+        protected override ColorScheme GenerateInternal()
         {
             var segmentPerHue = 1f / this.hueCount;
             var baseHue = HSVColor.RandomHue();
             
             var schemes = new ColorScheme[this.hueCount];
-            for (int index = 0; index < this.hueCount; index++)
+            for (var index = 0; index < this.hueCount; index++)
             {
                 var hue = baseHue + index * segmentPerHue;
                 hue %= 1;

@@ -5,7 +5,6 @@ using Chinchillada.Utilities;
 using DefaultNamespace;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using Utilities.Algorithms;
 
 namespace Chinchillada.Generation.Evolution
@@ -73,7 +72,7 @@ namespace Chinchillada.Generation.Evolution
 
             var offspringCandidates = this.offspringGenerator.GenerateOffspring(parents, this.offspringCount);
             var offspring = this.EvaluatePopulation(offspringCandidates);
-
+            
             var elites = this.population.Take(this.eliteCount);
             
             this.population = MergeSort.Merge<Genotype<T>>(offspring, elites, GenotypeComparer).ToList();
@@ -92,6 +91,11 @@ namespace Chinchillada.Generation.Evolution
         }
         
         protected override T GenerateInternal() => this.Evolve();
+
+        public override IEnumerable<T> GenerateAsync()
+        {
+            return this.EvolveGenerationWise().Select(fittestGenotype => fittestGenotype.Candidate);
+        }
 
         private IList<Genotype<T>> EvaluatePopulation(IEnumerable<T> candidates)
         {

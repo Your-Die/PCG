@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Chinchillada.Utilities;
 using DefaultNamespace;
 using UnityEngine;
@@ -9,6 +10,14 @@ namespace Chinchillada.Generation.Grid
         [SerializeField] private int samplePeriod = 1;
 
         [SerializeField] private IGenerator<Grid2D> gridGenerator;
+
+        public override IEnumerable<Grid2D> GenerateAsync()
+        {
+            foreach (var result in this.gridGenerator.GenerateAsync())
+                yield return result;
+
+            yield return SmoothNoise(this.Result, this.samplePeriod);
+        }
 
         protected override Grid2D GenerateInternal()
         {

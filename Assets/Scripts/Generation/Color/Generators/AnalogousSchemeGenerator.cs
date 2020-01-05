@@ -1,11 +1,13 @@
+using System.Collections.Generic;
 using System.Linq;
 using Chinchillada.Generation;
 using Chinchillada.Utilities;
+using DefaultNamespace;
 using UnityEngine;
 
 namespace Chinchillada.Colors
 {
-    public class AnalogousSchemeGenerator : MonoBehaviour, IGenerator<ColorScheme>
+    public class AnalogousSchemeGenerator : GeneratorBase<ColorScheme>
     {
         [SerializeField] private int hueCount = 3;
         
@@ -13,10 +15,9 @@ namespace Chinchillada.Colors
 
         [SerializeField, FindComponent]
         private MonochromeSchemeGenerator monochromeGenerator;
-        
-        public ColorScheme Generate()
-        {
-            var halfSpan = this.span / 2;
+
+        protected override ColorScheme GenerateInternal()
+        {         var halfSpan = this.span / 2;
 
             var spanMid = HSVColor.RandomHue();
             
