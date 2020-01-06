@@ -18,6 +18,12 @@ namespace Chinchillada.Generation.Grid
             get => this.Items[x, y];
             set => this.Items[x, y] = value;
         }
+        
+        public int this[Vector2Int position]
+        {
+            get => this[position.x, position.y];
+            set => this[position.x, position.y] = value;
+        }
 
         public Grid2D(int[,] items)
         {
@@ -36,6 +42,12 @@ namespace Chinchillada.Generation.Grid
         }
 
         public Grid2D CopyShape() => new Grid2D(this.Width, this.Height);
+
+        public bool Contains(Vector2Int position)
+        {
+            return position.x >= 0 && position.x < this.Width &&
+                   position.y >= 0 && position.y < this.Height;
+        }
 
         public GridNeighborhood GetRegion(int x, int y, int radius) => new GridNeighborhood(this, x, y, radius);
     }
