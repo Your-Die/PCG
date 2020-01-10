@@ -5,10 +5,12 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
+    using UnityEngine.Events;
+
     public class GridRenderHook : ChinchilladaBehaviour
     {
-        [SerializeField, 
-         FindComponent(SearchStrategy.InChildren), 
+        [SerializeField,
+         FindComponent(SearchStrategy.InChildren),
          OnValueChanged(nameof(UpdateGenerator))]
         private IGenerator<Grid2D> generator;
 
@@ -19,26 +21,28 @@ namespace Chinchillada.Generation.Grid
 
         private IEnumerator routine;
 
+        public UnityEvent BeforeRender;
+
         [Button]
         public void InvokeGeneration() => this.generator.Generate();
 
         [Button]
         public void InvokeGenerationAsync()
         {
-            if (this.routine != null) 
+            if (this.routine != null)
                 this.StopCoroutine(this.routine);
 
-            this.routine = this.generator.GenerateAsyncRoutine(this.drawer.Render);
+            this.routine = this.generator.GenerateAsyncRoutine(this.Render);
             this.StartCoroutine(this.routine);
         }
 
         [Button]
         public void StartGenerationAsync()
         {
-            if (this.routine != null) 
+            if (this.routine != null)
                 this.StopCoroutine(this.routine);
 
-            this.routine = this.generator.GenerateAsyncRoutine(this.drawer.Render);
+            this.routine = this.generator.GenerateAsyncRoutine(this.Render);
         }
 
         [Button]
@@ -48,6 +52,12 @@ namespace Chinchillada.Generation.Grid
                 return;
 
             var grid = this.generator.Result;
+            this.Render(grid);
+        }
+
+        private void Render(Grid2D grid)
+        {
+            this.BeforeRender.Invoke();
             this.drawer.Render(grid);
         }
 
@@ -55,22 +65,22 @@ namespace Chinchillada.Generation.Grid
         {
             if (this.generator == this.generatorCache)
                 return;
-            
-            Unsubscribe(this.generatorCache, this.drawer);
-            Subscribe(this.generator, this.drawer);
+
+            Unsubscribe(this.generatorCache);
+            Subscribe(this.generator);
 
             this.generatorCache = this.generator;
         }
-        
-        private static void Subscribe(IGenerator<Grid2D> generator, IGridRenderer gridRenderer)
+
+        private void Subscribe(IGenerator<Grid2D> gridGenerator)
         {
-            generator.Generated += gridRenderer.Render;
+            gridGenerator.Generated += this.Render;
         }
 
-        private static void Unsubscribe(IGenerator<Grid2D> generator, IGridRenderer gridRenderer)
+        private void Unsubscribe(IGenerator<Grid2D> gridGenerator)
         {
-            if (generator != null) 
-                generator.Generated -= gridRenderer.Render;
+            if (gridGenerator != null)
+                gridGenerator.Generated -= this.Render;
         }
 
         protected override void Awake()
@@ -79,8 +89,8 @@ namespace Chinchillada.Generation.Grid
             this.generatorCache = this.generator;
         }
 
-        private void OnEnable() => Subscribe(this.generator, this.drawer);
+        private void OnEnable() => Subscribe(this.generator);
 
-        private void OnDisable() => Unsubscribe(this.generator, this.drawer);
+        private void OnDisable() => Unsubscribe(this.generator);
     }
 }

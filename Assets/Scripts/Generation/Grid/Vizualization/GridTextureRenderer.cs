@@ -11,7 +11,7 @@ namespace Chinchillada.Generation.Grid
         [SerializeField] private IColorScheme colorScheme;
 
         [SerializeField] private FilterMode filterMode;
-
+        
         protected override void RenderGrid(Grid2D newGrid)
         {
             var texture = this.ConvertToTexture(newGrid);

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Chinchillada.Colors
 {
     [RequireComponent(typeof(Renderer))]
-    public class ColorSchemeApplier : ChinchilladaBehaviour
+    public class ColorSchemeApplier : ChinchilladaBehaviour, IColorschemeUser
     {
         [SerializeField] private int schemeIndex;
 
@@ -12,6 +12,16 @@ namespace Chinchillada.Colors
 
         [SerializeField, FindComponent(SearchStrategy.InParent)]
         private IColorScheme scheme;
+        
+        public IColorScheme ColorScheme
+        {
+            get => scheme;
+            set
+            {
+                scheme = value;
+                ApplyScheme();
+            }
+        }
 
         public void ApplyScheme()
         {
@@ -26,5 +36,6 @@ namespace Chinchillada.Colors
             base.Awake();
             this.ApplyScheme();
         }
+
     }
 }
