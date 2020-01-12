@@ -357,8 +357,17 @@ MonoBehaviour:
     - Name: terminationEvaluator
       Entry: 10
       Data: 2
+    - Name: survivorSelector
+      Entry: 7
+      Data: 2|Chinchillada.Generation.Evolution.Survivor.Elitism, Chinchillada.Generation
+    - Name: eliteCount
+      Entry: 3
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+  asyncUpdate: 0.01
   offspringCount: 90
-  eliteCount: 10
   initialPopulationCount: 100
 --- !u!1 &1043726065
 GameObject:

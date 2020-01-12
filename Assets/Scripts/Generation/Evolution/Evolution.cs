@@ -4,44 +4,87 @@ using System.Linq;
 using Chinchillada.Utilities;
 using DefaultNamespace;
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using UnityEngine;
-using Utilities.Algorithms;
 
 namespace Chinchillada.Generation.Evolution
 {
     public class Evolution<T> : GeneratorBase<T>, IEvolution
     {
-        [SerializeField] private int offspringCount;
+        #region Editor fields
         
-        [SerializeField] private int eliteCount;
+        /// <summary>
+        /// Amount of offspring to generate each generation.
+        /// </summary>
+        [SerializeField] private int offspringCount;
 
+        /// <summary>
+        /// The size of the initial population.
+        /// </summary>
         [SerializeField] private int initialPopulationCount = 100;
         
+        /// <summary>
+        /// Generates the initial population.
+        /// </summary>
         [SerializeField, FindComponent, Required] 
         private IGenerator<T> initialPopulationGenerator;
 
+        /// <summary>
+        /// Evaluates the fitness of candidates.
+        /// </summary>
         [SerializeField, FindComponent, Required] 
         private IFitnessEvaluator<T> fitnessEvaluator;
 
-        [SerializeField, FindComponent, Required] 
-        private IOffspringGenerator<T> offspringGenerator;
-
+        /// <summary>
+        /// Selects parent candidates for generating offspring.
+        /// </summary>
         [SerializeField, FindComponent, Required] 
         private IParentSelector parentSelector;
         
+        /// <summary>
+        /// Generates offspring from parents.
+        /// </summary>
+        [SerializeField, FindComponent, Required] 
+        private IOffspringGenerator<T> offspringGenerator;
+        
+        /// <summary>
+        /// Selects which individuals survive to the next generation.
+        /// </summary>
+        [SerializeField, FindComponent, Required]
+        private ISurvivorSelector survivorSelector;
+        
+        /// <summary>
+        /// Evaluates when the evolution should terminate.
+        /// </summary>
         [SerializeField, FindComponent, Required] 
         private ITerminationEvaluator terminationEvaluator;
+
+        #endregion
         
+        /// <summary>
+        /// The current population of genotypes.
+        /// </summary>
         private IList<Genotype<T>> population;
 
+        /// <summary>
+        /// The fittest individual genotype in the population.
+        /// </summary>
         private Genotype<T> fittestIndividual;
 
-        private static readonly GenotypeComparer GenotypeComparer = new GenotypeComparer();
-
+        /// <summary>
+        /// The fittest individual in the population.
+        /// </summary>
         public IGenotype FittestIndividual => this.fittestIndividual;
     
+        /// <summary>
+        /// Event invoked when the evolution is started.
+        /// </summary>
         public event Action EvolutionStarted;
 
+        /// <summary>
+        /// Run the evolution.
+        /// </summary>
+        /// <returns>The fittest individual of the final generation.</returns>
         [Button]
         public T Evolve()
         {
@@ -49,38 +92,55 @@ namespace Chinchillada.Generation.Evolution
             return this.fittestIndividual.Candidate;
         }
         
+        /// <summary>
+        /// Enumerates the evolution process one generation at a time.
+        /// </summary>
+        /// <returns>An <see cref="IEnumerable{T}"/> of the best individuals of each generation.</returns>
         public IEnumerable<Genotype<T>> EvolveGenerationWise()
         {
+            // Call event.
             this.EvolutionStarted?.Invoke();
             
+            // Generate initial population.
             this.GenerateInitialPopulation();
             yield return this.fittestIndividual;
 
             do
             {
-                this.population = this.EvolveGeneration().ToList();
+                // Evolve a single generation.
+                this.EvolveGeneration();
                 yield return this.fittestIndividual;
                 
             } while (!this.terminationEvaluator.Evaluate(this));
         }
 
+        /// <summary>
+        /// Evolves a generation of individuals.
+        /// </summary>
+        /// <returns>The evolved generation.</returns>
         [Button]
         public IEnumerable<Genotype<T>> EvolveGeneration()
         {
-            var parentGenotypes = this.parentSelector.SelectParents(this.population);
+            // Select parents.
+            var parentGenotypes = this.parentSelector.SelectParents(this.population).ToList();
             var parents = parentGenotypes.Select(genotype => ((Genotype<T>) genotype).Candidate);
 
+            // Generate and evaluate offspring.
             var offspringCandidates = this.offspringGenerator.GenerateOffspring(parents, this.offspringCount);
             var offspring = this.EvaluatePopulation(offspringCandidates);
+
+            // Select survivors.
+            var survivors = this.survivorSelector.SelectSurvivors(parentGenotypes, offspring);
+            this.population = survivors.Convert(survivor => (Genotype<T>) survivor).ToList();
             
-            var elites = this.population.Take(this.eliteCount);
-            
-            this.population = MergeSort.Merge<Genotype<T>>(offspring, elites, GenotypeComparer).ToList();
+            // Update fittest individual.
             this.UpdateFittestIndividual();
-            
             return this.population;
         }
         
+        /// <summary>
+        /// Generate a new population using the <see cref="initialPopulationGenerator"/>.
+        /// </summary>
         [Button]
         public void GenerateInitialPopulation()
         {
@@ -89,26 +149,39 @@ namespace Chinchillada.Generation.Evolution
             
             this.UpdateFittestIndividual();
         }
-        
-        protected override T GenerateInternal() => this.Evolve();
 
+        
+        /// <inheritdoc/>
         public override IEnumerable<T> GenerateAsync()
         {
             return this.EvolveGenerationWise().Select(fittestGenotype => fittestGenotype.Candidate);
         }
 
+        /// <inheritdoc/>
+        protected override T GenerateInternal() => this.Evolve();
+
+        /// <summary>
+        /// Evaluate the <paramref name="candidates"/>.
+        /// </summary>
+        /// <returns>An ordered list of evaluated <see cref="Genotype{T}"/>.</returns>
         private IList<Genotype<T>> EvaluatePopulation(IEnumerable<T> candidates)
         {
             var evaluatedPopulation = candidates.Select(this.EvaluateFitness);
             return evaluatedPopulation.OrderByDescending(genotype => genotype.Fitness).ToList();
         }
 
+        /// <summary>
+        /// Evaluate the fitness of the <paramref name="candidate"/>.
+        /// </summary>
         private Genotype<T> EvaluateFitness(T candidate)
         {
             var fitness = this.fitnessEvaluator.EvaluateFitness(candidate);
             return new Genotype<T>(candidate, fitness);
         }
 
+        /// <summary>
+        /// Update the <see cref="fittestIndividual"/>.
+        /// </summary>
         private void UpdateFittestIndividual() => this.fittestIndividual = this.population.First();
     }
 }
