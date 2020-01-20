@@ -51,16 +51,25 @@ namespace Chinchillada.Generation.Grid
             return this.grid;
         }
 
+        private void GenerateGrid() => this.grid = this.gridGenerator.Generate();
+
+        private void PerformIteration() => this.grid = this.cellularAutomata.Step(this.grid);
+
         [Button]
-        public void GenerateGrid()
+        private void GenerateGridVerbose()
         {
-            this.grid = this.gridGenerator.Generate();
+            this.GenerateGrid();
+            this.OnGenerated();
         }
 
         [Button]
-        private void PerformIteration()
+        private void IterateVerbose()
         {
-            this.grid = this.cellularAutomata.Step(this.grid);
+            this.PerformIteration();
+            this.OnGenerated();
         }
+        
+        
+        
     }
 }

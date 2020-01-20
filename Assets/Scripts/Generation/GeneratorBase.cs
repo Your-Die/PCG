@@ -37,14 +37,19 @@ namespace DefaultNamespace
                 
                 yield return new WaitForSeconds(this.asyncUpdate);
             }
-            
-            this.Generated?.Invoke(this.Result);
+
+            this.OnGenerated();
         }
+
 
         public virtual IEnumerable<T> GenerateAsync()
         {
             yield return this.GenerateInternal();
         }
+
+        
+        protected void OnGenerated() => this.Generated?.Invoke(this.Result);
+
 
         protected abstract T GenerateInternal();
     }

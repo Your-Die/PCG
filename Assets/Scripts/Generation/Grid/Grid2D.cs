@@ -1,15 +1,19 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class Grid2D
+    public class Grid2D : IEnumerable<int>
     {
         private int[,] Items { get; }
 
         public int Width { get; }
 
         public int Height { get; }
+
+        public int Size => this.Width * this.Height;
         
         public Vector2Int Shape => new Vector2Int(this.Width, this.Height);
 
@@ -50,5 +54,16 @@ namespace Chinchillada.Generation.Grid
         }
 
         public GridNeighborhood GetRegion(int x, int y, int radius) => new GridNeighborhood(this, x, y, radius);
+        public IEnumerator<int> GetEnumerator()
+        {
+            for (var x = 0; x < this.Width; x++)
+            for (var y = 0; y < this.Height; y++)
+                yield return this[x, y];
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
+        }
     }
 }
