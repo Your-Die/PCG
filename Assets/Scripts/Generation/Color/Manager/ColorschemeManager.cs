@@ -5,14 +5,20 @@ using Utilities.Behaviours;
 
 namespace Chinchillada.Colors
 {
-    public class ColorschemeManager : SingleInstanceBehaviour<ColorschemeManager>, IColorScheme
+    public class ColorschemeManager : SingleInstanceBehaviour<ColorschemeManager>, IColorScheme, IColorschemeUser
     {
         [SerializeField] private IColorScheme colorScheme;
+        
+        public IColorScheme ColorScheme
+        {
+            get => colorScheme;
+            set => colorScheme = value;
+        }
 
         public int Count => this.colorScheme.Count;
 
         public Color this[int index] => this.colorScheme[index];
-        
+
         public IColorScheme Scheme
         {
             get => this.colorScheme;

@@ -22,9 +22,7 @@ namespace DefaultNamespace
         [Button]
         public T Generate()
         {
-            this.Result = this.GenerateInternal();
-            
-            this.Generated?.Invoke(this.Result);
+            this.GenerateWithEvent();
             return this.Result;
         }
 
@@ -52,5 +50,11 @@ namespace DefaultNamespace
 
 
         protected abstract T GenerateInternal();
+
+        public void GenerateWithEvent()
+        {
+            this.Result = this.GenerateInternal();
+            this.Generated?.Invoke(this.Result);
+        }
     }
 }

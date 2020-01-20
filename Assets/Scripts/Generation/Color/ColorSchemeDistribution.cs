@@ -5,11 +5,21 @@ using UnityEngine;
 
 namespace Chinchillada.Colors
 {
-    public class ColorSchemeDistribution : SerializedMonoBehaviour, IDistribution<int>, IDistribution<Color>
+    public class ColorSchemeDistribution : SerializedMonoBehaviour, IDistribution<int>, IDistribution<Color>, IColorschemeUser
     {
         [SerializeField] private IColorScheme colorScheme;
 
         private IDistribution<int> distribution;
+
+        public IColorScheme ColorScheme
+        {
+            get => colorScheme;
+            set
+            {
+                colorScheme = value;
+                BuildDistribution();
+            }
+        }
 
         int IDistribution<int>.Sample()
         {
