@@ -118,8 +118,6 @@ namespace Chinchillada.Generation.BSP
             var firstChild = new BSPTree(parent, firstBounds);
             var secondChild = new BSPTree(parent, secondBounds);
 
-            Debug.Log($"{parent.Bounds} partitioned into {firstBounds} and {secondBounds}");
-
             // Assign to parent.
             parent.FirstChild = firstChild;
             parent.SecondChild = secondChild;
