@@ -33,7 +33,7 @@ namespace Chinchillada.Generation.Evolution
         /// Evaluates the fitness of candidates.
         /// </summary>
         [SerializeField, FindComponent, Required] 
-        private IFitnessEvaluator<T> fitnessEvaluator;
+        private IMetricEvaluator<T> fitnessEvaluator;
 
         /// <summary>
         /// Selects parent candidates for generating offspring.
@@ -80,6 +80,8 @@ namespace Chinchillada.Generation.Evolution
         /// Event invoked when the evolution is started.
         /// </summary>
         public event Action EvolutionStarted;
+
+        public event Action<IEnumerable<Genotype<T>>> InitialPopulationGenerated;
 
         /// <summary>
         /// Run the evolution.
@@ -146,7 +148,8 @@ namespace Chinchillada.Generation.Evolution
         {
             var candidates = this.initialPopulationGenerator.Generate(this.initialPopulationCount);
             this.population = this.EvaluatePopulation(candidates);
-            
+
+            this.InitialPopulationGenerated?.Invoke(this.population);
             this.UpdateFittestIndividual();
         }
 
@@ -175,7 +178,7 @@ namespace Chinchillada.Generation.Evolution
         /// </summary>
         private Genotype<T> EvaluateFitness(T candidate)
         {
-            var fitness = this.fitnessEvaluator.EvaluateFitness(candidate);
+            var fitness = this.fitnessEvaluator.Evaluate(candidate);
             return new Genotype<T>(candidate, fitness);
         }
 
