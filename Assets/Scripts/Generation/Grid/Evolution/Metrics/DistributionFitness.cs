@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Chinchillada.Generation.Grid;
 using Chinchillada.Utilities;
+using JetBrains.Annotations;
 
 namespace Chinchillada.Generation.Evolution.Grid
 {
-    public class DistributionFitness : IFitnessEvaluator<Grid2D>
+    [UsedImplicitly]
+    public class DistributionFitness : IMetricEvaluator<Grid2D>
     {
-        public float EvaluateFitness(Grid2D grid)
+        public float Evaluate(Grid2D grid)
         {
             var dictionary = new DefaultDictionary<int, int>(0);
             

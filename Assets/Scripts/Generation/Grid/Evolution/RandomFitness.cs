@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Evolution.Grid
 {
-    public class RandomFitness : MonoBehaviour, IFitnessEvaluator<Grid2D>
+    public class RandomFitness : MonoBehaviour, IMetricEvaluator<Grid2D>
     {
         [SerializeField] private Vector2 fitnessRange;
-        public float EvaluateFitness(Grid2D item)
+        public float Evaluate(Grid2D item)
         {
             return this.fitnessRange.RandomInRange();
         }
