@@ -24,7 +24,7 @@ public class MapElitesRenderer : ChinchilladaBehaviour
         for (var x = 0; x < this.mapElites.Width; x++)
         for (var y = 0; y < this.mapElites.Height; y++)
         {
-            var genotype = this.mapElites.Map[x, y];
+            var genotype = this.mapElites[x, y];
             
             if (genotype != null)
                 this.renderers[x, y].Render(genotype.Candidate);

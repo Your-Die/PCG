@@ -4,7 +4,6 @@ using Chinchillada.Utilities;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
-using Random = Chinchillada.Utilities.Random;
 
 namespace Chinchillada.Generation.Evolution
 {
@@ -16,28 +15,36 @@ namespace Chinchillada.Generation.Evolution
         [SerializeField, Required, FindComponent]
         private Evolution<T> evolution;
 
-        public Genotype<T>[,] Map { get; private set; }
+        private readonly List<Genotype<T>> elites = new List<Genotype<T>>();
+
+        public int?[,] map { get; private set; }
+
+        public Genotype<T> this[int x, int y]
+        {
+            get
+            {
+                var index = this.map[x, y];
+                return index != null
+                    ? this.elites[index.Value]
+                    : null;
+            }
+        }
 
         public int Width => this.diversityX.BinCount;
         public int Height => this.diversityY.BinCount;
-        
+
         public event Action PopulationChanged;
 
         public IEnumerable<IGenotype> SelectParents(IEnumerable<IGenotype> _)
         {
             while (true)
-            {
-                var x = Random.Range(this.Width);
-                var y = Random.Range(this.Height);
-
-                yield return this.Map[x, y];
-            }
+                yield return this.elites.ChooseRandom();
         }
 
         public IEnumerable<IGenotype> SelectSurvivors(IEnumerable<IGenotype> _, IEnumerable<IGenotype> children)
         {
             this.Evaluate(children);
-            return this.EnumerateElites();
+            return this.elites;
         }
 
         private void Evaluate(IEnumerable<IGenotype> population)
@@ -48,29 +55,41 @@ namespace Chinchillada.Generation.Evolution
 
         private void Evaluate(IEnumerable<Genotype<T>> population)
         {
+            var elitesChanged = false;
+
             foreach (var genotype in population)
             {
                 var candidate = genotype.Candidate;
-                
+
                 var x = this.diversityX.Evaluate(candidate);
                 var y = this.diversityY.Evaluate(candidate);
 
-                if (this.Map[x, y] == null || this.Map[x, y].Fitness < genotype.Fitness)
-                    this.Map[x, y] = genotype;
+                if (this.map[x, y] == null)
+                {
+                    var index = this.elites.Count;
+                    this.elites.Add(genotype);
+
+                    this.map[x, y] = index;
+                    elitesChanged = true;
+                }
+                else
+                {
+                    var index = this.map[x, y].Value;
+                    var competitor = this.elites[index];
+
+                    if (genotype.Fitness <= competitor.Fitness) 
+                        continue;
+                    
+                    this.elites[index] = genotype;
+                    elitesChanged = true;
+                }
             }
 
-            this.PopulationChanged?.Invoke();
+            if (elitesChanged)
+                this.PopulationChanged?.Invoke();
         }
 
-        private IEnumerable<Genotype<T>> EnumerateElites()
-        {
-            for (var x = 0; x < this.Width; x++)
-            for (var y = 0; y < this.Height; y++)
-                if (this.Map[x, y] != null)
-                    yield return this.Map[x, y];
-        }
-
-        private void InitializeMap() => this.Map = new Genotype<T>[this.Width, this.Height];
+        private void InitializeMap() => this.map = new int?[this.Width, this.Height];
 
         private void OnInitialPopulationGenerated(IEnumerable<Genotype<T>> population)
         {
@@ -81,7 +100,7 @@ namespace Chinchillada.Generation.Evolution
         private void OnEnable() => this.evolution.InitialPopulationGenerated += this.OnInitialPopulationGenerated;
         private void OnDisable() => this.evolution.InitialPopulationGenerated -= this.OnInitialPopulationGenerated;
 
-  
+
         [Serializable]
         private class MetricAxis
         {
@@ -98,9 +117,9 @@ namespace Chinchillada.Generation.Evolution
             public int Evaluate(T candidate)
             {
                 var result = this.metric.Evaluate(candidate);
-                result = this.range.RangeClamp(result);
-
-                return (int) (result / this.BinSize);
+                var bin = (int) (result / this.BinSize);
+                
+                return Mathf.Clamp(bin, 0, this.binCount - 1);
             }
         }
     }

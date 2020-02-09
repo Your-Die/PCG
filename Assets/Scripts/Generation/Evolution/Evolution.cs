@@ -90,7 +90,7 @@ namespace Chinchillada.Generation.Evolution
         [Button]
         public T Evolve()
         {
-            this.EvolveGenerationWise().EnumerateFully();
+            this.EvolveGenerationWise().Enumerate();
             return this.fittestIndividual.Candidate;
         }
         
@@ -124,7 +124,7 @@ namespace Chinchillada.Generation.Evolution
         public IEnumerable<Genotype<T>> EvolveGeneration()
         {
             // Select parents.
-            var parentGenotypes = this.parentSelector.SelectParents(this.population).ToList();
+            var parentGenotypes = this.parentSelector.SelectParents(this.population);
             var parents = parentGenotypes.Select(genotype => ((Genotype<T>) genotype).Candidate);
 
             // Generate and evaluate offspring.
@@ -132,7 +132,7 @@ namespace Chinchillada.Generation.Evolution
             var offspring = this.EvaluatePopulation(offspringCandidates);
 
             // Select survivors.
-            var survivors = this.survivorSelector.SelectSurvivors(parentGenotypes, offspring);
+            var survivors = this.survivorSelector.SelectSurvivors(this.population, offspring);
             this.population = survivors.Convert(survivor => (Genotype<T>) survivor).ToList();
             
             // Update fittest individual.

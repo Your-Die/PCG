@@ -14,6 +14,24 @@ namespace Chinchillada.Generation.Grid
 
         [SerializeField] private IDistribution<int> valueDistribution;
 
+        public int Width
+        {
+            get => this.width;
+            set => this.width = value;
+        }
+
+        public int Height
+        {
+            get => this.height;
+            set => this.height = value;
+        }
+
+        public IDistribution<int> ValueDistribution
+        {
+            get => this.valueDistribution;
+            set => this.valueDistribution = value;
+        }
+
         public override IEnumerable<Grid2D> GenerateAsync()
         {
             yield return this.GenerateInternal();
@@ -21,7 +39,7 @@ namespace Chinchillada.Generation.Grid
 
         protected override Grid2D GenerateInternal()
         {
-            return GenerateGrid(this.width, this.height, this.valueDistribution);
+            return GenerateGrid(this.Width, this.Height, this.ValueDistribution);
         }
 
         public static Grid2D GenerateGrid(int width, int height, IDistribution<int> valueDistribution)

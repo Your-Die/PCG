@@ -82,7 +82,7 @@ MonoBehaviour:
       Entry: 10
       Data: 3
   asyncUpdate: 0.01
-  offspringCount: 90
+  offspringCount: 1
   initialPopulationCount: 100
 --- !u!114 &1257702708401620441
 MonoBehaviour:
