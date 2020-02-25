@@ -1,7 +1,6 @@
 using System.Linq;
 using Chinchillada.Generation;
 using Chinchillada.Utilities;
-using DefaultNamespace;
 using UnityEngine;
 
 namespace Chinchillada.Colors
