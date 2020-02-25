@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Chinchillada.Utilities;
-using DefaultNamespace;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

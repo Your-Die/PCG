@@ -1,9 +1,7 @@
 using Chinchillada.Generation;
 using Chinchillada.Utilities;
-using DefaultNamespace;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Chinchillada.Colors
 {

@@ -1,15 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Chinchillada;
-using Chinchillada.Generation;
-using Chinchillada.Generation.Grid;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace Chinchillada.Generation
 {
     public abstract class GeneratorBase<T> : ChinchilladaBehaviour, IGenerator<T>
     {

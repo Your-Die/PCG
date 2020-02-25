@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Chinchillada.Utilities;
-using DefaultNamespace;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid

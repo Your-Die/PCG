@@ -28,6 +28,5 @@ namespace Chinchillada.Colors
         public IEnumerator<Color> GetEnumerator() => this.colorScheme.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator() => this.GetEnumerator();
-        protected override ColorschemeManager GetInstance() => this;
     }
 }

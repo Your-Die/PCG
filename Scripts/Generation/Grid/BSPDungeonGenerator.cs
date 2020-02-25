@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Chinchillada.Generation.BSP;
 using Chinchillada.Utilities;
-using DefaultNamespace;
 using UnityEngine;
 using Utilities.Algorithms;
 using Random = Chinchillada.Utilities.Random;

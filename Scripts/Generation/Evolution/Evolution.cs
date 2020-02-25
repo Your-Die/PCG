@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Chinchillada.Utilities;
-using DefaultNamespace;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
