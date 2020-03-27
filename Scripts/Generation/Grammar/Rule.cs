@@ -3,7 +3,7 @@ namespace Chinchillada.Generation.Grammar
     using System.Collections.Generic;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Grammar/Rule")]
+    [CreateAssetMenu(menuName = "Chinchillada/Grammar/Rule")]
     public class Rule : ScriptableObject
     {
         [SerializeField] private Symbol leftHandSide;

@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Grammar/Grammar")]
+    [CreateAssetMenu(menuName = "Chinchillada/Grammar/Grammar")]
     public class Grammar : ScriptableObject
     {
         [SerializeField] private List<Rule> rules;
