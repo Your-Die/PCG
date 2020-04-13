@@ -29,9 +29,10 @@ namespace Chinchillada.Generation.Grid
             this.R = r;
         }
 
-        public IEnumerable<ICoordinate> GetNeighbors()
+        public IEnumerable<Hex> GetNeighbors()
         {
-            throw new NotImplementedException();
+            foreach (var direction in Directions)
+                yield return this + direction;
         }
 
         public int DistanceTo(Hex hex) => HexMath.Distance(this, hex);
@@ -101,6 +102,24 @@ namespace Chinchillada.Generation.Grid
         
         #endregion
         
-        public static readonly Hex Left = nw 
+        #region Statics
+        
+        public static readonly Hex[] Directions = {
+            new Hex(-1, 0),
+            new Hex(0, -1),
+            new Hex(1, -1),
+            new Hex(1, 0),
+            new Hex(0, 1),
+            new Hex(-1, 1)
+        };
+        
+        public static readonly Hex Left = Directions[0];
+        public static readonly Hex TopLeft = Directions[1];
+        public static readonly Hex TopRight = Directions[2];
+        public static readonly Hex Right = Directions[3];
+        public static readonly Hex BottomRight = Directions[4];
+        public static readonly Hex BottomLeft = Directions[5];
+
+        #endregion
     }
 }
