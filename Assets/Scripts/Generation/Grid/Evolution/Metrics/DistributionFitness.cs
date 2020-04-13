@@ -8,9 +8,9 @@ using JetBrains.Annotations;
 namespace Chinchillada.Generation.Evolution.Grid
 {
     [UsedImplicitly]
-    public class DistributionFitness : IMetricEvaluator<Grid2D>
+    public class DistributionFitness : IMetricEvaluator<IntGrid2D>
     {
-        public float Evaluate(Grid2D grid)
+        public float Evaluate(IntGrid2D grid)
         {
             var dictionary = new DefaultDictionary<int, int>(0);
             

@@ -7,9 +7,9 @@ namespace Chinchillada.Generation.Grid
     {
         [SerializeField] private IList<ICellularRule> rules = new List<ICellularRule>();
 
-        private Grid2D outputGrid;
+        private IntGrid2D outputGrid;
         
-        public Grid2D Step(Grid2D grid)
+        public IntGrid2D Step(IntGrid2D grid)
         {
             var output = this.outputGrid == null || this.outputGrid.Shape != grid.Shape
                 ? grid.CopyShape()
@@ -23,7 +23,7 @@ namespace Chinchillada.Generation.Grid
             return output;
         }
 
-        private int ApplyRules(int x, int y, Grid2D grid)
+        private int ApplyRules(int x, int y, IntGrid2D grid)
         {
             var value = grid[x, y];
 

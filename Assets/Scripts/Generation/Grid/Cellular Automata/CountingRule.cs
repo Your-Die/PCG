@@ -21,7 +21,7 @@ namespace Chinchillada.Generation.Grid
 
         [SerializeField] private CountConstraint constraint = new CountConstraint();
 
-        public int Apply(int x, int y, Grid2D grid)
+        public int Apply(int x, int y, IntGrid2D grid)
         {
             var count = CountNeighborhood(x, y, grid, this.constraintTarget, this.radius, this.neighborhoodType);
             var shouldApply = this.constraint.ValidateConstraint(count);
@@ -29,7 +29,7 @@ namespace Chinchillada.Generation.Grid
             return shouldApply ? this.output : grid[x, y];
         }
 
-        public static int CountNeighborhood(int x, int y, Grid2D grid, int targetValue, int radius,
+        public static int CountNeighborhood(int x, int y, IntGrid2D grid, int targetValue, int radius,
             NeighborhoodType neighborhoodType = NeighborhoodType.Full)
         {
             IEnumerable<int> neighbors;
@@ -52,7 +52,7 @@ namespace Chinchillada.Generation.Grid
         /// Get the orthogonally connected neighbors around (<paramref name="x"/>, <paramref name="y"/>)
         /// on the <paramref name="grid"/>.
         /// </summary>
-        private static IEnumerable<int> GetOrthogonalNeighbors(int centerX, int centerY, Grid2D grid, int radius)
+        private static IEnumerable<int> GetOrthogonalNeighbors(int centerX, int centerY, IntGrid2D grid, int radius)
         {
             var region = grid.GetRegion(centerX, centerY, radius);
 
@@ -72,7 +72,7 @@ namespace Chinchillada.Generation.Grid
         /// <summary>
         /// Get all neighbors around (<paramref name="x"/>, <paramref name="y"/>) on the <paramref name="grid"/>.
         /// </summary>
-        private static IEnumerable<int> GetAllNeighbors(int centerX, int centerY, Grid2D grid, int radius)
+        private static IEnumerable<int> GetAllNeighbors(int centerX, int centerY, IntGrid2D grid, int radius)
         {
             var region = grid.GetRegion(centerX, centerY, radius);
 

@@ -4,15 +4,15 @@ namespace Chinchillada.Generation.Grid
 {
     public interface IGridRenderer
     {
-        Grid2D Grid { get; }
+        IntGrid2D Grid { get; }
 
-        event Action<Grid2D> NewGridRegistered;
+        event Action<IntGrid2D> NewGridRegistered;
 
 
         /// <summary>
         /// Render the <paramref name="grid"/>.
         /// </summary>
-        void Render(Grid2D grid);
+        void Render(IntGrid2D grid);
     }
 }
 

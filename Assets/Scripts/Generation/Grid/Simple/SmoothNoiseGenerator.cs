@@ -5,13 +5,13 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class SmoothNoiseGenerator : GeneratorBase<Grid2D>
+    public class SmoothNoiseGenerator : GeneratorBase<IntGrid2D>
     {
         [SerializeField] private int samplePeriod = 1;
 
-        [SerializeField] private IGenerator<Grid2D> gridGenerator;
+        [SerializeField] private IGenerator<IntGrid2D> gridGenerator;
 
-        protected override IEnumerable<Grid2D> GenerateAsyncInternal()
+        protected override IEnumerable<IntGrid2D> GenerateAsyncInternal()
         {
             foreach (var result in this.gridGenerator.GenerateAsync())
                 yield return result;
@@ -19,13 +19,13 @@ namespace Chinchillada.Generation.Grid
             yield return SmoothNoise(this.Result, this.samplePeriod);
         }
 
-        protected override Grid2D GenerateInternal()
+        protected override IntGrid2D GenerateInternal()
         {
             var grid = this.gridGenerator.Generate();
             return SmoothNoise(grid, this.samplePeriod);
         }
 
-        public static Grid2D SmoothNoise(Grid2D grid, int samplePeriod)
+        public static IntGrid2D SmoothNoise(IntGrid2D grid, int samplePeriod)
         {
             var sampleFrequency = 1.0f / samplePeriod;
             var output = grid.CopyShape();

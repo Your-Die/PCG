@@ -9,15 +9,15 @@ using Random = Chinchillada.Utilities.Random;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class BiomeGenerator : GeneratorBase<Grid2D>
+    public class BiomeGenerator : GeneratorBase<IntGrid2D>
     {
         [SerializeField] private int iterations;
 
-        [SerializeField, FindComponent] private IGenerator<Grid2D> gridGenerator;
+        [SerializeField, FindComponent] private IGenerator<IntGrid2D> gridGenerator;
 
-        private Grid2D grid;
+        private IntGrid2D grid;
 
-        protected override Grid2D GenerateInternal()
+        protected override IntGrid2D GenerateInternal()
         {
             this.GenerateGrid();
 
@@ -27,7 +27,7 @@ namespace Chinchillada.Generation.Grid
             return this.grid;
         }
 
-        protected override IEnumerable<Grid2D> GenerateAsyncInternal()
+        protected override IEnumerable<IntGrid2D> GenerateAsyncInternal()
         {
             foreach (var result in this.gridGenerator.GenerateAsync())
             {
@@ -51,7 +51,7 @@ namespace Chinchillada.Generation.Grid
             var newWidth = this.grid.Width * 2 - 1;
             var newHeight = this.grid.Height * 2 - 1;
 
-            var nextGrid = new Grid2D(newWidth, newHeight);
+            var nextGrid = new IntGrid2D(newWidth, newHeight);
 
             // sliding 2x2 window.
             for (var x = 0; x < this.grid.Width - 1; x++)

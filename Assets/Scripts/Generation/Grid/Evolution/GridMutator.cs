@@ -6,13 +6,13 @@ using Random = Chinchillada.Utilities.Random;
 
 namespace Chinchillada.Generation.Evolution.Grid
 {
-    public class GridMutator : Mutator<Grid2D>
+    public class GridMutator : Mutator<IntGrid2D>
     {
         [SerializeField] private float pixelMutationChance = 0.001f;
 
         [SerializeField, FindComponent] private IDistribution<int> valueDistribution;
         
-        public override Grid2D Mutate(Grid2D parent)
+        public override IntGrid2D Mutate(IntGrid2D parent)
         {
             var grid = parent.CopyShape();
             

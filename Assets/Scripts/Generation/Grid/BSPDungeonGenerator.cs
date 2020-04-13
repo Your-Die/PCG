@@ -9,7 +9,7 @@ using Random = Chinchillada.Utilities.Random;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class BSPDungeonGenerator : GeneratorBase<Grid2D>
+    public class BSPDungeonGenerator : GeneratorBase<IntGrid2D>
     {
         [SerializeField] private int roomValue = 1;
 
@@ -20,7 +20,7 @@ namespace Chinchillada.Generation.Grid
 
         private readonly Dictionary<BSPTree, BoundsInt> rooms = new Dictionary<BSPTree, BoundsInt>();
 
-        protected override IEnumerable<Grid2D> GenerateAsyncInternal()
+        protected override IEnumerable<IntGrid2D> GenerateAsyncInternal()
         {
             this.rooms.Clear();
             
@@ -34,9 +34,9 @@ namespace Chinchillada.Generation.Grid
                 yield return gridState;
         }
         
-        protected override Grid2D GenerateInternal() => this.GenerateAsyncInternal().Last();
+        protected override IntGrid2D GenerateInternal() => this.GenerateAsyncInternal().Last();
 
-        private IEnumerable<Grid2D> GenerateDungeon(BSPTree tree, Grid2D grid)
+        private IEnumerable<IntGrid2D> GenerateDungeon(BSPTree tree, IntGrid2D grid)
         {
             if (tree.IsLeafNode)
             {
@@ -53,7 +53,7 @@ namespace Chinchillada.Generation.Grid
             yield return this.Connect(tree.FirstChild, tree.SecondChild, grid);
         }
 
-        private Grid2D PlaceRoom(BSPTree tree, Grid2D grid)
+        private IntGrid2D PlaceRoom(BSPTree tree, IntGrid2D grid)
         {
             // Get the maximum lower bounds.
             var bounds = tree.Bounds;
@@ -89,7 +89,7 @@ namespace Chinchillada.Generation.Grid
             return grid;
         }
 
-        private Grid2D Connect(BSPTree segment1, BSPTree segment2, Grid2D grid)
+        private IntGrid2D Connect(BSPTree segment1, BSPTree segment2, IntGrid2D grid)
         {
             // Get rooms.
             var room1 = this.rooms.TryGetValue(segment1, out var segment1Room) ? segment1Room : segment1.Bounds;
@@ -106,10 +106,10 @@ namespace Chinchillada.Generation.Grid
             return grid;
         }
 
-        private static Grid2D ConstructGrid(BSPTree tree)
+        private static IntGrid2D ConstructGrid(BSPTree tree)
         {
             var size = tree.Bounds.size;
-            return new Grid2D(size.x, size.y);
+            return new IntGrid2D(size.x, size.y);
         }
         
         private class RoomProblem : ISearchProblem<Vector2Int>
@@ -117,14 +117,14 @@ namespace Chinchillada.Generation.Grid
             private readonly BoundsInt originRoom;
             private readonly BoundsInt targetRoom;
             
-            private readonly Grid2D grid;
+            private readonly IntGrid2D grid;
             private readonly int roomValue;
 
             private Vector2Int targetCenter;
             
             public Vector2Int InitialState { get; }
 
-            public RoomProblem(BoundsInt originRoom, BoundsInt targetRoom, Grid2D grid, int roomValue)
+            public RoomProblem(BoundsInt originRoom, BoundsInt targetRoom, IntGrid2D grid, int roomValue)
             {
                 this.originRoom = originRoom;
                 this.targetRoom = targetRoom;

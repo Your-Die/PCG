@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class RandomGridGenerator : GeneratorBase<Grid2D>
+    public class RandomGridGenerator : GeneratorBase<IntGrid2D>
     {
         [SerializeField] private int width = 10;
         [SerializeField] private int height = 10;
@@ -32,12 +32,12 @@ namespace Chinchillada.Generation.Grid
             set => this.valueDistribution = value;
         }
 
-        protected override Grid2D GenerateInternal()
+        protected override IntGrid2D GenerateInternal()
         {
             return GenerateGrid(this.Width, this.Height, this.ValueDistribution);
         }
 
-        public static Grid2D GenerateGrid(int width, int height, IDistribution<int> valueDistribution)
+        public static IntGrid2D GenerateGrid(int width, int height, IDistribution<int> valueDistribution)
         {
             var items = new int[width, height];
 
@@ -45,7 +45,7 @@ namespace Chinchillada.Generation.Grid
             for (var y = 0; y < height; y++)
                 items[x, y] = valueDistribution.Sample();
             
-            return new Grid2D(items);
+            return new IntGrid2D(items);
         }
     }
 }    

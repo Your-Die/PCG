@@ -6,18 +6,18 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class CellularAutomataGenerator : GeneratorBase<Grid2D>
+    public class CellularAutomataGenerator : GeneratorBase<IntGrid2D>
     {
         [SerializeField] private int iterations;
 
         [SerializeField, FindComponent(SearchStrategy.InChildren)]
-        private IGenerator<Grid2D> gridGenerator;
+        private IGenerator<IntGrid2D> gridGenerator;
 
         [SerializeField, FindComponent] private CellularAutomata cellularAutomata;
 
-        private Grid2D grid;
+        private IntGrid2D grid;
 
-        protected override Grid2D GenerateInternal()
+        protected override IntGrid2D GenerateInternal()
         {
             this.GenerateGrid();
             this.grid = this.PerformIterations(this.grid, this.iterations);
@@ -25,7 +25,7 @@ namespace Chinchillada.Generation.Grid
             return this.grid;
         }
 
-        protected override IEnumerable<Grid2D> GenerateAsyncInternal()
+        protected override IEnumerable<IntGrid2D> GenerateAsyncInternal()
         {
             foreach (var result in this.gridGenerator.GenerateAsync())
             {
@@ -41,7 +41,7 @@ namespace Chinchillada.Generation.Grid
         }
 
         [Button]
-        public Grid2D PerformIterations(Grid2D target, int iterationCount)
+        public IntGrid2D PerformIterations(IntGrid2D target, int iterationCount)
         {
             this.grid = target;
 

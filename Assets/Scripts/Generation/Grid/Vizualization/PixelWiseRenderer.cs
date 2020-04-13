@@ -20,7 +20,7 @@ namespace Chinchillada.Generation.Grid
 
         private readonly LinkedList<SpriteRenderer> inactivePixels = new LinkedList<SpriteRenderer>();
 
-        protected override void RenderGrid(Grid2D grid)
+        protected override void RenderGrid(IntGrid2D grid)
         {
             this.PreparePixels(grid.Width, grid.Height);
 

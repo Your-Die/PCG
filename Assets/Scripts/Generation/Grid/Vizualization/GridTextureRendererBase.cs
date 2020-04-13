@@ -9,13 +9,13 @@ namespace Chinchillada.Generation.Grid
         [SerializeField] private IColorScheme colorScheme;
         [SerializeField] protected FilterMode filterMode;
 
-        protected override void RenderGrid(Grid2D newGrid)
+        protected override void RenderGrid(IntGrid2D newGrid)
         {
             var texture = this.ConvertToTexture(newGrid);
             this.SetTexture(texture);
         }
 
-        private Texture2D ConvertToTexture(Grid2D grid)
+        private Texture2D ConvertToTexture(IntGrid2D grid)
         {
             var texture = new Texture2D(grid.Width, grid.Height);
             

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class Grid2D : IEnumerable<int>
+    public class IntGrid2D : IGrid<int, Vector2Int>
     {
         private int[,] Items { get; }
 
@@ -13,8 +13,12 @@ namespace Chinchillada.Generation.Grid
 
         public int Height { get; }
 
-        public int Size => this.Width * this.Height;
+        public int Count => this.Size;
         
+        public int Size => this.Width * this.Height;
+
+        public int NeighborCount => 4;
+
         public Vector2Int Shape => new Vector2Int(this.Width, this.Height);
 
         public int this[int x, int y]
@@ -29,7 +33,15 @@ namespace Chinchillada.Generation.Grid
             set => this[position.x, position.y] = value;
         }
 
-        public Grid2D(int[,] items)
+        public IEnumerable<Vector2Int> GetNeighbors(Vector2Int coordinate)
+        {
+            yield return coordinate + Vector2Int.up;
+            yield return coordinate + Vector2Int.right;
+            yield return coordinate + Vector2Int.down;
+            yield return coordinate + Vector2Int.left;
+        }
+
+        public IntGrid2D(int[,] items)
         {
             this.Width = items.GetLength(0);
             this.Height = items.GetLength(1);
@@ -37,7 +49,7 @@ namespace Chinchillada.Generation.Grid
             this.Items = items;
         }
 
-        public Grid2D(int width, int height)
+        public IntGrid2D(int width, int height)
         {
             this.Width = width;
             this.Height = height;
@@ -45,7 +57,7 @@ namespace Chinchillada.Generation.Grid
             this.Items = new int[width, height];
         }
 
-        public Grid2D CopyShape() => new Grid2D(this.Width, this.Height);
+        public IntGrid2D CopyShape() => new IntGrid2D(this.Width, this.Height);
 
         public bool Contains(Vector2Int position)
         {
