@@ -9,6 +9,11 @@ namespace Chinchillada.Generation.Grammar
     {
         [SerializeField] private List<Symbol> symbols;
 
-        public IEnumerable<Symbol> Symbols => symbols;
+        public IEnumerable<Symbol> Symbols => this.symbols;
+
+        public override string ToString()
+        {
+            return string.Join(string.Empty, this.symbols);
+        }
     }
 }

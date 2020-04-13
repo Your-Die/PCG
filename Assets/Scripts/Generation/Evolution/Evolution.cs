@@ -155,7 +155,7 @@ namespace Chinchillada.Generation.Evolution
 
         
         /// <inheritdoc/>
-        public override IEnumerable<T> GenerateAsync()
+        protected override IEnumerable<T> GenerateAsyncInternal()
         {
             return this.EvolveGenerationWise().Select(fittestGenotype => fittestGenotype.Candidate);
         }

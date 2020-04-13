@@ -30,17 +30,24 @@ namespace DefaultNamespace
         {
             foreach (var generation in this.GenerateAsync())
             {
-                this.Result = generation;
                 callback?.Invoke(generation);
-                
                 yield return new WaitForSeconds(this.asyncUpdate);
             }
 
             this.OnGenerated();
         }
 
+        public IEnumerable<T> GenerateAsync()
+        {
+            foreach (var generation in this.GenerateAsyncInternal())
+            {
+                this.Result = generation;
+                yield return generation;
+            }
+        }
 
-        public virtual IEnumerable<T> GenerateAsync()
+
+        protected virtual IEnumerable<T> GenerateAsyncInternal()
         {
             yield return this.GenerateInternal();
         }

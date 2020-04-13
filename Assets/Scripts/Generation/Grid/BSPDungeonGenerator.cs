@@ -19,8 +19,8 @@ namespace Chinchillada.Generation.Grid
         private BSPTreeGenerator treeGenerator;
 
         private readonly Dictionary<BSPTree, BoundsInt> rooms = new Dictionary<BSPTree, BoundsInt>();
-        
-        public override IEnumerable<Grid2D> GenerateAsync()
+
+        protected override IEnumerable<Grid2D> GenerateAsyncInternal()
         {
             this.rooms.Clear();
             
@@ -34,7 +34,7 @@ namespace Chinchillada.Generation.Grid
                 yield return gridState;
         }
         
-        protected override Grid2D GenerateInternal() => this.GenerateAsync().Last();
+        protected override Grid2D GenerateInternal() => this.GenerateAsyncInternal().Last();
 
         private IEnumerable<Grid2D> GenerateDungeon(BSPTree tree, Grid2D grid)
         {

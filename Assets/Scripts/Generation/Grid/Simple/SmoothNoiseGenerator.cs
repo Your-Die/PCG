@@ -11,7 +11,7 @@ namespace Chinchillada.Generation.Grid
 
         [SerializeField] private IGenerator<Grid2D> gridGenerator;
 
-        public override IEnumerable<Grid2D> GenerateAsync()
+        protected override IEnumerable<Grid2D> GenerateAsyncInternal()
         {
             foreach (var result in this.gridGenerator.GenerateAsync())
                 yield return result;

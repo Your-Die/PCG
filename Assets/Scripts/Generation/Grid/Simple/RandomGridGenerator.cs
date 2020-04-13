@@ -32,11 +32,6 @@ namespace Chinchillada.Generation.Grid
             set => this.valueDistribution = value;
         }
 
-        public override IEnumerable<Grid2D> GenerateAsync()
-        {
-            yield return this.GenerateInternal();
-        }
-
         protected override Grid2D GenerateInternal()
         {
             return GenerateGrid(this.Width, this.Height, this.ValueDistribution);

@@ -16,10 +16,10 @@ namespace Chinchillada.Generation.BSP
 
         public BSPTree GenerateTree()
         {
-            return this.GenerateAsync().Last();
+            return this.GenerateAsyncInternal().Last();
         }
 
-        public override IEnumerable<BSPTree> GenerateAsync()
+        protected override IEnumerable<BSPTree> GenerateAsyncInternal()
         {
             this.partitionQueue.Clear();
 

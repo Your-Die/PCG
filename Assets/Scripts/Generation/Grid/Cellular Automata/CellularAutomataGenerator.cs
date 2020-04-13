@@ -25,7 +25,7 @@ namespace Chinchillada.Generation.Grid
             return this.grid;
         }
 
-        public override IEnumerable<Grid2D> GenerateAsync()
+        protected override IEnumerable<Grid2D> GenerateAsyncInternal()
         {
             foreach (var result in this.gridGenerator.GenerateAsync())
             {
