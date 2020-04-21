@@ -96,7 +96,7 @@ namespace Chinchillada.Generation.Grid
 
             // Get a path between the rooms.
             var connectionProblem = new RoomProblem(room1, room2, grid, this.roomValue);
-            var path = AStar.Search(connectionProblem);
+            var path = Search.AStar(connectionProblem);
 
             // Draw the path.
             foreach (var position in path) 
@@ -139,7 +139,7 @@ namespace Chinchillada.Generation.Grid
             public bool IsGoalState(Vector2Int state) => this.targetRoom.Contains2D(state) && 
                                                          this.grid[state] == this.roomValue;
 
-            public IEnumerable<SearchAction<Vector2Int>> GetSuccessors(Vector2Int state)
+            public IEnumerable<SearchNode<Vector2Int>> GetSuccessors(Vector2Int state)
             {
                 yield return this.CreateAction(state.x - 1, state.y);
                 yield return this.CreateAction(state.x, state.y - 1);
@@ -147,12 +147,12 @@ namespace Chinchillada.Generation.Grid
                 yield return this.CreateAction(state.x, state.y + 1);
             }
 
-            private SearchAction<Vector2Int> CreateAction(int x, int y)
+            private SearchNode<Vector2Int> CreateAction(int x, int y)
             {
                 var position = new Vector2Int(x, y);
                 var cost = this.GetCost(position);
 
-                return new SearchAction<Vector2Int>(position, cost);
+                return new SearchNode<Vector2Int>(position, cost);
             }
 
             private float GetCost(Vector2Int position)

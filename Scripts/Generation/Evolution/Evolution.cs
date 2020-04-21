@@ -89,7 +89,7 @@ namespace Chinchillada.Generation.Evolution
         [Button]
         public T Evolve()
         {
-            this.EvolveGenerationWise().EnumerateFully();
+            this.EvolveGenerationWise().Enumerate();
             return this.fittestIndividual.Candidate;
         }
         
