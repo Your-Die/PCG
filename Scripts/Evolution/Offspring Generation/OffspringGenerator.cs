@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,7 +6,8 @@ using Random = Chinchillada.Utilities.Random;
 
 namespace Chinchillada.Generation.Evolution
 {
-    public class OffspringGenerator<T> :  ChinchilladaBehaviour, IOffspringGenerator<T>
+    [Serializable]
+    public class OffspringGenerator<T> :  IOffspringGenerator<T>
     {
         [SerializeField] private ICrossover<T> crossover;
 

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Chinchillada.Generation.Evolution
 {
     [Serializable]
-    public abstract class Mutator<T> : ChinchilladaBehaviour
+    public abstract class Mutator<T> : ChinchilladaBehaviour, IMutator<T>
     {
         [SerializeField, Range(0, 1)] private float chance;
 
