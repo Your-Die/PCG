@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Chinchillada.Utilities;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Chinchillada.Generation.Evolution
 {
     public class Evolution<T> : GeneratorBase<T>, IEvolution
     {
         #region Editor fields
-        
+
         /// <summary>
         /// Amount of offspring to generate each generation.
         /// </summary>
@@ -21,45 +23,53 @@ namespace Chinchillada.Generation.Evolution
         /// The size of the initial population.
         /// </summary>
         [SerializeField] private int initialPopulationCount = 100;
-        
+
+        [SerializeField] private GoalType goalType = GoalType.Maximize;
+
         /// <summary>
         /// Generates the initial population.
         /// </summary>
-        [SerializeField, FindComponent, Required] 
+        [SerializeField, FindComponent, Required]
         private IGenerator<T> initialPopulationGenerator;
 
         /// <summary>
         /// Evaluates the fitness of candidates.
         /// </summary>
-        [SerializeField, FindComponent, Required] 
+        [SerializeField, FindComponent, Required]
         private IMetricEvaluator<T> fitnessEvaluator;
 
         /// <summary>
         /// Selects parent candidates for generating offspring.
         /// </summary>
-        [SerializeField, FindComponent, Required] 
+        [SerializeField, FindComponent, Required]
         private IParentSelector parentSelector;
-        
+
         /// <summary>
         /// Generates offspring from parents.
         /// </summary>
-        [SerializeField, FindComponent, Required] 
+        [SerializeField, FindComponent, Required]
         private IOffspringGenerator<T> offspringGenerator;
-        
+
         /// <summary>
         /// Selects which individuals survive to the next generation.
         /// </summary>
         [SerializeField, FindComponent, Required]
         private ISurvivorSelector survivorSelector;
-        
+
         /// <summary>
         /// Evaluates when the evolution should terminate.
         /// </summary>
-        [SerializeField, FindComponent, Required] 
+        [SerializeField, FindComponent, Required]
         private ITerminationEvaluator terminationEvaluator;
 
         #endregion
-        
+
+        private enum GoalType
+        {
+            Minimize,
+            Maximize
+        }
+
         /// <summary>
         /// The current population of genotypes.
         /// </summary>
@@ -74,7 +84,7 @@ namespace Chinchillada.Generation.Evolution
         /// The fittest individual in the population.
         /// </summary>
         public IGenotype FittestIndividual => this.fittestIndividual;
-    
+
         /// <summary>
         /// Event invoked when the evolution is started.
         /// </summary>
@@ -92,7 +102,7 @@ namespace Chinchillada.Generation.Evolution
             this.EvolveGenerationWise().Enumerate();
             return this.fittestIndividual.Candidate;
         }
-        
+
         /// <summary>
         /// Enumerates the evolution process one generation at a time.
         /// </summary>
@@ -101,17 +111,22 @@ namespace Chinchillada.Generation.Evolution
         {
             // Call event.
             this.EvolutionStarted?.Invoke();
-            
+
             // Generate initial population.
             this.GenerateInitialPopulation();
             yield return this.fittestIndividual;
 
+            var stopWatch = new Stopwatch();
+            var generation = 1;
             do
             {
+                stopWatch.Restart();
                 // Evolve a single generation.
                 this.EvolveGeneration();
-                yield return this.fittestIndividual;
                 
+                Debug.Log($"generation {generation++}: {stopWatch.Elapsed}");
+                
+                yield return this.fittestIndividual;
             } while (!this.terminationEvaluator.Evaluate(this));
         }
 
@@ -133,12 +148,12 @@ namespace Chinchillada.Generation.Evolution
             // Select survivors.
             var survivors = this.survivorSelector.SelectSurvivors(parentGenotypes, offspring);
             this.population = survivors.Convert(survivor => (Genotype<T>) survivor).ToList();
-            
+
             // Update fittest individual.
             this.UpdateFittestIndividual();
             return this.population;
         }
-        
+
         /// <summary>
         /// Generate a new population using the <see cref="initialPopulationGenerator"/>.
         /// </summary>
@@ -152,7 +167,7 @@ namespace Chinchillada.Generation.Evolution
             this.UpdateFittestIndividual();
         }
 
-        
+
         /// <inheritdoc/>
         public override IEnumerable<T> GenerateAsync()
         {
@@ -169,7 +184,25 @@ namespace Chinchillada.Generation.Evolution
         private IList<Genotype<T>> EvaluatePopulation(IEnumerable<T> candidates)
         {
             var evaluatedPopulation = candidates.Select(this.EvaluateFitness);
-            return evaluatedPopulation.OrderByDescending(genotype => genotype.Fitness).ToList();
+            var sortedPopulation = SortPopulation();
+
+            return sortedPopulation.ToList();
+
+            IEnumerable<Genotype<T>> SortPopulation()
+            {
+                switch (this.goalType)
+                {
+                    case GoalType.Minimize:
+                        return evaluatedPopulation.OrderBy(GetFitness);
+                    case GoalType.Maximize:
+                        return evaluatedPopulation.OrderByDescending(GetFitness);
+
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+
+            float GetFitness(Genotype<T> genotype) => genotype.Fitness;
         }
 
         /// <summary>
