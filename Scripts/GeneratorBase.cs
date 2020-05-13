@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Chinchillada.Generation
 {
@@ -34,12 +35,10 @@ namespace Chinchillada.Generation
             this.OnGenerated();
         }
 
-
         public virtual IEnumerable<T> GenerateAsync()
         {
             yield return this.GenerateInternal();
         }
-
         
         protected void OnGenerated() => this.Generated?.Invoke(this.Result);
 

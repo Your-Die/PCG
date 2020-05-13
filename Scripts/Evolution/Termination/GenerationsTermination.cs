@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Evolution
 {
-    [Serializable, UsedImplicitly]
+    [Serializable]
     public class GenerationsTermination : ChinchilladaBehaviour, ITerminationEvaluator
     {
         [SerializeField] private int generationCount;
