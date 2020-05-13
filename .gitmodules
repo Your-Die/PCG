@@ -1,6 +1,0 @@
-[submodule "Assets/Scripts/Utilities"]
-	path = Assets/Scripts/Utilities
-	url = https://github.com/CrowControl/Utilities.git
-[submodule "Assets/Scripts/Distributions"]
-	path = Assets/Scripts/Distributions
-	url = https://github.com/CrowControl/Distributions.git
