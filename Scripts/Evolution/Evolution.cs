@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using Chinchillada.Utilities;
+using Chinchillada.Foundation;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;

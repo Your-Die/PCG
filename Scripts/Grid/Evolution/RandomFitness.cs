@@ -1,5 +1,5 @@
 using Chinchillada.Generation.Grid;
-using Chinchillada.Utilities;
+using Chinchillada.Foundation;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Evolution.Grid

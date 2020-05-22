@@ -1,8 +1,8 @@
 using Chinchillada.Distributions;
 using Chinchillada.Generation.Grid;
-using Chinchillada.Utilities;
+using Chinchillada.Foundation;
 using UnityEngine;
-using Random = Chinchillada.Utilities.Random;
+using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.Evolution.Grid
 {

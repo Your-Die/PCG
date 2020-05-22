@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Chinchillada.Foundation;
 using UnityEngine;
-using Utilities.Behaviours;
 
 namespace Chinchillada.Colors
 {

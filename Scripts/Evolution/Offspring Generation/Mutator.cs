@@ -1,4 +1,5 @@
 using System;
+using Chinchillada.Foundation;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Evolution

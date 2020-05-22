@@ -4,7 +4,7 @@ namespace Chinchillada.Colors
     using System.Linq;
     using Generation;
     using UnityEngine;
-    using Utilities;
+    using Foundation;
 
     public class ColorSchemeGeneratorHook : ChinchilladaBehaviour
     {

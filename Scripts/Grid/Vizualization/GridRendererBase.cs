@@ -1,4 +1,5 @@
 using System;
+using Chinchillada.Foundation;
 
 namespace Chinchillada.Generation.Grid
 {

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Chinchillada.Utilities;
+using Chinchillada.Foundation;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = Chinchillada.Utilities.Random;
+using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.Grid
 {

@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using Chinchillada.Generation.Grid;
-using Chinchillada.Utilities;
+using Chinchillada.Foundation;
 using JetBrains.Annotations;
 
 namespace Chinchillada.Generation.Evolution.Grid

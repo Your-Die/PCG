@@ -1,5 +1,5 @@
 using System;
-using Chinchillada.Utilities;
+using Chinchillada.Foundation;
 using JetBrains.Annotations;
 using UnityEngine;
 

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Chinchillada.Generation.BSP;
-using Chinchillada.Utilities;
+using Chinchillada.Foundation;
 using UnityEngine;
 using Utilities.Algorithms;
-using Random = Chinchillada.Utilities.Random;
+using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.Grid
 {
