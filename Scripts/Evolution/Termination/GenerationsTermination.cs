@@ -1,6 +1,5 @@
 using System;
 using Chinchillada.Foundation;
-using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Evolution

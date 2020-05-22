@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Chinchillada.Foundation;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Chinchillada.Generation
 {

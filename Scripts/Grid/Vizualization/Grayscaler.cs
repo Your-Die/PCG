@@ -1,3 +1,4 @@
+using Chinchillada.Foundation;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
