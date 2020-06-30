@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Chinchillada.Distributions;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,6 +19,25 @@ namespace Chinchillada.Generation.Mazes
         public GridNode SelectNode(IList<GridNode> nodes)
         {
             return nodes.Last();
+        }
+    }
+
+    [Serializable]
+    public class OldestSelector : INodeSelector
+    {
+        public GridNode SelectNode(IList<GridNode> nodes)
+        {
+            return nodes.First();
+        }
+    }
+
+    [Serializable]
+    public class MiddleSelector : INodeSelector
+    {
+        public GridNode SelectNode(IList<GridNode> nodes)
+        {
+            var index = nodes.Count / 2;
+            return nodes[index];
         }
     }
 
@@ -49,6 +69,7 @@ namespace Chinchillada.Generation.Mazes
             return selector.SelectNode(nodes);
         }
 
+        [Button]
         private void BuildDistribution()
         {
             this.distribution = this.selectors.ToWeighted();
