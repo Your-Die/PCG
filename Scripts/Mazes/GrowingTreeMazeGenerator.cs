@@ -26,6 +26,7 @@ namespace Chinchillada.Generation.Mazes
 
             var startNode = ChooseRandomNode(grid);
             var frontier = new List<GridNode> {startNode};
+            visitLookup[startNode.X, startNode.Y] = true;
 
             while (frontier.Any())
             {
@@ -34,12 +35,13 @@ namespace Chinchillada.Generation.Mazes
                 if (TryChooseSuccessor(node, grid, visitLookup, out var successor))
                 {
                     frontier.Add(successor);
+                    visitLookup[successor.X, successor.Y] = true;
+
                     yield return grid;
                 }
                 else
                 {
                     frontier.Remove(node);
-                    visitLookup[node.X, node.Y] = true;
                 }
             }
         }
@@ -55,8 +57,13 @@ namespace Chinchillada.Generation.Mazes
                 if (node.GetNeighbor(direction) != null)
                     continue;
 
+                // Check if there is a node on the grid.
+                var neighbor = grid.GetNeighbor(node, direction);
+                if (neighbor == null)
+                    continue;
+
                 // Check if successor not already visited.
-                if (visitLookup[node.X, node.Y])
+                if (visitLookup[neighbor.X, neighbor.Y])
                     continue;
 
                 if (!grid.TryConnect(node, direction))
