@@ -10,6 +10,8 @@ namespace Chinchillada.Generation
     public abstract class GeneratorBase<T> : ChinchilladaBehaviour, IGenerator<T>
     {
         [SerializeField] private float asyncUpdate = 0.01f;
+
+        private IEnumerator routine;
         
         public T Result { get; private set; }
         
@@ -20,6 +22,16 @@ namespace Chinchillada.Generation
         {
             this.GenerateWithEvent();
             return this.Result;
+        }
+
+        [Button]
+        public void StartGenerateAsync()
+        {
+            if (this.routine != null) 
+                this.StopCoroutine(this.routine);
+
+            this.routine = this.GenerateAsyncRoutine(null);
+            this.StartCoroutine(this.routine);
         }
 
         public IEnumerator GenerateAsyncRoutine(Action<T> callback)

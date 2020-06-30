@@ -20,7 +20,7 @@ namespace Chinchillada.Generation.Mazes
             for (var x = 0; x < grid.Width; x++)
             for (var y = 0; y < grid.Height; y++)
             {
-                var node = grid.Grid[x, y];
+                var node = grid[x, y];
 
                 if (node.NorthNeighbor == null)
                     this.RenderNorth(x, y);
