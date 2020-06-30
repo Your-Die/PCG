@@ -11,6 +11,8 @@ namespace Chinchillada.Generation
     {
         [SerializeField] private float asyncUpdate = 0.01f;
 
+        [SerializeField] private bool invokeEventAsync;
+        
         private IEnumerator routine;
         
         public T Result { get; private set; }
@@ -40,7 +42,10 @@ namespace Chinchillada.Generation
             {
                 this.Result = generation;
                 callback?.Invoke(generation);
-                
+
+                if (this.invokeEventAsync) 
+                    this.OnGenerated();
+
                 yield return new WaitForSeconds(this.asyncUpdate);
             }
 
