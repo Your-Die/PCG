@@ -12,6 +12,8 @@ namespace Chinchillada.Generation.Mazes
 
         [SerializeField] private int height;
 
+        [SerializeField] private int startingPoints = 1;
+        
         [SerializeField] private INodeSelector nodeSelector;
         
         protected override GridGraph GenerateInternal()
@@ -23,10 +25,10 @@ namespace Chinchillada.Generation.Mazes
         {
             var grid = new GridGraph(this.width, this.height);
             var visitLookup = new bool[this.width, this.height];
+            var frontier = new List<GridNode>();
 
             var startNode = ChooseRandomNode(grid);
-            var frontier = new List<GridNode> {startNode};
-            visitLookup[startNode.X, startNode.Y] = true;
+            AddToFrontier(startNode);
 
             while (frontier.Any())
             {
@@ -34,15 +36,17 @@ namespace Chinchillada.Generation.Mazes
 
                 if (TryChooseSuccessor(node, grid, visitLookup, out var successor))
                 {
-                    frontier.Add(successor);
-                    visitLookup[successor.X, successor.Y] = true;
-
+                    AddToFrontier(successor);
                     yield return grid;
                 }
                 else
-                {
                     frontier.Remove(node);
-                }
+            }
+
+            void AddToFrontier(GridNode node)
+            {
+                frontier.Add(node);
+                visitLookup[node.X, node.Y] = true;
             }
         }
 
