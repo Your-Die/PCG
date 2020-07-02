@@ -59,6 +59,11 @@ namespace Chinchillada.Generation
         
         protected void OnGenerated() => this.Generated?.Invoke(this.Result);
 
+        protected void OnGenerated(T result)
+        {
+            this.Result = result;
+            this.OnGenerated();
+        }
 
         protected abstract T GenerateInternal();
 

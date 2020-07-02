@@ -40,7 +40,11 @@ namespace Chinchillada.Generation.Grid
         }
 
         [Button]
-        private void GenerateGrid() => this.grid = this.gridGenerator.Generate();
+        private void GenerateGrid()
+        {
+            this.grid = this.gridGenerator.Generate();
+            this.OnGenerated(this.grid);
+        }
 
         [Button]
         private void Zoom()
@@ -79,6 +83,7 @@ namespace Chinchillada.Generation.Grid
             }
 
             this.grid = nextGrid;
+            this.OnGenerated(this.grid);
         }
     }
 }
