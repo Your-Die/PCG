@@ -57,6 +57,8 @@ MonoBehaviour:
     - Name: gridGenerator
       Entry: 10
       Data: 0
+  asyncUpdate: 0.01
+  invokeEventAsync: 0
   iterations: 0
 --- !u!1001 &9206553498882908521
 PrefabInstance:
@@ -65,53 +67,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9206553498969127260}
     m_Modifications:
-    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
-      value: 
-      objectReference: {fileID: 5011089394535196094}
-    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-      propertyPath: serializationData.PrefabModifications.Array.data[0]
-      value: '"path":"valueDistribution","value":$eref:0'
-      objectReference: {fileID: 0}
-    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-      propertyPath: width
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-      propertyPath: height
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3384632500575372713, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
         type: 3}
       propertyPath: m_Name
       value: Simple Grid Generator
       objectReference: {fileID: 0}
-    - target: {fileID: 4201516374707979479, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
-      propertyPath: serializationData.Prefab
-      value: 
-      objectReference: {fileID: 4201516374707979479, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
-        type: 3}
     - target: {fileID: 4919705163520127916, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -167,6 +127,48 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 5011089394535196094}
+    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"valueDistribution","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+      propertyPath: width
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620075936851201217, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+      propertyPath: height
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4201516374707979479, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 4201516374707979479, guid: 8e6e9b1fa56069646a3f8c8287ad4362,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e6e9b1fa56069646a3f8c8287ad4362, type: 3}
 --- !u!4 &4288115582820029125 stripped
