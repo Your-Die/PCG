@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Chinchillada.Foundation;
 
 namespace Chinchillada.Generation.Mazes
 {

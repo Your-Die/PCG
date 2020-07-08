@@ -27,7 +27,7 @@ namespace Chinchillada.Generation.Mazes
             var visitLookup = new bool[this.width, this.height];
             var frontier = new List<GridNode>();
 
-            var startNode = ChooseRandomNode(grid);
+            var startNode = grid.ChooseRandomNode();
             AddToFrontier(startNode);
 
             while (frontier.Any())
@@ -79,15 +79,5 @@ namespace Chinchillada.Generation.Mazes
 
             return false;
         }
-
-        private static GridNode ChooseRandomNode(GridGraph grid)
-        {
-            var x = Random.Range(0, grid.Width);
-            var y = Random.Range(0, grid.Height);
-
-            return grid[x, y];
-        }
-
-   
     }
 }

@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Chinchillada.Foundation;
+using Random = UnityEngine.Random;
 
 namespace Chinchillada.Generation.Mazes
 {
-    public class GridGraph : IGraph
+    public class GridGraph : IGraph, IEnumerable<GridNode>
     {
         private readonly GridNode[,] nodes;
 
@@ -11,20 +15,8 @@ namespace Chinchillada.Generation.Mazes
         public int Height { get; }
 
         public GridNode this[int x, int y] => this.nodes[x, y];
-
-        public IEnumerable<IGraphNode> Nodes
-        {
-            get
-            {
-                for (var x = 0; x < this.Width; x++)
-                for (var y = 0; y < this.Height; y++)
-                {
-                    var node = this.nodes[x, y];
-                    if (node != null)
-                        yield return node;
-                }
-            }
-        }
+        
+        public IEnumerable<IGraphNode> Nodes => this;
 
         public GridGraph(int width, int height)
         {
@@ -36,6 +28,14 @@ namespace Chinchillada.Generation.Mazes
             for (var x = 0; x < width; x++)
             for (var y = 0; y < height; y++)
                 this.nodes[x, y] = new GridNode(x, y);
+        }
+
+        public GridNode ChooseRandomNode()
+        {
+            var x = Random.Range(0, this.Width);
+            var y = Random.Range(0, this.Height);
+
+            return this[x, y];
         }
         
         public static GridGraph FullyConnected(int width, int height)
@@ -73,6 +73,17 @@ namespace Chinchillada.Generation.Mazes
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(direction), direction, null);
+            }
+        }
+
+        public IEnumerable<GridNode> GetNeighbors(GridNode node)
+        {
+            var directions = EnumHelper.GetValues<Direction>();
+            foreach (var direction in directions)
+            {
+                var neighbor = this.GetNeighbor(node, direction);
+                if (neighbor != null)
+                    yield return neighbor;
             }
         }
 
@@ -148,6 +159,22 @@ namespace Chinchillada.Generation.Mazes
 
             node.WestNeighbor = neighbor;
             neighbor.EastNeighbor = node;
+        }
+
+        public IEnumerator<GridNode> GetEnumerator()
+        {
+            for (var x = 0; x < this.Width; x++)
+            for (var y = 0; y < this.Height; y++)
+            {
+                var node = this.nodes[x, y];
+                if (node != null)
+                    yield return node;
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
     }
 }
