@@ -10,7 +10,7 @@ namespace Chinchillada.Generation.Grid
     {
         [SerializeField] private int iterations;
 
-        [SerializeField, FindComponent] private IGenerator<Grid2D> gridGenerator;
+        [SerializeField, FindComponent] private IAsyncGenerator<Grid2D> gridGenerator;
 
         private Grid2D grid;
 

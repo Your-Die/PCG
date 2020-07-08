@@ -30,7 +30,7 @@ namespace Chinchillada.Generation.Evolution
         /// Generates the initial population.
         /// </summary>
         [SerializeField, FindComponent, Required]
-        private IGenerator<T> initialPopulationGenerator;
+        private IAsyncGenerator<T> initialPopulationGenerator;
 
         /// <summary>
         /// Evaluates the fitness of candidates.

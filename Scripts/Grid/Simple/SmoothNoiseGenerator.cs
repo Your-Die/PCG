@@ -8,7 +8,7 @@ namespace Chinchillada.Generation.Grid
     {
         [SerializeField] private int samplePeriod = 1;
 
-        [SerializeField] private IGenerator<Grid2D> gridGenerator;
+        [SerializeField] private IAsyncGenerator<Grid2D> gridGenerator;
 
         public override IEnumerable<Grid2D> GenerateAsync()
         {

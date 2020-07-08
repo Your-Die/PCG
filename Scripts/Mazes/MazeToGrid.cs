@@ -8,7 +8,7 @@ namespace Chinchillada.Generation.Mazes
 {
     public class MazeToGrid : GeneratorBase<Grid2D>
     {
-        [SerializeField] private IGenerator<GridGraph> mazeGenerator;
+        [SerializeField] private IAsyncGenerator<GridGraph> mazeGenerator;
 
         [SerializeField] private bool generateMazeAsync;
 

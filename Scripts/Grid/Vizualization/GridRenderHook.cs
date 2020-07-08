@@ -12,12 +12,12 @@ namespace Chinchillada.Generation.Grid
         [SerializeField,
          FindComponent(SearchStrategy.InChildren),
          OnValueChanged(nameof(UpdateGenerator))]
-        private IGenerator<Grid2D> generator;
+        private IAsyncGenerator<Grid2D> generator;
 
         [SerializeField, FindComponent(SearchStrategy.InChildren)]
         private IGridRenderer drawer;
 
-        private IGenerator<Grid2D> generatorCache;
+        private IAsyncGenerator<Grid2D> generatorCache;
 
         private IEnumerator routine;
 
@@ -72,12 +72,12 @@ namespace Chinchillada.Generation.Grid
             this.generatorCache = this.generator;
         }
 
-        private void Subscribe(IGenerator<Grid2D> gridGenerator)
+        private void Subscribe(IAsyncGenerator<Grid2D> gridGenerator)
         {
             gridGenerator.Generated += this.Render;
         }
 
-        private void Unsubscribe(IGenerator<Grid2D> gridGenerator)
+        private void Unsubscribe(IAsyncGenerator<Grid2D> gridGenerator)
         {
             if (gridGenerator != null)
                 gridGenerator.Generated -= this.Render;
