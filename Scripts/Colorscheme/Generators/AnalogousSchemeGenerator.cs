@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Chinchillada.Colors
 {
-    public class AnalogousSchemeGenerator : GeneratorBase<ColorScheme>
+    public class AnalogousSchemeGenerator : AsyncGeneratorComponent<ColorScheme>
     {
         [SerializeField] private int hueCount = 3;
         

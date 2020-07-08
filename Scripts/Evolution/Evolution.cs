@@ -10,7 +10,7 @@ using Debug = UnityEngine.Debug;
 
 namespace Chinchillada.Generation.Evolution
 {
-    public class Evolution<T> : GeneratorBase<T>, IEvolution
+    public class Evolution<T> : AsyncGeneratorComponent<T>, IEvolution
     {
         #region Editor fields
 

@@ -8,7 +8,7 @@ namespace Chinchillada.Colors
     /// <summary>
     /// Generates a color scheme where the hues are evenly distributed along the hue wheel.
     /// </summary>
-    public class DistributedSchemeGenerator : GeneratorBase<ColorScheme>
+    public class DistributedSchemeGenerator : AsyncGeneratorComponent<ColorScheme>
     {
         [SerializeField] private int hueCount = 2;
 

@@ -6,7 +6,7 @@ using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class BiomeGenerator : GeneratorBase<Grid2D>
+    public class BiomeGenerator : AsyncGeneratorComponent<Grid2D>
     {
         [SerializeField] private int iterations;
 

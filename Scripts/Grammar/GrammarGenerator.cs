@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grammar
 {
-    public class GrammarGenerator : GeneratorBase<IEnumerable<Symbol>>
+    public class GrammarGenerator : AsyncGeneratorComponent<IEnumerable<Symbol>>
     {
         [SerializeField] private List<Symbol> startingSymbols;
         

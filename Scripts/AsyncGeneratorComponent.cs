@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation
 {
-    public abstract class GeneratorBase<T> : ChinchilladaBehaviour, IAsyncGenerator<T>
+    public abstract class AsyncGeneratorComponent<T> : ChinchilladaBehaviour, IAsyncGenerator<T>
     {
         [SerializeField] private float asyncUpdate = 0.01f;
 

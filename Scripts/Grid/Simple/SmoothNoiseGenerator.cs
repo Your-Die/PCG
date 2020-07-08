@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class SmoothNoiseGenerator : GeneratorBase<Grid2D>
+    public class SmoothNoiseGenerator : AsyncGeneratorComponent<Grid2D>
     {
         [SerializeField] private int samplePeriod = 1;
 

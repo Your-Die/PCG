@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Chinchillada.Generation.Mazes
 {
-    public class GrowingTreeMazeGenerator : GeneratorBase<GridGraph>
+    public class GrowingTreeMazeGenerator : AsyncGeneratorComponent<GridGraph>
     {
         [SerializeField] private int width;
 

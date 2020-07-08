@@ -2,7 +2,7 @@
 
 namespace Chinchillada.Generation.Mazes
 {
-    public class EmptyGridGenerator : GeneratorBase<GridGraph>
+    public class EmptyGridGenerator : AsyncGeneratorComponent<GridGraph>
     {
         [SerializeField] private int width;
         [SerializeField] private int height;
