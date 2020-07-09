@@ -14,22 +14,7 @@ namespace Chinchillada.Generation.Grid
             this.SetTexture(texture);
         }
 
-        private Texture2D ConvertToTexture(Grid2D grid)
-        {
-            var texture = new Texture2D(grid.Width, grid.Height);
-            
-            for (var x = 0; x < grid.Width; x++)
-            for (var y = 0; y < grid.Height; y++)
-            {
-                var item = grid[x, y];
-                var color = this.colorScheme[item];
-                
-                texture.SetPixel(x, y, color);
-            }
-            
-            texture.Apply();
-            return texture;
-        }
+        private Texture2D ConvertToTexture(Grid2D grid) => grid.ToTexture(this.colorScheme, this.filterMode);
 
         protected abstract void SetTexture(Texture texture);
     }

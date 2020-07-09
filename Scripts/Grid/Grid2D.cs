@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Chinchillada.Colors;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
@@ -67,6 +68,26 @@ namespace Chinchillada.Generation.Grid
         }
 
         public GridNeighborhood GetRegion(int x, int y, int radius) => new GridNeighborhood(this, x, y, radius);
+
+        public Texture2D ToTexture(IColorScheme colorScheme, FilterMode filterMode = FilterMode.Point)
+        {
+            var texture = new Texture2D(this.Width, this.Height)
+            {
+                filterMode = filterMode
+            };
+
+            for (var x = 0; x < this.Width; x++)
+            for (var y = 0; y < this.Height; y++)
+            {
+                var item = this[x, y];
+                var color = colorScheme[item];
+
+                texture.SetPixel(x, y, color);
+            }
+
+            texture.Apply();
+            return texture;
+        }
 
         public IEnumerator<int> GetEnumerator()
         {
