@@ -16,6 +16,8 @@ namespace Chinchillada.Colors
 
         public Color this[int index] => this.colors[index];
 
+        public ColorScheme(params Color[] colors) => this.colors = colors;
+
         public ColorScheme(IEnumerable<Color> colors) => this.colors = colors.ToArray();
 
         public ColorScheme(IEnumerable<HSVColor> hsvColors)

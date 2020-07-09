@@ -6,7 +6,7 @@ using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class BiomeGenerator : AsyncGeneratorComponent<Grid2D>
+    public class RandomizedGridZoom : AsyncGeneratorComponent<Grid2D>
     {
         [SerializeField] private int iterations;
 
@@ -49,19 +49,25 @@ namespace Chinchillada.Generation.Grid
         [Button]
         private void Zoom()
         {
-            var newWidth = this.grid.Width * 2 - 1;
-            var newHeight = this.grid.Height * 2 - 1;
+            this.grid = RandomizedZoom(this.grid);
+            this.OnGenerated(this.grid);
+        }
+
+        public static Grid2D RandomizedZoom(Grid2D grid)
+        {
+            var newWidth = grid.Width * 2 - 1;
+            var newHeight = grid.Height * 2 - 1;
 
             var nextGrid = new Grid2D(newWidth, newHeight);
 
             // sliding 2x2 window.
-            for (var x = 0; x < this.grid.Width - 1; x++)
-            for (var y = 0; y < this.grid.Height - 1; y++)
+            for (var x = 0; x < grid.Width - 1; x++)
+            for (var y = 0; y < grid.Height - 1; y++)
             {
-                var topLeft = this.grid[x, y];
-                var topRight = this.grid[x + 1, y];
-                var bottomLeft = this.grid[x, y + 1];
-                var bottomRight = this.grid[x + 1, y + 1];
+                var topLeft = grid[x, y];
+                var topRight = grid[x + 1, y];
+                var bottomLeft = grid[x, y + 1];
+                var bottomRight = grid[x + 1, y + 1];
 
                 // window is used to fill in 3x3 window in next grid.
                 var newX = x * 2;
@@ -82,8 +88,7 @@ namespace Chinchillada.Generation.Grid
                 nextGrid[newX + 1, newY + 1] = Random.Choose(topLeft, topRight, bottomLeft, bottomRight);
             }
 
-            this.grid = nextGrid;
-            this.OnGenerated(this.grid);
+            return nextGrid;
         }
     }
 }
