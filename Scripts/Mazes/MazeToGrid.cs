@@ -6,9 +6,9 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Mazes
 {
-    public class MazeToGrid : AsyncGeneratorComponent<Grid2D>
+    public class MazeToGrid : IterativeGeneratorComponent<Grid2D>
     {
-        [SerializeField] private IAsyncGenerator<GridGraph> mazeGenerator;
+        [SerializeField] private IIterativeGenerator<GridGraph> mazeGenerator;
 
         [SerializeField] private bool generateMazeAsync;
 

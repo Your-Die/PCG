@@ -7,7 +7,7 @@ namespace Chinchillada.Generation.Mazes
     {
         [SerializeField] private GridGraphRenderer gridRenderer;
 
-        [SerializeField] private IAsyncGenerator<GridGraph> gridGenerator;
+        [SerializeField] private IIterativeGenerator<GridGraph> gridGenerator;
 
         private void OnGenerated(GridGraph grid)
         {
