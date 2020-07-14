@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Chinchillada.Generation.Grid
 {
     [Serializable]
-    public class Grid2D : IEnumerable<int>
+    public class Grid2D : IEnumerable<int>, IGrid2D<int>
     {
         [SerializeField] private int[,] items;
 
