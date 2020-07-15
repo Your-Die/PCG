@@ -59,6 +59,11 @@ namespace Chinchillada.Generation.Grid
             this.items = new int[width, height];
         }
 
+        public Grid2D(Vector2Int shape)
+            : this(shape.x, shape.y)
+        {
+        }
+
         public Grid2D CopyShape() => new Grid2D(this.Width, this.Height);
 
         public bool Contains(Vector2Int position)

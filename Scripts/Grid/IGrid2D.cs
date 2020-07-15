@@ -20,5 +20,17 @@ namespace Chinchillada.Generation.Grid
             if (node.x < grid.Width - 1) yield return new Vector2Int(node.x + 1, node.y);
             if (node.y < grid.Height - 1) yield return new Vector2Int(node.x, node.y + 1);
         }
+
+        public static IEnumerable<T> GetWindow<T>(this IGrid2D<T> grid, int topLeftX, int topLeftY, Vector2Int window)
+        {
+            for (var x = 0; x < window.x; x++)
+            for (var y = 0; y < window.y; y++)
+            {
+                var windowX = topLeftX + x;
+                var windowY = topLeftY + y;
+
+                yield return grid[x, y];
+            }
+        }
     }
 }
