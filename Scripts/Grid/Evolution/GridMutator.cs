@@ -1,6 +1,7 @@
 using Chinchillada.Distributions;
 using Chinchillada.Generation.Grid;
 using Chinchillada.Foundation;
+using Chinchillada.Grid;
 using UnityEngine;
 using Random = Chinchillada.Foundation.Random;
 

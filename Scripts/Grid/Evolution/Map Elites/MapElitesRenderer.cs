@@ -1,6 +1,8 @@
 ﻿using Chinchillada.Generation.Evolution;
 using Chinchillada.Generation.Grid;
 using Chinchillada.Foundation;
+using Chinchillada.Grid;
+using Chinchillada.Grid.Visualization;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

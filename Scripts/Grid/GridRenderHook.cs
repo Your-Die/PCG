@@ -1,5 +1,7 @@
 using System.Collections;
 using Chinchillada.Foundation;
+using Chinchillada.Grid;
+using Chinchillada.Grid.Visualization;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

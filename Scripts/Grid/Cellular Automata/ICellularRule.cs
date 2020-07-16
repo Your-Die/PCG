@@ -1,3 +1,5 @@
+using Chinchillada.Grid;
+
 namespace Chinchillada.Generation.Grid
 {
     public interface ICellularRule

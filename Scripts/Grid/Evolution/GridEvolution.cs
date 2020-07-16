@@ -1,4 +1,4 @@
-using Chinchillada.Generation.Grid;
+using Chinchillada.Grid;
 
 namespace Chinchillada.Generation.Evolution.Grid
 {

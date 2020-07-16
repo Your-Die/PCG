@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Chinchillada.Foundation;
+using Chinchillada.Grid;
 using Sirenix.OdinInspector;
 using UnityEngine;
 

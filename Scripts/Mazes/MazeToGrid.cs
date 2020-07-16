@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Chinchillada.Generation.Grid;
+using Chinchillada.Grid;
 using UnityEngine;
 
 namespace Chinchillada.Generation.Mazes
