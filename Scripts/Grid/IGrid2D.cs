@@ -29,7 +29,7 @@ namespace Chinchillada.Generation.Grid
                 var windowX = topLeftX + x;
                 var windowY = topLeftY + y;
 
-                yield return grid[x, y];
+                yield return grid[windowX, windowY];
             }
         }
     }
