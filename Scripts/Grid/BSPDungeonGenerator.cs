@@ -8,7 +8,7 @@ using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class BSPDungeonGenerator : GeneratorBase<Grid2D>
+    public class BSPDungeonGenerator : IterativeGeneratorComponent<Grid2D>
     {
         [SerializeField] private int roomValue = 1;
 

@@ -6,7 +6,7 @@ namespace Chinchillada.Generation
     public class GenerationRenderHook<T> : ChinchilladaBehaviour
     {
         [SerializeField, FindComponent(SearchStrategy.Anywhere)]
-        private IGenerator<T> generator;
+        private IIterativeGenerator<T> generator;
 
         [SerializeField, FindComponent(SearchStrategy.Anywhere)]
         private IRenderer<T> resultRenderer;

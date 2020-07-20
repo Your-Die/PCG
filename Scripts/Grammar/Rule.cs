@@ -1,10 +1,12 @@
+using System;
+
 namespace Chinchillada.Generation.Grammar
 {
     using System.Collections.Generic;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Chinchillada/Grammar/Rule")]
-    public class Rule : ScriptableObject
+    [Serializable]
+    public class Rule
     {
         [SerializeField] private Symbol leftHandSide;
 
@@ -12,6 +14,6 @@ namespace Chinchillada.Generation.Grammar
         
         public Symbol LHS => leftHandSide;
 
-        public IEnumerable<Expansion> RHS => rightHandSide;
+        public IList<Expansion> RHS => this.rightHandSide;
     }
 }

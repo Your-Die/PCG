@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class SmoothNoiseGenerator : GeneratorBase<Grid2D>
+    public class SmoothNoiseGenerator : IterativeGeneratorComponent<Grid2D>
     {
         [SerializeField] private int samplePeriod = 1;
 
-        [SerializeField] private IGenerator<Grid2D> gridGenerator;
+        [SerializeField] private IIterativeGenerator<Grid2D> gridGenerator;
 
         public override IEnumerable<Grid2D> GenerateAsync()
         {

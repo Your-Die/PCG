@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Grid
 {
-    public class CellularAutomataGenerator : GeneratorBase<Grid2D>
+    public class CellularAutomataGenerator : IterativeGeneratorComponent<Grid2D>
     {
         [SerializeField] private int iterations;
 
         [SerializeField, FindComponent(SearchStrategy.InChildren)]
-        private IGenerator<Grid2D> gridGenerator;
+        private IIterativeGenerator<Grid2D> gridGenerator;
 
         [SerializeField, FindComponent] private CellularAutomata cellularAutomata;
 
