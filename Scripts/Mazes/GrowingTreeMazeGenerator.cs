@@ -12,8 +12,6 @@ namespace Chinchillada.Generation.Mazes
 
         [SerializeField] private int height;
 
-        [SerializeField] private int startingPoints = 1;
-        
         [SerializeField] private INodeSelector nodeSelector;
         
         protected override GridGraph GenerateInternal()
