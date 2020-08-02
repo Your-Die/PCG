@@ -1,4 +1,3 @@
-using Chinchillada.Generation.Grid;
 using Chinchillada.Foundation;
 using Chinchillada.Grid;
 using UnityEngine;

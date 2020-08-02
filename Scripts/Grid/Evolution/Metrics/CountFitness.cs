@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using Chinchillada.Generation.Grid;
 using Chinchillada.Grid;
 using JetBrains.Annotations;
 using UnityEngine;

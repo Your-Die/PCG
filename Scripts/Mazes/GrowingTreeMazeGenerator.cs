@@ -2,7 +2,6 @@
 using System.Linq;
 using Chinchillada.Foundation;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Chinchillada.Generation.Mazes
 {
