@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Mutiny.Arcs;
 using UnityEngine;
+using System.Text;
+using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 
 namespace Mutiny.Grammar
 {
-    using System.Text;
-    using Sirenix.OdinInspector;
-    using Sirenix.Utilities;
-
     [CreateAssetMenu(menuName = "Mutiny/Grammar Definition")]
     public class GrammarDefinition : SerializedScriptableObject, IGrammarDefinition
     {
@@ -86,22 +84,6 @@ namespace Mutiny.Grammar
             this.origin = string.Join(Environment.NewLine, symbols);
 
             string WrapGuards(string text) => $"{Constants.SymbolGuard}{text}{Constants.SymbolGuard}";
-        }
-
-        [ShowInInspector, ReadOnly, FoldoutGroup("Parameters", 2)]
-        private List<GrammarParameter> parameters;
-
-        [Button, FoldoutGroup("Parameters", 0)]
-        private void FindParameters()
-        {
-            this.parameters = GrammarParameter.Extract(this).ToList();
-        }
-
-        [Button, FoldoutGroup("Parameters")]
-        private void RenameParameters(string currentName, string newName)
-        {
-            StoryRegex.RenameParameter(this, currentName, newName);
-            this.FindParameters();
         }
 
         [Button]

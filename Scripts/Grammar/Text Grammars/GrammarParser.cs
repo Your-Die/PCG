@@ -73,14 +73,6 @@ namespace Mutiny.Grammar
                         parseType = ParseType.Symbol;
                         break;
 
-                    case ParseType.Normal when character == Constants.ActionOpen:
-
-                        if (TryParseTerminal(textBuilder, out terminal))
-                            yield return terminal;
-
-                        parseType = ParseType.Action;
-                        break;
-
                     case ParseType.Normal:
                     case ParseType.Symbol when character != Constants.SymbolGuard:
                         textBuilder.Append(character);
@@ -97,29 +89,13 @@ namespace Mutiny.Grammar
                         break;
                     }
 
-                    case ParseType.Action when character != Constants.ActionClose:
-                        textBuilder.Append(character);
-                        break;
-                    case ParseType.Action:
-                        yield return ParseAction(textBuilder.ToString());
-
-                        textBuilder.Clear();
-                        parseType = ParseType.Normal;
-                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
 
-            switch (parseType)
-            {
-                case ParseType.Symbol:
-                    Debug.LogError($"No closing guard ({Constants.SymbolGuard} found: {textBuilder})");
-                    break;
-                case ParseType.Action:
-                    Debug.LogError($"No closing character ({Constants.ActionClose} found: {textBuilder})");
-                    break;
-            }
+            if (parseType == ParseType.Symbol)
+                Debug.LogError($"No closing guard ({Constants.SymbolGuard} found: {textBuilder})");
 
             if (TryParseTerminal(textBuilder, out terminal))
                 yield return terminal;
@@ -132,23 +108,6 @@ namespace Mutiny.Grammar
 
             Debug.LogError($"No replacement found for symbol: {tokenString}");
             return new Terminal(tokenString);
-        }
-
-        private static IToken ParseAction(string actionString)
-        {
-            // If it's just a key, we treat is as a boolean true.
-            var parts = actionString.Split(':');
-
-            if (parts.Length > 2)
-            {
-                Debug.LogError($"Action {actionString}contained ':' character more than once.");
-                return new Terminal(actionString);
-            }
-
-            var key = parts[0].Trim();
-            var content = parts.Length > 1 ? parts[1].Trim() : string.Empty;
-
-            return new ActionToken(key, content);
         }
 
         private static bool TryParseTerminal(StringBuilder textBuilder, out Terminal terminal)
@@ -177,7 +136,6 @@ namespace Mutiny.Grammar
         {
             Normal,
             Symbol,
-            Action
         }
     }
 }
