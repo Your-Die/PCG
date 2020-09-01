@@ -1,11 +1,11 @@
 {
-    "name": "Chinchillada.Generation",
+    "name": "JSON.Editor",
     "references": [
-        "GUID:1eaec2d7d70f722408cb2417d51f1005",
-        "GUID:c03f40f865ece494193d07c65510bbd0",
-        "GUID:1b1406aec90101b4cb777f5e23af2b57"
+        "JSON"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

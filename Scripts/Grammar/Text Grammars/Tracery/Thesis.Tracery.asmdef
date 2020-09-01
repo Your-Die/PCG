@@ -1,9 +1,12 @@
 {
-    "name": "Chinchillada.Generation",
+    "name": "Thesis.Tracery",
     "references": [
         "GUID:1eaec2d7d70f722408cb2417d51f1005",
-        "GUID:c03f40f865ece494193d07c65510bbd0",
-        "GUID:1b1406aec90101b4cb777f5e23af2b57"
+        "GUID:dcb0e5b17acb1e444aa23b7e1a33171f",
+        "GUID:df075611925a47a4ebb4d695361bc67c",
+        "GUID:e89364b53038569428d886f17aba64e2",
+        "GUID:1b1406aec90101b4cb777f5e23af2b57",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
