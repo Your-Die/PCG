@@ -2,8 +2,7 @@
     "name": "Chinchillada.Generation.Grid.CA",
     "references": [
         "GUID:1eaec2d7d70f722408cb2417d51f1005",
-        "GUID:dcb0e5b17acb1e444aa23b7e1a33171f",
-        "GUID:dbeea7bfeba2a2245a6fba7793ac5dcf"
+        "GUID:dcb0e5b17acb1e444aa23b7e1a33171f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -12,5 +11,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

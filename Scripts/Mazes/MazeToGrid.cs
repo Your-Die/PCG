@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Chinchillada.Generation.Grid;
+﻿using System.Collections.Generic;
 using Chinchillada.Grid;
 using UnityEngine;
 
