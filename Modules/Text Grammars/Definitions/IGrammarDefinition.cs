@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using Chinchillada.Foundation;
+using Sirenix.OdinInspector.Editor.TypeSearch;
 
 namespace Chinchillada.Grammar
 {
@@ -21,6 +22,14 @@ namespace Chinchillada.Grammar
 
             foreach (var rule in grammarDefinition.Rules)
                 yield return rule.Symbol;
+        }
+        
+        public static List<string> FindRule(this IGrammarDefinition definition, string symbol)
+        {
+            var rules = definition.GetAllRules();
+            var rule = rules.First(item => item.Symbol == symbol);
+
+            return rule.Replacements;
         }
 
         public static GrammarRuleDefinition BuildOriginRule(this IGrammarDefinition grammarDefinition)

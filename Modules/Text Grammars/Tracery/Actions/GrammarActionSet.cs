@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Chinchillada.Grammar
 
 {
-    [CreateAssetMenu(menuName = "Chinchillada/Grammar Save")]
+    [CreateAssetMenu(menuName = "Chinchillada/Grammar/Tracery Action Set")]
     public class GrammarActionSet : SerializedScriptableObject
     {
         [SerializeField] private List<TraceryAction> actions;

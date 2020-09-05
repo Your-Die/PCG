@@ -4,7 +4,7 @@ namespace Chinchillada.Grammar
     using Sirenix.OdinInspector;
     using UnityEngine;
 
-    [CreateAssetMenu(menuName = "Chinchillada/Grammar Reference")]
+    [CreateAssetMenu(menuName = "Chinchillada/Grammar/Definition Reference")]
     public class GrammarReference : SerializedScriptableObject, IGrammarDefinition
     {
         [SerializeField] private IGrammarDefinition grammarDefinition;

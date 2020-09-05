@@ -8,7 +8,7 @@ namespace Chinchillada.Grammar
 {
     using UnityTracery;
 
-    public class TraceryActionGenerator : GeneratorBase<IEnumerable<TraceryAction>>
+    public class TraceryActionGenerator : GeneratorComponentBase<IEnumerable<TraceryAction>>
     {
         [SerializeField, InlineEditor] private GrammarDefinition grammarDefinition;
 

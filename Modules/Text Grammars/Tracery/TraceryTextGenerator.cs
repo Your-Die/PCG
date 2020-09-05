@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
-using Chinchillada.Foundation;
+using System;
 using Chinchillada.Generation;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -8,69 +6,44 @@ using UnityTracery;
 
 namespace Chinchillada.Grammar
 {
-    public class TraceryTextGenerator : GeneratorComponentBase<string>
+    [Serializable]
+    public class TraceryTextGenerator : GeneratorBase<string>
     {
         [SerializeField, InlineEditor(InlineEditorObjectFieldModes.Foldout)]
         private IGrammarDefinition grammarDefinition;
 
-        [SerializeField] private List<GrammarActionSet> actionsToInject;
-
-        [SerializeField] private bool updateGrammarBeforeGeneration;
-
-        [SerializeField] private bool logResult;
-
         private TraceryGrammar grammar;
-
+        
+        public bool IsDefinitionDirty { get; set; }
+        
         public IGrammarDefinition GrammarDefinition
         {
             get => this.grammarDefinition;
-            set => this.grammarDefinition = value;
+            set
+            {
+                this.grammarDefinition = value;
+                this.IsDefinitionDirty = true;
+            }
         }
 
-        public IEnumerable<TraceryAction> Actions => this.actionsToInject.SelectMany(set => set.Actions);
-
-        public string Generate(TraceryAction action) => this.Generate(Enumerables.Single(action));
-
-        public string Generate(IEnumerable<TraceryAction> actions)
+        public string Generate(IGrammarDefinition definition)
         {
-            // Temp. disable update as we do it manually.
-            var updateGrammar = this.updateGrammarBeforeGeneration;
-            this.updateGrammarBeforeGeneration = false;
-            
-            // Update grammar with given actions.
-            this.UpdateGrammar(actions.Concat(this.Actions));
-            
-            // Generate.
-            var result = this.Generate();
-
-            // Restore update setting.
-            this.updateGrammarBeforeGeneration = updateGrammar;
-
-            return result;
+            this.GrammarDefinition = definition;
+            return this.Generate();
         }
 
         protected override string GenerateInternal()
         {
-            if (this.updateGrammarBeforeGeneration)
-                this.UpdateGrammar();
+            if (this.IsDefinitionDirty) 
+                this.BuildGrammar();
 
-            var result = this.grammar.Generate();
-
-            if (this.logResult)
-                Debug.Log(result);
-
-            return result;
+            return this.grammar.Generate();
         }
 
-        [Button]
-        private void UpdateGrammar()
+        private void BuildGrammar()
         {
-            this.UpdateGrammar(this.Actions);
-        }
-
-        private void UpdateGrammar(IEnumerable<TraceryAction> actions)
-        {
-            this.grammar = TraceryFactory.Construct(this.grammarDefinition, actions);
+            this.grammar = TraceryFactory.Construct(this.grammarDefinition);
+            this.IsDefinitionDirty = false;
         }
     }
 }

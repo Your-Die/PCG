@@ -1,4 +1,5 @@
 ﻿using Chinchillada.Foundation;
+using Sirenix.Serialization;
 using TMPro;
 using UnityEngine;
 
@@ -8,16 +9,18 @@ namespace Chinchillada.Grammar
     {
         [SerializeField] private TMP_Text textElement;
         
-        [SerializeField] private TraceryTextGenerator generator;
+        [OdinSerialize] private TraceryTextGenerator generator;
 
-        [SerializeField] private IEvent generateEvent;
+        [SerializeField] private IEvent<IGrammarDefinition> generateEvent;
         
-        public void GeneratePreview()
+        public void GeneratePreview(IGrammarDefinition definition)
         {
-            var text = this.generator.Generate();
-            this.textElement.text = text;
+            this.generator.GrammarDefinition = definition;
+            this.GeneratePreview();
         }
-        
+
+        public void GeneratePreview() => this.textElement.text = this.generator.Generate();
+
         private void OnEnable() => this.generateEvent.Subscribe(this.GeneratePreview);
 
         private void OnDisable() => this.generateEvent.Unsubscribe(this.GeneratePreview);

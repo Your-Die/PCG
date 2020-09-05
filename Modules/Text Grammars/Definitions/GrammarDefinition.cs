@@ -9,7 +9,7 @@ using Sirenix.Utilities;
 
 namespace Chinchillada.Grammar
 {
-    [CreateAssetMenu(menuName = "Chinchillada/Grammar Definition")]
+    [CreateAssetMenu(menuName = "Chinchillada/Grammar/Definition")]
     public class GrammarDefinition : SerializedScriptableObject, IGrammarDefinition
     {
         [SerializeField, MultiLineProperty(10), FoldoutGroup("Origin")]

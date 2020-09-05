@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Chinchillada
 {
     [Serializable]
-    public class GrammarRuleDefinition
+    public class GrammarRuleDefinition : IGrammarRuleDefinition
     {
         [SerializeField] private string symbol;
 
