@@ -40,6 +40,19 @@ namespace Mutiny
             this.replacements = replacements.ToList();
         }
 
+        public virtual bool Match(string text, int startIndex)
+        {
+            for (var i = 0; i < this.symbol.Length; i++)
+            {
+                var index = startIndex + i;
+                
+                if (text[index] != this.symbol[i])
+                    return false;
+            }
+
+            return true;
+        }
+
         [Button, FoldoutGroup("Actions")]
         private void SplitReplacementsOnLine()
         {

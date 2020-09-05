@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using System.Text;
+using Chinchillada.Generation.Grammar;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 
@@ -36,7 +37,7 @@ namespace Mutiny.Grammar
             var allRules = this.GetAllRules().ToList();
             var symbolSet = allRules.Select(rule => rule.Symbol).ToHashSet();
 
-            var symbols = allRules.SelectMany(rule => rule.Replacements.SelectMany(ParseSymbols));
+            var symbols = allRules.SelectMany(rule => rule.Replacements.SelectMany(GuardedGrammar.ParseSymbols));
 
             foreach (var symbol in symbols)
             {
@@ -45,35 +46,6 @@ namespace Mutiny.Grammar
 
                 this.Rules.Add(new GrammarRuleDefinition(symbol));
                 symbolSet.Add(symbol);
-            }
-        }
-
-        private static IEnumerable<string> ParseSymbols(string text)
-        {
-            var openSymbol = false;
-            var symbolBuilder = new StringBuilder();
-
-            foreach (var character in text)
-            {
-                if (openSymbol)
-                {
-                    if (character == Constants.SymbolGuard)
-                    {
-                        yield return symbolBuilder.ToString();
-
-                        symbolBuilder.Clear();
-                        openSymbol = false;
-                    }
-                    else
-                    {
-                        symbolBuilder.Append(character);
-                    }
-                }
-                else
-                {
-                    if (character == Constants.SymbolGuard)
-                        openSymbol = true;
-                }
             }
         }
 
@@ -86,10 +58,10 @@ namespace Mutiny.Grammar
             string WrapGuards(string text) => $"{Constants.SymbolGuard}{text}{Constants.SymbolGuard}";
         }
 
-        [Button]
+        [Button, FoldoutGroup("Actions")]
         public void ReplaceSymbolInRules(string oldSymbol, string newSymbol)
         {
-            this.ReplaceSymbol(oldSymbol, newSymbol);
+            GuardedGrammar.ReplaceSymbol(this, oldSymbol, newSymbol);
         }
     }
 }

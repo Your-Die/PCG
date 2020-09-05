@@ -1,52 +1,50 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using Chinchillada.Foundation;
+using Mutiny;
+using Mutiny.Grammar;
 
-namespace Mutiny.Grammar
+namespace Chinchillada.Generation.Grammar
 {
-    public interface IGrammarDefinition
+    public static class GuardedGrammar
     {
-        string Name { get; }
-        string Origin { get; set; }
-        List<GrammarRuleDefinition> Rules { get; set; }
-    }
-
-    
-    public static class GrammarDefinitionExtensions
-    {
-        public static IEnumerable<string> GetSymbols(this IGrammarDefinition grammarDefinition)
+        public static IEnumerable<string> ParseSymbols(string text)
         {
-            yield return Constants.OriginSymbol;
+            var openSymbol = false;
+            var symbolBuilder = new StringBuilder();
 
-            foreach (var rule in grammarDefinition.Rules)
-                yield return rule.Symbol;
-        }
+            foreach (var character in text)
+            {
+                if (openSymbol)
+                {
+                    if (character == Constants.SymbolGuard)
+                    {
+                        yield return symbolBuilder.ToString();
 
-        public static GrammarRuleDefinition BuildOriginRule(this IGrammarDefinition grammarDefinition)
-        {
-            return new GrammarRuleDefinition(Constants.OriginSymbol, grammarDefinition.Origin);
+                        symbolBuilder.Clear();
+                        openSymbol = false;
+                    }
+                    else
+                    {
+                        symbolBuilder.Append(character);
+                    }
+                }
+                else
+                {
+                    if (character == Constants.SymbolGuard)
+                        openSymbol = true;
+                }
+            }
         }
-        
-        public static GrammarRuleDefinition FindRule(this IGrammarDefinition definition, string symbol)
-        {
-            return definition.Rules.Find(Match);
-
-            bool Match(GrammarRuleDefinition match) => string.Equals(match.Symbol, symbol);
-        }
-        
-        public static IEnumerable<GrammarRuleDefinition> GetAllRules(this IGrammarDefinition definition)
-        {
-            return definition.Rules.Prepend(definition.BuildOriginRule());
-        }
-        
-        public static void ReplaceSymbol(this IGrammarDefinition grammar, string oldSymbol, string newSymbol)
+             
+        public static void ReplaceSymbol(IGrammarDefinition grammar, string oldSymbol, string newSymbol)
         {
             if (grammar.Rules.TryFind(matchingRule => string.Equals(oldSymbol, matchingRule.Symbol), out var rule))
-                grammar.ReplaceSymbol(rule, newSymbol);
+                ReplaceSymbol(grammar, rule, newSymbol);
         }
 
-        public static void ReplaceSymbol(this IGrammarDefinition grammar, GrammarRuleDefinition rule, string symbol)
+        public static void ReplaceSymbol(IGrammarDefinition grammar, GrammarRuleDefinition rule, string symbol)
         {
             var oldSymbol = rule.Symbol;
             rule.Symbol = symbol;
