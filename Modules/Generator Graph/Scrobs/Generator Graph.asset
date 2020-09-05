@@ -1,0 +1,1411 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8805079255362953612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f85f9d3a29446d78112b1cc3766192d, type: 3}
+  m_Name: Random Grid
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 10
+      Data: 0
+    - Name: fillDistribution
+      Entry: 7
+      Data: 0|Chinchillada.Distributions.Serializables.UniformDistribution`1[[System.Int32,
+        mscorlib]], Distributions
+    - Name: items
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 4
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  graph: {fileID: 11400000}
+  position: {x: -456, y: -424}
+  ports:
+    keys:
+    - width
+    - height
+    - result
+    values:
+    - _fieldName: width
+      _node: {fileID: -8805079255362953612}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: height
+      _node: {fileID: -8805079255362953612}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: -8805079255362953612}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: grid
+        node: {fileID: 2122406953168226581}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 4
+    height: 4
+  regenerate: 0
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  width: 4
+  height: 4
+--- !u!114 &-8299907503043291628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62fc85efbf84c39b09dc048ec9637d1, type: 3}
+  m_Name: Down Sampler
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 10
+      Data: 0
+    - Name: windowSampler
+      Entry: 6
+      Data: 
+  graph: {fileID: 11400000}
+  position: {x: 952, y: 40}
+  ports:
+    keys:
+    - grid
+    - windowShape
+    - result
+    values:
+    - _fieldName: grid
+      _node: {fileID: -8299907503043291628}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: result
+        node: {fileID: 7988753018383521246}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: windowShape
+      _node: {fileID: -8299907503043291628}
+      _typeQualifiedName: UnityEngine.Vector2Int, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: -8299907503043291628}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 10
+    height: 10
+  regenerate: 1
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  grid:
+    width: 20
+    height: 21
+  windowShape: {x: 2, y: 2}
+--- !u!114 &-6742202989274217102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e4215bb5f04efd80dae1c2b155df4e, type: 3}
+  m_Name: Analogous Scheme
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  graph: {fileID: 11400000}
+  position: {x: 648, y: 376}
+  ports:
+    keys:
+    - hueCount
+    - span
+    - result
+    values:
+    - _fieldName: hueCount
+      _node: {fileID: -6742202989274217102}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: span
+      _node: {fileID: -6742202989274217102}
+      _typeQualifiedName: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: -6742202989274217102}
+      _typeQualifiedName: Chinchillada.Colors.ColorScheme, Chinchillada.Foundation,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: colorScheme
+        node: {fileID: 3484536667974021994}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    colors:
+    - {r: 0.3090667, g: 0.4414198, b: 0.6814567, a: 1}
+    - {r: 0.3872327, g: 0.39222097, b: 0.6814567, a: 1}
+    - {r: 0.2574334, g: 0.056507617, b: 0.6814567, a: 1}
+    - {r: 0.5581704, g: 0.31888252, b: 0.6814567, a: 1}
+    - {r: 0.68086946, g: 0.3072511, b: 0.6814567, a: 1}
+    - {r: 0.6814567, g: 0.056065287, b: 0.47076726, a: 1}
+    - {r: 0.6814567, g: 0.28002492, b: 0.41034815, a: 1}
+    - {r: 0.6814567, g: 0.26995653, b: 0.26419187, a: 1}
+    - {r: 0.6814567, g: 0.475826, b: 0.3639897, a: 1}
+    - {r: 0.6814567, g: 0.47827706, b: 0.024473716, a: 1}
+    - {r: 0.6649534, g: 0.6814567, b: 0.11627653, a: 1}
+    - {r: 0.55464745, g: 0.6814567, b: 0.33654925, a: 1}
+    - {r: 0.24249531, g: 0.6814567, b: 0.05980677, a: 1}
+    - {r: 0.21609612, g: 0.6814567, b: 0.23684411, a: 1}
+    - {r: 0.23308605, g: 0.6814567, b: 0.4048327, a: 1}
+    - {r: 0.28296706, g: 0.6814567, b: 0.57048035, a: 1}
+    - {r: 0.10687111, g: 0.64699924, b: 0.6814567, a: 1}
+    - {r: 0.06282733, g: 0.43497568, b: 0.6814567, a: 1}
+    - {r: 0.028059188, g: 0.19997315, b: 0.6814567, a: 1}
+    - {r: 0.32116517, g: 0.29180336, b: 0.6814567, a: 1}
+    - {r: 0.3667561, g: 0.14459401, b: 0.6814567, a: 1}
+    - {r: 0.5950742, g: 0.33275, b: 0.6814567, a: 1}
+    - {r: 0.6814567, g: 0.03610427, b: 0.6228982, a: 1}
+    - {r: 0.6814567, g: 0.3465502, b: 0.5377148, a: 1}
+    - {r: 0.6814567, g: 0.24074481, b: 0.3431391, a: 1}
+    - {r: 0.6814567, g: 0.2869441, b: 0.24010658, a: 1}
+    - {r: 0.6814567, g: 0.42882273, b: 0.22660042, a: 1}
+    - {r: 0.6814567, g: 0.6118301, b: 0.3605286, a: 1}
+    - {r: 0.637516, g: 0.6814567, b: 0.3198295, a: 1}
+    - {r: 0.3986711, g: 0.6814567, b: 0.066664346, a: 1}
+    - {r: 0.42710993, g: 0.6814567, b: 0.36289853, a: 1}
+    - {r: 0.065188654, g: 0.6814567, b: 0.14955102, a: 1}
+    - {r: 0.08289619, g: 0.6814567, b: 0.36742443, a: 1}
+    - {r: 0.035046495, g: 0.6814567, b: 0.561105, a: 1}
+    - {r: 0.0076454417, g: 0.57885057, b: 0.6814567, a: 1}
+    - {r: 0.24123402, g: 0.4654225, b: 0.6814567, a: 1}
+    - {r: 0.29497802, g: 0.3609885, b: 0.6814567, a: 1}
+    - {r: 0.31613597, g: 0.24254777, b: 0.6814567, a: 1}
+    - {r: 0.45420882, g: 0.22132568, b: 0.6814567, a: 1}
+  regenerate: 0
+  preview:
+  - {r: 0.3090667, g: 0.4414198, b: 0.6814567, a: 1}
+  - {r: 0.3872327, g: 0.39222097, b: 0.6814567, a: 1}
+  - {r: 0.2574334, g: 0.056507617, b: 0.6814567, a: 1}
+  - {r: 0.5581704, g: 0.31888252, b: 0.6814567, a: 1}
+  - {r: 0.68086946, g: 0.3072511, b: 0.6814567, a: 1}
+  - {r: 0.6814567, g: 0.056065287, b: 0.47076726, a: 1}
+  - {r: 0.6814567, g: 0.28002492, b: 0.41034815, a: 1}
+  - {r: 0.6814567, g: 0.26995653, b: 0.26419187, a: 1}
+  - {r: 0.6814567, g: 0.475826, b: 0.3639897, a: 1}
+  - {r: 0.6814567, g: 0.47827706, b: 0.024473716, a: 1}
+  - {r: 0.6649534, g: 0.6814567, b: 0.11627653, a: 1}
+  - {r: 0.55464745, g: 0.6814567, b: 0.33654925, a: 1}
+  - {r: 0.24249531, g: 0.6814567, b: 0.05980677, a: 1}
+  - {r: 0.21609612, g: 0.6814567, b: 0.23684411, a: 1}
+  - {r: 0.23308605, g: 0.6814567, b: 0.4048327, a: 1}
+  - {r: 0.28296706, g: 0.6814567, b: 0.57048035, a: 1}
+  - {r: 0.10687111, g: 0.64699924, b: 0.6814567, a: 1}
+  - {r: 0.06282733, g: 0.43497568, b: 0.6814567, a: 1}
+  - {r: 0.028059188, g: 0.19997315, b: 0.6814567, a: 1}
+  - {r: 0.32116517, g: 0.29180336, b: 0.6814567, a: 1}
+  - {r: 0.3667561, g: 0.14459401, b: 0.6814567, a: 1}
+  - {r: 0.5950742, g: 0.33275, b: 0.6814567, a: 1}
+  - {r: 0.6814567, g: 0.03610427, b: 0.6228982, a: 1}
+  - {r: 0.6814567, g: 0.3465502, b: 0.5377148, a: 1}
+  - {r: 0.6814567, g: 0.24074481, b: 0.3431391, a: 1}
+  - {r: 0.6814567, g: 0.2869441, b: 0.24010658, a: 1}
+  - {r: 0.6814567, g: 0.42882273, b: 0.22660042, a: 1}
+  - {r: 0.6814567, g: 0.6118301, b: 0.3605286, a: 1}
+  - {r: 0.637516, g: 0.6814567, b: 0.3198295, a: 1}
+  - {r: 0.3986711, g: 0.6814567, b: 0.066664346, a: 1}
+  - {r: 0.42710993, g: 0.6814567, b: 0.36289853, a: 1}
+  - {r: 0.065188654, g: 0.6814567, b: 0.14955102, a: 1}
+  - {r: 0.08289619, g: 0.6814567, b: 0.36742443, a: 1}
+  - {r: 0.035046495, g: 0.6814567, b: 0.561105, a: 1}
+  - {r: 0.0076454417, g: 0.57885057, b: 0.6814567, a: 1}
+  - {r: 0.24123402, g: 0.4654225, b: 0.6814567, a: 1}
+  - {r: 0.29497802, g: 0.3609885, b: 0.6814567, a: 1}
+  - {r: 0.31613597, g: 0.24254777, b: 0.6814567, a: 1}
+  - {r: 0.45420882, g: 0.22132568, b: 0.6814567, a: 1}
+  hueCount: 39
+  span: 2.2
+  monochromeGenerator:
+    colorCount: 1
+    valueRange: {x: 0.6814567, y: 1}
+    saturationRange: {x: 0.42748564, y: 1}
+--- !u!114 &-5300388054858271363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d883fd653f40349e204dd2535fd430, type: 3}
+  m_Name: Smooth Noise
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 10
+      Data: 0
+  graph: {fileID: 11400000}
+  position: {x: 200, y: -424}
+  ports:
+    keys:
+    - grid
+    - samplePeriod
+    - result
+    values:
+    - _fieldName: grid
+      _node: {fileID: -5300388054858271363}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: samplePeriod
+      _node: {fileID: -5300388054858271363}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: -5300388054858271363}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: grid
+        node: {fileID: 289243591817633268}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 20
+    height: 21
+  regenerate: 0
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  grid:
+    width: 20
+    height: 21
+  samplePeriod: 2
+--- !u!114 &-3841442599039788063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d883fd653f40349e204dd2535fd430, type: 3}
+  m_Name: Smooth Noise
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 10
+      Data: 0
+  graph: {fileID: 11400000}
+  position: {x: 904, y: -424}
+  ports:
+    keys:
+    - grid
+    - samplePeriod
+    - result
+    values:
+    - _fieldName: grid
+      _node: {fileID: -3841442599039788063}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: result
+        node: {fileID: 2441361498454210765}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: samplePeriod
+      _node: {fileID: -3841442599039788063}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: -3841442599039788063}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: value
+        node: {fileID: 4494519298059999390}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 20
+    height: 21
+  regenerate: 0
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  grid:
+    width: 20
+    height: 21
+  samplePeriod: 5
+--- !u!114 &-1914289008593003248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6a1882d832489685b2565d00c14f06, type: 3}
+  m_Name: Int Input
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  graph: {fileID: 11400000}
+  position: {x: -456, y: -88}
+  ports:
+    keys:
+    - value
+    values:
+    - _fieldName: value
+      _node: {fileID: -1914289008593003248}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: iterations
+        node: {fileID: 2122406953168226581}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  inputName: Zoom iterations
+  field: 3
+  value: 3
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec734f4ea77332d4e8aa43fb0c9c1b74, type: 3}
+  m_Name: Generator Graph
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: -1914289008593003248}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: inputs
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[Chinchillada.GeneratorGraph.IInputSetter,
+        Chinchillada.GeneratorGraph]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|Chinchillada.GeneratorGraph.InputNode`1+Setter[[System.Int32, mscorlib]],
+        Chinchillada.GeneratorGraph
+    - Name: name
+      Entry: 1
+      Data: 
+    - Name: value
+      Entry: 3
+      Data: 2
+    - Name: node
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: outputs
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[Chinchillada.GeneratorGraph.IOutputGetter,
+        Chinchillada.GeneratorGraph]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  nodes:
+  - {fileID: -8805079255362953612}
+  - {fileID: -5300388054858271363}
+  - {fileID: 2122406953168226581}
+  - {fileID: 3484536667974021994}
+  - {fileID: -6742202989274217102}
+  - {fileID: 289243591817633268}
+  - {fileID: 2441361498454210765}
+  - {fileID: -3841442599039788063}
+  - {fileID: 4494519298059999390}
+  - {fileID: -1914289008593003248}
+  - {fileID: 1625175037635851562}
+  - {fileID: 2908666743668541309}
+  - {fileID: 7988753018383521246}
+  - {fileID: -8299907503043291628}
+--- !u!114 &289243591817633268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d883fd653f40349e204dd2535fd430, type: 3}
+  m_Name: Smooth Noise
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 10
+      Data: 0
+  graph: {fileID: 11400000}
+  position: {x: 424, y: -424}
+  ports:
+    keys:
+    - grid
+    - samplePeriod
+    - result
+    values:
+    - _fieldName: grid
+      _node: {fileID: 289243591817633268}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: result
+        node: {fileID: -5300388054858271363}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: samplePeriod
+      _node: {fileID: 289243591817633268}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: 289243591817633268}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: grid
+        node: {fileID: 2441361498454210765}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 20
+    height: 21
+  regenerate: 0
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  grid:
+    width: 20
+    height: 21
+  samplePeriod: 3
+--- !u!114 &1625175037635851562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6872ff9dcd844a0a951fb369916897c7, type: 3}
+  m_Name: CA1D
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 7
+      Data: 0|Chinchillada.Colors.ColorScheme, Chinchillada.Foundation
+    - Name: colors
+      Entry: 7
+      Data: 1|UnityEngine.Color[], UnityEngine.CoreModule
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: automaton
+      Entry: 7
+      Data: 2|Chinchillada.CellularAutomata.ElementaryCellularAutomaton, Chinchillada.Generation.Grid.CA
+    - Name: rules
+      Entry: 7
+      Data: 3|System.Collections.Generic.List`1[[Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 8
+    - Name: 
+      Entry: 7
+      Data: 4|Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA
+    - Name: leftNeighbor
+      Entry: 3
+      Data: 0
+    - Name: cell
+      Entry: 3
+      Data: 0
+    - Name: rightNeighbor
+      Entry: 3
+      Data: 0
+    - Name: result
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA
+    - Name: leftNeighbor
+      Entry: 3
+      Data: 0
+    - Name: cell
+      Entry: 3
+      Data: 0
+    - Name: rightNeighbor
+      Entry: 3
+      Data: 1
+    - Name: result
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA
+    - Name: leftNeighbor
+      Entry: 3
+      Data: 0
+    - Name: cell
+      Entry: 3
+      Data: 1
+    - Name: rightNeighbor
+      Entry: 3
+      Data: 0
+    - Name: result
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA
+    - Name: leftNeighbor
+      Entry: 3
+      Data: 0
+    - Name: cell
+      Entry: 3
+      Data: 1
+    - Name: rightNeighbor
+      Entry: 3
+      Data: 1
+    - Name: result
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 8|Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA
+    - Name: leftNeighbor
+      Entry: 3
+      Data: 1
+    - Name: cell
+      Entry: 3
+      Data: 0
+    - Name: rightNeighbor
+      Entry: 3
+      Data: 0
+    - Name: result
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA
+    - Name: leftNeighbor
+      Entry: 3
+      Data: 1
+    - Name: cell
+      Entry: 3
+      Data: 0
+    - Name: rightNeighbor
+      Entry: 3
+      Data: 1
+    - Name: result
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA
+    - Name: leftNeighbor
+      Entry: 3
+      Data: 1
+    - Name: cell
+      Entry: 3
+      Data: 1
+    - Name: rightNeighbor
+      Entry: 3
+      Data: 0
+    - Name: result
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|Chinchillada.CellularAutomata.CellularAutomata1D`1+Rule[[System.Int32,
+        mscorlib]], Chinchillada.Generation.Grid.CA
+    - Name: leftNeighbor
+      Entry: 3
+      Data: 1
+    - Name: cell
+      Entry: 3
+      Data: 1
+    - Name: rightNeighbor
+      Entry: 3
+      Data: 1
+    - Name: result
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  graph: {fileID: 11400000}
+  position: {x: 72, y: 24}
+  ports:
+    keys:
+    - rowCount
+    - firstRow
+    - result
+    values:
+    - _fieldName: rowCount
+      _node: {fileID: 1625175037635851562}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: firstRow
+      _node: {fileID: 1625175037635851562}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.Int32, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: result
+        node: {fileID: 2908666743668541309}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: 1625175037635851562}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: grid
+        node: {fileID: 7988753018383521246}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 20
+    height: 21
+  regenerate: 0
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  rowCount: 20
+  firstRow: 0100000001000000010000000100000001000000000000000000000000000000000000000000000000000000010000000000000001000000000000000000000001000000010000000000000000000000
+--- !u!114 &2122406953168226581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34a1a6a98f348558341e68672a40a45, type: 3}
+  m_Name: Randomized Zoom
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 10
+      Data: 0
+  graph: {fileID: 11400000}
+  position: {x: -152, y: -424}
+  ports:
+    keys:
+    - grid
+    - iterations
+    - result
+    values:
+    - _fieldName: grid
+      _node: {fileID: 2122406953168226581}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: result
+        node: {fileID: -8805079255362953612}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: iterations
+      _node: {fileID: 2122406953168226581}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: value
+        node: {fileID: -1914289008593003248}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: 2122406953168226581}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 25
+    height: 25
+  regenerate: 0
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  grid:
+    width: 4
+    height: 4
+  iterations: 3
+--- !u!114 &2441361498454210765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2d883fd653f40349e204dd2535fd430, type: 3}
+  m_Name: Smooth Noise
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 10
+      Data: 0
+  graph: {fileID: 11400000}
+  position: {x: 664, y: -424}
+  ports:
+    keys:
+    - grid
+    - samplePeriod
+    - result
+    values:
+    - _fieldName: grid
+      _node: {fileID: 2441361498454210765}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: result
+        node: {fileID: 289243591817633268}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: samplePeriod
+      _node: {fileID: 2441361498454210765}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: 2441361498454210765}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: grid
+        node: {fileID: -3841442599039788063}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 20
+    height: 21
+  regenerate: 0
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  grid:
+    width: 20
+    height: 21
+  samplePeriod: 4
+--- !u!114 &2908666743668541309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa84528582d4f6db34240fecbe1eb0f, type: 3}
+  m_Name: Int Sequence
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: itemGenerator
+      Entry: 7
+      Data: 0|Chinchillada.Generation.DistributionSampler`1[[System.Int32, mscorlib]],
+        Chinchillada.Generation
+    - Name: distribution
+      Entry: 7
+      Data: 1|Chinchillada.Distributions.Serializables.FlipDistribution`1[[System.Int32,
+        mscorlib]], Distributions
+    - Name: probability
+      Entry: 4
+      Data: 0.5
+    - Name: head
+      Entry: 3
+      Data: 1
+    - Name: tail
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  graph: {fileID: 11400000}
+  position: {x: -344, y: 104}
+  ports:
+    keys:
+    - result
+    values:
+    - _fieldName: result
+      _node: {fileID: 2908666743668541309}
+      _typeQualifiedName: System.Collections.Generic.List`1[[System.Int32, mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib,
+        Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      connections:
+      - fieldName: firstRow
+        node: {fileID: 1625175037635851562}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result: 0100000001000000010000000100000001000000000000000000000000000000000000000000000000000000010000000000000001000000000000000000000001000000010000000000000000000000
+  regenerate: 1
+  sequenceLength: 20
+--- !u!114 &3484536667974021994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d2457e8fe74fa4a16e5047431624f4, type: 3}
+  m_Name: Colorscheme Saver
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  graph: {fileID: 11400000}
+  position: {x: 952, y: 408}
+  ports:
+    keys:
+    - colorScheme
+    values:
+    - _fieldName: colorScheme
+      _node: {fileID: 3484536667974021994}
+      _typeQualifiedName: Chinchillada.Colors.ColorScheme, Chinchillada.Foundation,
+        Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: result
+        node: {fileID: -6742202989274217102}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  colorScheme:
+    colors:
+    - {r: 0.3090667, g: 0.4414198, b: 0.6814567, a: 1}
+    - {r: 0.3872327, g: 0.39222097, b: 0.6814567, a: 1}
+    - {r: 0.2574334, g: 0.056507617, b: 0.6814567, a: 1}
+    - {r: 0.5581704, g: 0.31888252, b: 0.6814567, a: 1}
+    - {r: 0.68086946, g: 0.3072511, b: 0.6814567, a: 1}
+    - {r: 0.6814567, g: 0.056065287, b: 0.47076726, a: 1}
+    - {r: 0.6814567, g: 0.28002492, b: 0.41034815, a: 1}
+    - {r: 0.6814567, g: 0.26995653, b: 0.26419187, a: 1}
+    - {r: 0.6814567, g: 0.475826, b: 0.3639897, a: 1}
+    - {r: 0.6814567, g: 0.47827706, b: 0.024473716, a: 1}
+    - {r: 0.6649534, g: 0.6814567, b: 0.11627653, a: 1}
+    - {r: 0.55464745, g: 0.6814567, b: 0.33654925, a: 1}
+    - {r: 0.24249531, g: 0.6814567, b: 0.05980677, a: 1}
+    - {r: 0.21609612, g: 0.6814567, b: 0.23684411, a: 1}
+    - {r: 0.23308605, g: 0.6814567, b: 0.4048327, a: 1}
+    - {r: 0.28296706, g: 0.6814567, b: 0.57048035, a: 1}
+    - {r: 0.10687111, g: 0.64699924, b: 0.6814567, a: 1}
+    - {r: 0.06282733, g: 0.43497568, b: 0.6814567, a: 1}
+    - {r: 0.028059188, g: 0.19997315, b: 0.6814567, a: 1}
+    - {r: 0.32116517, g: 0.29180336, b: 0.6814567, a: 1}
+    - {r: 0.3667561, g: 0.14459401, b: 0.6814567, a: 1}
+    - {r: 0.5950742, g: 0.33275, b: 0.6814567, a: 1}
+    - {r: 0.6814567, g: 0.03610427, b: 0.6228982, a: 1}
+    - {r: 0.6814567, g: 0.3465502, b: 0.5377148, a: 1}
+    - {r: 0.6814567, g: 0.24074481, b: 0.3431391, a: 1}
+    - {r: 0.6814567, g: 0.2869441, b: 0.24010658, a: 1}
+    - {r: 0.6814567, g: 0.42882273, b: 0.22660042, a: 1}
+    - {r: 0.6814567, g: 0.6118301, b: 0.3605286, a: 1}
+    - {r: 0.637516, g: 0.6814567, b: 0.3198295, a: 1}
+    - {r: 0.3986711, g: 0.6814567, b: 0.066664346, a: 1}
+    - {r: 0.42710993, g: 0.6814567, b: 0.36289853, a: 1}
+    - {r: 0.065188654, g: 0.6814567, b: 0.14955102, a: 1}
+    - {r: 0.08289619, g: 0.6814567, b: 0.36742443, a: 1}
+    - {r: 0.035046495, g: 0.6814567, b: 0.561105, a: 1}
+    - {r: 0.0076454417, g: 0.57885057, b: 0.6814567, a: 1}
+    - {r: 0.24123402, g: 0.4654225, b: 0.6814567, a: 1}
+    - {r: 0.29497802, g: 0.3609885, b: 0.6814567, a: 1}
+    - {r: 0.31613597, g: 0.24254777, b: 0.6814567, a: 1}
+    - {r: 0.45420882, g: 0.22132568, b: 0.6814567, a: 1}
+  output: {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+--- !u!114 &4494519298059999390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273904c8079749c9bc2b77d70d6611df, type: 3}
+  m_Name: Grid Output
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  graph: {fileID: 11400000}
+  position: {x: 1208, y: -424}
+  ports:
+    keys:
+    - value
+    values:
+    - _fieldName: value
+      _node: {fileID: 4494519298059999390}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: result
+        node: {fileID: -3841442599039788063}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  outputName: Result
+  value:
+    width: 0
+    height: 0
+--- !u!114 &7988753018383521246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc3d7cf76634ca7b2d781d038eb77f0, type: 3}
+  m_Name: Flood Fill
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 5003568eaadcf2b488be7bb76b78863e, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: previewColorScheme
+      Entry: 10
+      Data: 0
+    - Name: valueSelector
+      Entry: 7
+      Data: 0|Chinchillada.GeneratorGraph.Grid.RingBuffer, Chinchillada.GeneratorGraph
+    - Name: values
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[System.Int32, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  graph: {fileID: 11400000}
+  position: {x: 360, y: 40}
+  ports:
+    keys:
+    - grid
+    - regionCount
+    - result
+    values:
+    - _fieldName: grid
+      _node: {fileID: 7988753018383521246}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: result
+        node: {fileID: 1625175037635851562}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: regionCount
+      _node: {fileID: 7988753018383521246}
+      _typeQualifiedName: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: result
+      _node: {fileID: 7988753018383521246}
+      _typeQualifiedName: Chinchillada.Grid.Grid2D, Chinchillada.Foundation, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+      connections:
+      - fieldName: grid
+        node: {fileID: -8299907503043291628}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  result:
+    width: 20
+    height: 21
+  regenerate: 0
+  previewTexture: {fileID: 0}
+  previewFilterMode: 0
+  grid:
+    width: 20
+    height: 21
+  regionCount: 49

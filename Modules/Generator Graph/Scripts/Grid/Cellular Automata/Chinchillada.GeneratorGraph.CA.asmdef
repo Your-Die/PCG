@@ -1,0 +1,20 @@
+{
+    "name": "Chinchillada.GeneratorGraph.CA",
+    "references": [
+        "GUID:ce5f9583e2c468041bc9e00cebc64cc0",
+        "GUID:1eaec2d7d70f722408cb2417d51f1005",
+        "GUID:dcb0e5b17acb1e444aa23b7e1a33171f",
+        "GUID:c03f40f865ece494193d07c65510bbd0",
+        "GUID:07da6fa7c0498bb4fb85a8b8b17bab18",
+        "GUID:dbeea7bfeba2a2245a6fba7793ac5dcf",
+        "GUID:cfe85eb60c82faf4dbaa3a920e570fe8"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
