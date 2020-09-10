@@ -38,7 +38,7 @@ namespace Chinchillada.Generation.BSP
             var rightBounds = tree.Bounds;
 
             leftBounds.xMax = partitionPoint;
-            rightBounds.xMin = partitionPoint + 1;
+            rightBounds.xMin = partitionPoint;
 
             var leftChild = new BSPTree(tree, leftBounds);
             var rightChild = new BSPTree(tree, rightBounds);
@@ -52,7 +52,7 @@ namespace Chinchillada.Generation.BSP
             var bottomBounds = tree.Bounds;
             
             topBounds.yMax = partitionPoint;
-            bottomBounds.yMin = partitionPoint + 1;
+            bottomBounds.yMin = partitionPoint;
             
             var topChild = new BSPTree(tree, topBounds);
             var bottomChild = new BSPTree(tree, bottomBounds);
