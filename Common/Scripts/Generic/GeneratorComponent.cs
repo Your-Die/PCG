@@ -1,5 +1,6 @@
 ﻿using System;
 using Chinchillada.Foundation;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Chinchillada.Generation
@@ -15,6 +16,7 @@ namespace Chinchillada.Generation
             remove => this.generator.Generated -= value;
         }
 
+        [Button]
         public T Generate() => this.generator.Generate();
     }
 }

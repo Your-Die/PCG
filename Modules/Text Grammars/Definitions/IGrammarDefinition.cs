@@ -24,7 +24,7 @@ namespace Chinchillada.Grammar
                 yield return rule.Symbol;
         }
         
-        public static List<string> FindRule(this IGrammarDefinition definition, string symbol)
+        public static IList<string> FindRule(this IGrammarDefinition definition, string symbol)
         {
             var rules = definition.GetAllRules();
             var rule = rules.First(item => item.Symbol == symbol);

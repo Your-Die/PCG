@@ -99,7 +99,7 @@ namespace Chinchillada.Generation.Mazes
 
         private void RenderLine(params Vector3[] positions)
         {
-            var line = this.linePool.Instantiate<LineRenderer>(parent: this.transform);
+            var line = this.linePool.Instantiate<LineRenderer>(Vector3.zero, this.transform);
             
             line.transform.position = positions.Average();
             line.SetPositions(positions);

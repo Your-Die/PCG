@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Chinchillada
@@ -11,7 +12,7 @@ namespace Chinchillada
     {
         [SerializeField] private string symbol;
 
-        [SerializeField, Multiline] private List<string> replacements = new List<string>();
+        [OdinSerialize, Multiline] private IList<string> replacements = new List<string>();
 
         public string Symbol
         {
@@ -19,7 +20,7 @@ namespace Chinchillada
             set => this.symbol = value;
         }
 
-        public List<string> Replacements
+        public IList<string> Replacements
         {
             get => this.replacements;
             set => this.replacements = value;

@@ -13,8 +13,8 @@ namespace Chinchillada.Grammar
         private IGrammarDefinition grammarDefinition;
 
         private TraceryGrammar grammar;
-        
-        public bool IsDefinitionDirty { get; set; }
+
+        public bool IsDefinitionDirty { get; set; } = true;
         
         public IGrammarDefinition GrammarDefinition
         {
@@ -32,12 +32,18 @@ namespace Chinchillada.Grammar
             return this.Generate();
         }
 
-        protected override string GenerateInternal()
+        public string Generate(string origin)
+        {
+            string GenerationFunction() => this.grammar.Parse(origin);
+            return this.Generate(GenerationFunction);
+        }
+
+        protected override string GenerateInternal() => this.grammar.Generate();
+
+        protected override void OnBeforeGenerate()
         {
             if (this.IsDefinitionDirty) 
                 this.BuildGrammar();
-
-            return this.grammar.Generate();
         }
 
         private void BuildGrammar()

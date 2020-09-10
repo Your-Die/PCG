@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Text;
 using Chinchillada.Generation.Grammar;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using Sirenix.Utilities;
 
 namespace Chinchillada.Grammar
@@ -15,7 +16,7 @@ namespace Chinchillada.Grammar
         [SerializeField, MultiLineProperty(10), FoldoutGroup("Origin")]
         private string origin;
 
-        [SerializeField] private List<GrammarRuleDefinition> rules = new List<GrammarRuleDefinition>();
+        [OdinSerialize] private List<GrammarRuleDefinition> rules = new List<GrammarRuleDefinition>();
 
         public string Name => this.name;
 
