@@ -9,7 +9,7 @@ namespace Chinchillada.Generation.BSP
         public BoundsInt Bounds { get; }
 
         public BSPTree FirstChild { get; set; }
-        
+
         public BSPTree SecondChild { get; set; }
 
         public bool IsLeafNode => this.FirstChild == null && this.SecondChild == null;
@@ -18,6 +18,46 @@ namespace Chinchillada.Generation.BSP
         {
             this.Parent = parent;
             this.Bounds = bounds;
+        }
+
+        public BSPTree FindPartition(Vector3Int cell)
+        {
+            if (this.IsLeafNode)
+                return this;
+
+            var child = this.FirstChild.Bounds.Contains(cell)
+                ? this.FirstChild
+                : this.SecondChild;
+
+            return child.FindPartition(cell);
+        }
+
+        public static (BSPTree firstChild, BSPTree secondChild) PartitionHorizontal(BSPTree tree, int partitionPoint)
+        {
+            var leftBounds = tree.Bounds;
+            var rightBounds = tree.Bounds;
+
+            leftBounds.xMax = partitionPoint;
+            rightBounds.xMin = partitionPoint + 1;
+
+            var leftChild = new BSPTree(tree, leftBounds);
+            var rightChild = new BSPTree(tree, rightBounds);
+
+            return (leftChild, rightChild);
+        }
+
+        public static (BSPTree firstChild, BSPTree secondChild) PartitionVertical(BSPTree tree, int partitionPoint)
+        {
+            var topBounds = tree.Bounds;
+            var bottomBounds = tree.Bounds;
+            
+            topBounds.yMax = partitionPoint;
+            bottomBounds.yMin = partitionPoint + 1;
+            
+            var topChild = new BSPTree(tree, topBounds);
+            var bottomChild = new BSPTree(tree, bottomBounds);
+
+            return (topChild, bottomChild);
         }
     }
 }
