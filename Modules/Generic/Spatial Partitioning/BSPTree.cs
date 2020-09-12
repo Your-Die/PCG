@@ -32,32 +32,28 @@ namespace Chinchillada.Generation.BSP
             return child.FindPartition(cell);
         }
 
-        public static (BSPTree firstChild, BSPTree secondChild) PartitionHorizontal(BSPTree tree, int partitionPoint)
+        public void PartitionHorizontal(int partitionPoint)
         {
-            var leftBounds = tree.Bounds;
-            var rightBounds = tree.Bounds;
+            var leftBounds = this.Bounds;
+            var rightBounds = this.Bounds;
 
             leftBounds.xMax = partitionPoint;
             rightBounds.xMin = partitionPoint;
 
-            var leftChild = new BSPTree(tree, leftBounds);
-            var rightChild = new BSPTree(tree, rightBounds);
-
-            return (leftChild, rightChild);
+            this.FirstChild = new BSPTree(this, leftBounds);
+            this.SecondChild = new BSPTree(this, rightBounds);
         }
 
-        public static (BSPTree firstChild, BSPTree secondChild) PartitionVertical(BSPTree tree, int partitionPoint)
+        public void PartitionVertical(int partitionPoint)
         {
-            var topBounds = tree.Bounds;
-            var bottomBounds = tree.Bounds;
+            var topBounds = this.Bounds;
+            var bottomBounds = this.Bounds;
             
-            topBounds.yMax = partitionPoint;
-            bottomBounds.yMin = partitionPoint;
+            bottomBounds.yMax = partitionPoint;
+            topBounds.yMin = partitionPoint;
             
-            var topChild = new BSPTree(tree, topBounds);
-            var bottomChild = new BSPTree(tree, bottomBounds);
-
-            return (topChild, bottomChild);
+            this.FirstChild = new BSPTree(this, bottomBounds);
+            this.SecondChild = new BSPTree(this, topBounds);
         }
     }
 }
