@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Chinchillada.Generation.BSP
@@ -23,7 +24,12 @@ namespace Chinchillada.Generation.BSP
         public BSPTree FindPartition(Vector3Int cell)
         {
             if (this.IsLeafNode)
-                return this;
+            {
+                if (this.Bounds.Contains(cell))
+                    return this;
+                
+                throw new InvalidOperationException();
+            }
 
             var child = this.FirstChild.Bounds.Contains(cell)
                 ? this.FirstChild
