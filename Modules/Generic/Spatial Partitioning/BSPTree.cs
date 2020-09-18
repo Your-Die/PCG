@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Chinchillada.Foundation;
 using UnityEngine;
 
 namespace Chinchillada.Generation.BSP
@@ -38,7 +41,18 @@ namespace Chinchillada.Generation.BSP
             return child.FindPartition(cell);
         }
 
-        public void PartitionHorizontal(int partitionPoint)
+        public IEnumerable<BSPTree> GetLeaves()
+        {
+            if (this.IsLeafNode)
+                return Enumerables.Single(this);
+            
+            var firstLeaves = this.FirstChild.GetLeaves();
+            var secondLeaves = this.SecondChild.GetLeaves();
+
+            return firstLeaves.Concat(secondLeaves);
+        }
+
+        public (BSPTree FirstChild, BSPTree SecondChild) PartitionHorizontal(int partitionPoint)
         {
             var leftBounds = this.Bounds;
             var rightBounds = this.Bounds;
@@ -48,9 +62,11 @@ namespace Chinchillada.Generation.BSP
 
             this.FirstChild = new BSPTree(this, leftBounds);
             this.SecondChild = new BSPTree(this, rightBounds);
+            
+            return (this.FirstChild, this.SecondChild);
         }
 
-        public void PartitionVertical(int partitionPoint)
+        public (BSPTree FirstChild, BSPTree SecondChild) PartitionVertical(int partitionPoint)
         {
             var topBounds = this.Bounds;
             var bottomBounds = this.Bounds;
@@ -60,6 +76,8 @@ namespace Chinchillada.Generation.BSP
             
             this.FirstChild = new BSPTree(this, bottomBounds);
             this.SecondChild = new BSPTree(this, topBounds);
+            
+            return (this.FirstChild, this.SecondChild);
         }
     }
 }
