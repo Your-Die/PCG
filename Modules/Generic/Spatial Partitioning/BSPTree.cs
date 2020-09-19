@@ -26,13 +26,11 @@ namespace Chinchillada.Generation.BSP
 
         public BSPTree FindPartition(Vector3Int cell)
         {
+            if (!this.Bounds.Contains(cell))
+                return null;
+
             if (this.IsLeafNode)
-            {
-                if (this.Bounds.Contains(cell))
-                    return this;
-                
-                throw new InvalidOperationException();
-            }
+                return this;
 
             var child = this.FirstChild.Bounds.Contains(cell)
                 ? this.FirstChild
@@ -45,7 +43,7 @@ namespace Chinchillada.Generation.BSP
         {
             if (this.IsLeafNode)
                 return Enumerables.Single(this);
-            
+
             var firstLeaves = this.FirstChild.GetLeaves();
             var secondLeaves = this.SecondChild.GetLeaves();
 
@@ -62,7 +60,7 @@ namespace Chinchillada.Generation.BSP
 
             this.FirstChild = new BSPTree(this, leftBounds);
             this.SecondChild = new BSPTree(this, rightBounds);
-            
+
             return (this.FirstChild, this.SecondChild);
         }
 
@@ -70,13 +68,13 @@ namespace Chinchillada.Generation.BSP
         {
             var topBounds = this.Bounds;
             var bottomBounds = this.Bounds;
-            
+
             bottomBounds.yMax = partitionPoint;
             topBounds.yMin = partitionPoint;
-            
+
             this.FirstChild = new BSPTree(this, bottomBounds);
             this.SecondChild = new BSPTree(this, topBounds);
-            
+
             return (this.FirstChild, this.SecondChild);
         }
     }
