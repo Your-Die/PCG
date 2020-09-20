@@ -77,5 +77,11 @@ namespace Chinchillada.Generation.BSP
 
             return (this.FirstChild, this.SecondChild);
         }
+
+        public void ResetChildren()
+        {
+            this.FirstChild = null;
+            this.SecondChild = null;
+        }
     }
 }
