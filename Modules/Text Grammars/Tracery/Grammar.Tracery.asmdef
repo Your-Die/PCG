@@ -2,11 +2,11 @@
     "name": "Generation.Tracery",
     "references": [
         "GUID:1eaec2d7d70f722408cb2417d51f1005",
-        "GUID:dcb0e5b17acb1e444aa23b7e1a33171f",
-        "GUID:1b1406aec90101b4cb777f5e23af2b57",
         "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:e89364b53038569428d886f17aba64e2",
-        "GUID:3907dbd35a71d1041a3333e47c72c6ea"
+        "GUID:1b6375c38e60f984c9c35e7bf8f4056e",
+        "GUID:065a92623b9526c429fdcb9b15b505fd",
+        "GUID:1521f3c1972a82d4d8d1a552e086d1f4",
+        "GUID:9784512c80256c14a8f60f1e45d79c0f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -15,5 +15,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

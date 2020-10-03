@@ -2,7 +2,8 @@
     "name": "Chinchillada.Generation.Grammars",
     "references": [
         "JSON",
-        "Chinchillada.Foundation.Runtime"
+        "Chinchillada.Foundation.Runtime",
+        "Chinchillada.PCG"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
