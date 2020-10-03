@@ -118,26 +118,7 @@ namespace Chinchillada.Grammar
             return string.Join(string.Empty, nodeStrings);
         }
 
-        public void WrapStyle(string style)
-        {
-            var decorator = new NodeStyleDecorator(this, style);
-            this.Replace(decorator);
-        }
+       
     }
 
-    public class NodeStyleDecorator : ClosedNode
-    {
-        private readonly string style;
-
-        public NodeStyleDecorator(ClosedNode node, string style) : base(node)
-        {
-            this.style = style;
-        }
-
-        public override string Stringify(Func<IGrammarNode, string> stringifyFunction)
-        {
-            var text = base.Stringify(stringifyFunction);
-            return text.WrapStyle(this.style);
-        }
-    }
 }
