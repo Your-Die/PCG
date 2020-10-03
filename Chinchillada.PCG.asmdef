@@ -1,5 +1,5 @@
 {
-    "name": "Chinchillada.Generation",
+    "name": "Chinchillada.PCG",
     "references": [
         "GUID:1eaec2d7d70f722408cb2417d51f1005",
         "GUID:c03f40f865ece494193d07c65510bbd0",
@@ -12,5 +12,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -1,8 +1,8 @@
 {
     "name": "Chinchillada.Generation.Grammars",
     "references": [
-        "Chinchillada.Foundation",
-        "JSON"
+        "JSON",
+        "Chinchillada.Foundation.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -11,5 +11,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }
