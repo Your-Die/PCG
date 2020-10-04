@@ -2,12 +2,11 @@
   "name": "com.chinchillada.pcg",
   "version": "1.0.0",
   "displayName": "Chinchillada PCG",
-  "description": "",
   "unity": "2020.1",
   "unityRelease": "6f1",
   "dependencies": {
-  "com.chinchillada.foundation" : "https://github.com/Your-Die/Foundation.git",
-  "com.chinchillada.distributions" : "https://github.com/Your-Die/Disrtibutions.git" 
+    "com.chinchillada.foundation": "1.0.0",
+    "com.chinchillada.distributions": "1.0.0"
   },
   "keywords": [],
   "author": {
