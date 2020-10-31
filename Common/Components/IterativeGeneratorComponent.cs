@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Chinchillada.Foundation;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -52,10 +53,7 @@ namespace Chinchillada.Generation
             this.OnGenerated();
         }
 
-        public virtual IEnumerable<T> GenerateAsync()
-        {
-            yield return this.GenerateInternal();
-        }
+        public abstract IEnumerable<T> GenerateAsync();
         
         protected void OnGenerated() => this.Generated?.Invoke(this.Result);
 
@@ -65,9 +63,9 @@ namespace Chinchillada.Generation
             this.OnGenerated();
         }
 
-        protected abstract T GenerateInternal();
+        protected virtual T GenerateInternal() => this.GenerateAsync().Last();
 
-        public void GenerateWithEvent()
+        private void GenerateWithEvent()
         {
             this.Result = this.GenerateInternal();
             this.Generated?.Invoke(this.Result);
