@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation.Evolution
 {
-    public class MinimumChangeTermination : ChinchilladaBehaviour, ITerminationEvaluator
+    public class MinimumChangeTermination : ChinchilladaBehaviour, ITerminationEvaluator<IEvolution>
     {
         [SerializeField] private float minimumChange = 0.1f;
 
@@ -32,7 +32,7 @@ namespace Chinchillada.Generation.Evolution
             return this.generationsSinceChange >= this.terminationDelay;
         }
 
-        private void Reset()
+        public void Reset()
         {
             this.generationsSinceChange = 0;
             this.previousFittest = float.MinValue;

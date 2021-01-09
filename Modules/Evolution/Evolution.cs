@@ -60,7 +60,7 @@ namespace Chinchillada.Generation.Evolution
         /// Evaluates when the evolution should terminate.
         /// </summary>
         [SerializeField, FindComponent, Required]
-        private ITerminationEvaluator terminationEvaluator;
+        private  ITerminationEvaluator<IEvolution> terminationEvaluator;
 
         #endregion
 
@@ -116,6 +116,7 @@ namespace Chinchillada.Generation.Evolution
             this.GenerateInitialPopulation();
             yield return this.fittestIndividual;
 
+            this.terminationEvaluator.Reset();
             var stopWatch = new Stopwatch();
             var generation = 1;
             do
