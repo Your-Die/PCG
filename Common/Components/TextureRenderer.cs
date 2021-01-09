@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Chinchillada.Generation
 {
-    public class TextureRenderer : ChinchilladaBehaviour, IRenderer<Texture2D>, ISource<Texture2D>
+    public class TextureRenderer : ChinchilladaBehaviour, IRenderer<Texture2D>
     {
         [SerializeField] private FilterMode filterMode;
 

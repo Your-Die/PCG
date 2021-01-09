@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Chinchillada.Generation
 {
     [Serializable]
-    public class DistributionSampler<T> : IIterativeGenerator<T>
+    public class DistributionSampler<T> : IAsyncGenerator<T>
     {
         [SerializeField] private IDistribution<T> distribution;
         

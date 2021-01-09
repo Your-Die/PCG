@@ -5,7 +5,7 @@ using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.BSP
 {
-    public class BSPTreeGenerator : IterativeGeneratorComponent<BSPTree>
+    public class BSPTreeGenerator : AsyncGeneratorComponentBase<BSPTree>
     {
         [SerializeField] private BoundsInt bounds;
 

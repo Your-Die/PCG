@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Chinchillada.Generation
 {
     [Serializable]
-    public abstract class IterativeGeneratorBase<T> : GeneratorBase<T>, IIterativeGenerator<T>
+    public abstract class AsyncGeneratorBase<T> : GeneratorBase<T>, IAsyncGenerator<T>
     {
         [SerializeField, FoldoutGroup("Async settings")] private float asyncDelay = 0.02f;
 

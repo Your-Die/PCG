@@ -10,7 +10,7 @@ using Debug = UnityEngine.Debug;
 
 namespace Chinchillada.Generation.Evolution
 {
-    public class Evolution<T> : IterativeGeneratorComponent<T>, IEvolution
+    public class Evolution<T> : AsyncGeneratorComponentBase<T>, IEvolution
     {
         #region Editor fields
 
@@ -30,7 +30,7 @@ namespace Chinchillada.Generation.Evolution
         /// Generates the initial population.
         /// </summary>
         [SerializeField, FindComponent, Required]
-        private IIterativeGenerator<T> initialPopulationGenerator;
+        private IAsyncGenerator<T> initialPopulationGenerator;
 
         /// <summary>
         /// Evaluates the fitness of candidates.
@@ -117,6 +117,7 @@ namespace Chinchillada.Generation.Evolution
             yield return this.fittestIndividual;
 
             this.terminationEvaluator.Reset();
+
             var stopWatch = new Stopwatch();
             var generation = 1;
             do
