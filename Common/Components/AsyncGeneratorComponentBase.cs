@@ -13,11 +13,19 @@ namespace Chinchillada.Generation
         [SerializeField] private float asyncUpdate = 0.01f;
 
         [SerializeField] private bool invokeEventAsync;
+
+        [SerializeField] private IRNG random = new UnityRandom();
         
         private IEnumerator routine;
-        
+
         public T Result { get; private set; }
-        
+
+        public IRNG Random
+        {
+            get => this.random;
+            set => this.random = value;
+        }
+
         public event Action<T> Generated;
 
         [Button]

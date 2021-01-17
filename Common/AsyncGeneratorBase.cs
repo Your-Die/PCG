@@ -14,7 +14,7 @@ namespace Chinchillada.Generation
 
         [SerializeField, FoldoutGroup("Async settings")]
         private bool registerResultEachIteration;
-        
+
         protected override T GenerateInternal() => this.GenerateAsync().Last();
 
         public abstract IEnumerable<T> GenerateAsync();

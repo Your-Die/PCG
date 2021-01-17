@@ -2,9 +2,19 @@
 
 namespace Chinchillada.Generation
 {
+    using UnityEngine;
+
     public abstract class GeneratorBase<T> : IGenerator<T>
     {
+        [SerializeField] private IRNG random;
+        
         public T Result { get; private set; }
+
+        public IRNG Random
+        {
+            get => this.random;
+            set => this.random = value;
+        }
 
         public event Action<T> Generated;
 

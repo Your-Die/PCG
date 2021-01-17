@@ -13,10 +13,10 @@ namespace Chinchillada.Generation.Evolution
         
         private IWeightedDistribution<Mutator<T>> distribution;
         
-        public Mutator<T> Sample()
+        public Mutator<T> Sample(IRNG random = null)
         {
             this.EnsureDistribution();
-            return this.distribution.Sample();
+            return this.distribution.Sample(random);
         }
 
         public float Weight(Mutator<T> item)

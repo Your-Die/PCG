@@ -11,7 +11,7 @@ namespace Chinchillada.Generation.Evolution
         
         public override T Mutate(T parent, IRNG random)
         {
-            var mutator = this.mutatorDistribution.Sample();
+            var mutator = this.mutatorDistribution.Sample(random);
             return mutator.Mutate(parent, random);
         }
     }
