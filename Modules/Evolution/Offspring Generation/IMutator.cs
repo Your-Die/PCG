@@ -3,6 +3,6 @@
     public interface IMutator<T>
     {
         float Chance { get; }
-        T Mutate(T parent);
+        T Mutate(T parent, IRNG random);
     }
 }

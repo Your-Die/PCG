@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.Evolution
 {
@@ -13,15 +12,26 @@ namespace Chinchillada.Generation.Evolution
 
         [SerializeField] private List<Mutator<T>> mutators = new List<Mutator<T>>();
 
-        public IEnumerable<T> GenerateOffspring(IEnumerable<T> candidates, int amount)
+        public IEnumerable<T> GenerateOffspring(IEnumerable<T> candidates, int amount, IRNG random)
         {
             if (this.crossover != null) 
-                candidates = this.Crossover(candidates);
+                candidates = this.Crossover(candidates, random);
 
-            return candidates.Select(this.Mutate).Take(amount);
+            return candidates.Select(Mutate).Take(amount);
+            
+            T Mutate(T candidate)
+            {
+                foreach (var mutator in this.mutators)
+                {
+                    if (random.Flip(mutator.Chance))
+                        return mutator.Mutate(candidate, random);
+                }
+
+                return candidate;
+            }
         }
 
-        private IEnumerable<T> Crossover(IEnumerable<T> parents)
+        private IEnumerable<T> Crossover(IEnumerable<T> parents, IRNG random)
         {
             using (var enumerator = parents.GetEnumerator())
             {
@@ -38,20 +48,9 @@ namespace Chinchillada.Generation.Evolution
                     var parent2 = enumerator.Current;
                     anyLeft = enumerator.MoveNext();
 
-                    yield return this.crossover.Crossover(parent1, parent2);
+                    yield return this.crossover.Crossover(parent1, parent2, random);
                 }
             }
-        }
-
-        private T Mutate(T candidate)
-        {
-            foreach (var mutator in this.mutators)
-            {
-                if (Random.Bool(mutator.Chance))
-                    return mutator.Mutate(candidate);
-            }
-
-            return candidate;
         }
     }
 }

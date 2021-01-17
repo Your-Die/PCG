@@ -8,9 +8,9 @@ namespace Chinchillada.Generation.Evolution
         [SerializeField] private IMutator<T> mutator;
         public float Chance => this.mutator.Chance;
 
-        public T Mutate(T parent)
+        public T Mutate(T parent, IRNG random)
         {
-            return this.mutator.Mutate(parent);
+            return this.mutator.Mutate(parent, random);
         }
     }
 }

@@ -11,6 +11,6 @@ namespace Chinchillada.Generation.Evolution
 
         public float Chance => this.chance;
         
-        public abstract T Mutate(T parent);
+        public abstract T Mutate(T parent, IRNG random);
     }
 }

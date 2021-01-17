@@ -9,10 +9,10 @@ namespace Chinchillada.Generation.Evolution
     {
         [SerializeField] private IDistribution<Mutator<T>> mutatorDistribution;
         
-        public override T Mutate(T parent)
+        public override T Mutate(T parent, IRNG random)
         {
             var mutator = this.mutatorDistribution.Sample();
-            return mutator.Mutate(parent);
+            return mutator.Mutate(parent, random);
         }
     }
 }

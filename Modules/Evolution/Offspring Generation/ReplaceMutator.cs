@@ -6,6 +6,6 @@ namespace Chinchillada.Generation.Evolution
     {
         [SerializeField] private IAsyncGenerator<T> generator;
         
-        public override T Mutate(T _) => this.generator.Generate();
+        public override T Mutate(T _, IRNG random) => this.generator.Generate();
     }
 }

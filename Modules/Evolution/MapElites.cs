@@ -4,7 +4,6 @@ using Chinchillada.Foundation;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
-using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.Evolution
 {
@@ -16,6 +15,8 @@ namespace Chinchillada.Generation.Evolution
         [SerializeField, Required, FindComponent]
         private Evolution<T> evolution;
 
+        [SerializeField] private IRNG random = new UnityRandom();
+        
         public Genotype<T>[,] Map { get; private set; }
 
         public int Width => this.diversityX.BinCount;
@@ -27,8 +28,8 @@ namespace Chinchillada.Generation.Evolution
         {
             while (true)
             {
-                var x = Random.Range(this.Width);
-                var y = Random.Range(this.Height);
+                var x = this.random.Range(this.Width);
+                var y = this.random.Range(this.Height);
 
                 yield return this.Map[x, y];
             }

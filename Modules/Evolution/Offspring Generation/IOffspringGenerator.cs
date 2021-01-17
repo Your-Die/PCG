@@ -4,6 +4,6 @@ namespace Chinchillada.Generation.Evolution
 {
     public interface IOffspringGenerator<T>
     {
-        IEnumerable<T> GenerateOffspring(IEnumerable<T> candidates, int amount);
+        IEnumerable<T> GenerateOffspring(IEnumerable<T> candidates, int amount, IRNG random);
     }
 }

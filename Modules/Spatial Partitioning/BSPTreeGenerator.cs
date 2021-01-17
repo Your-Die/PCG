@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = Chinchillada.Foundation.Random;
 
 namespace Chinchillada.Generation.BSP
 {
@@ -11,12 +10,11 @@ namespace Chinchillada.Generation.BSP
 
         [SerializeField] private BoundsInt minimumPartitionSize;
 
+        [SerializeField] private IRNG random = new UnityRandom();
+
         private readonly Queue<BSPTree> partitionQueue = new Queue<BSPTree>();
 
-        public BSPTree GenerateTree()
-        {
-            return this.GenerateAsync().Last();
-        }
+        public BSPTree GenerateTree() => this.GenerateAsync().Last();
 
         public override IEnumerable<BSPTree> GenerateAsync()
         {
@@ -47,7 +45,7 @@ namespace Chinchillada.Generation.BSP
             // Choose if both directions possible.
             if (canSplitHorizontal && canSplitVertical)
             {
-                if (Random.Bool())
+                if (this.random.Flip())
                     this.PartitionHorizontal(node);
                 else
                     this.PartitionVertical(node);
@@ -69,7 +67,7 @@ namespace Chinchillada.Generation.BSP
             var max = node.Bounds.xMax - minimumSize;
 
             // Choose partition point.
-            var partitionPoint = Random.Range(min, max);
+            var partitionPoint = this.random.Range(min, max);
 
             var leftBounds = node.Bounds;
             var rightBounds = node.Bounds;
@@ -92,7 +90,7 @@ namespace Chinchillada.Generation.BSP
             var max = node.Bounds.yMax - minimumSize;
 
             // Choose partition point.
-            var partitionPoint = Random.Range(min, max);
+            var partitionPoint = this.random.Range(min, max);
             
             var topBounds = node.Bounds;
             var bottomBounds = node.Bounds;

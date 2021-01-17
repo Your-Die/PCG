@@ -62,6 +62,8 @@ namespace Chinchillada.Generation.Evolution
         [SerializeField, FindComponent, Required]
         private  ITerminationEvaluator<IEvolution> terminationEvaluator;
 
+        [SerializeField] private IRNG random = new UnityRandom();
+
         #endregion
 
         private enum GoalType
@@ -144,8 +146,8 @@ namespace Chinchillada.Generation.Evolution
             var parents = parentGenotypes.Select(genotype => ((Genotype<T>) genotype).Candidate);
 
             // Generate and evaluate offspring.
-            var offspringCandidates = this.offspringGenerator.GenerateOffspring(parents, this.offspringCount);
-            var offspring = this.EvaluatePopulation(offspringCandidates);
+            var offspringCandidates = this.offspringGenerator.GenerateOffspring(parents, this.offspringCount, this.random);
+            var offspring           = this.EvaluatePopulation(offspringCandidates);
 
             // Select survivors.
             var survivors = this.survivorSelector.SelectSurvivors(parentGenotypes, offspring);
