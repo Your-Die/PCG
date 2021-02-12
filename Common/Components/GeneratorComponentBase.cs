@@ -18,5 +18,6 @@ namespace Chinchillada.Generation
         }
 
         protected abstract T GenerateInternal();
+        T ISource<T>.Get() => this.Generate();
     }
 }

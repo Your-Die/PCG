@@ -18,5 +18,7 @@ namespace Chinchillada.Generation
 
         [Button]
         public T Generate() => this.generator.Generate();
+
+        T ISource<T>.Get() => this.generator.Get();
     }
 }

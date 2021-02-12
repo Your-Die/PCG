@@ -2,11 +2,12 @@
 
 namespace Chinchillada.Generation
 {
+    using Foundation;
     using UnityEngine;
 
     public abstract class GeneratorBase<T> : IGenerator<T>
     {
-        [SerializeField] private IRNG random;
+        [SerializeField] private IRNG random = new UnityRandom();
         
         public T Result { get; private set; }
 
@@ -49,5 +50,7 @@ namespace Chinchillada.Generation
         protected virtual void OnBeforeGenerate()
         {
         }
+
+        T ISource<T>.Get() => this.Generate();
     }
 }

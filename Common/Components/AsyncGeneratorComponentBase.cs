@@ -78,5 +78,7 @@ namespace Chinchillada.Generation
             this.Result = this.GenerateInternal();
             this.Generated?.Invoke(this.Result);
         }
+
+        T ISource<T>.Get() => this.Generate();
     }
 }
