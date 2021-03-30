@@ -9,12 +9,12 @@ namespace Chinchillada.Generation
         private IGenerator<T> generator;
 
         [SerializeField, FindComponent(SearchStrategy.InScene)]
-        private IRenderer<T> resultRenderer;
+        private IVisualizer<T> resultRenderer;
 
         private void OnEnable() => this.generator.Generated += this.OnGenerated;
 
         private void OnDisable() => this.generator.Generated -= this.OnGenerated;
 
-        private void OnGenerated(T result) => this.resultRenderer.Render(result);
+        private void OnGenerated(T result) => this.resultRenderer.Visualize(result);
     }
 }
