@@ -10,7 +10,7 @@ using Debug = UnityEngine.Debug;
 
 namespace Chinchillada.Generation.Evolution
 {
-    public class Evolution<T> : AsyncGeneratorComponentBase<T>, IEvolution
+    public class Evolution<T> : AsyncGeneratorBase<T>, IEvolution
     {
         #region Editor fields
 
@@ -142,15 +142,15 @@ namespace Chinchillada.Generation.Evolution
         public IEnumerable<Genotype<T>> EvolveGeneration()
         {
             // Select parents.
-            var parentGenotypes = this.parentSelector.SelectParents(this.population).ToList();
+            var parentGenotypes = this.parentSelector.SelectParents(this.population);
             var parents = parentGenotypes.Select(genotype => ((Genotype<T>) genotype).Candidate);
 
             // Generate and evaluate offspring.
             var offspringCandidates = this.offspringGenerator.GenerateOffspring(parents, this.offspringCount, this.random);
-            var offspring           = this.EvaluatePopulation(offspringCandidates);
+            var offspring = this.EvaluatePopulation(offspringCandidates);
 
             // Select survivors.
-            var survivors = this.survivorSelector.SelectSurvivors(parentGenotypes, offspring);
+            var survivors = this.survivorSelector.SelectSurvivors(this.population, offspring);
             this.population = survivors.Convert(survivor => (Genotype<T>) survivor).ToList();
 
             // Update fittest individual.

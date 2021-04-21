@@ -12,6 +12,8 @@ namespace Chinchillada.Generation.Evolution
             this.Candidate = candidate;
             this.Fitness = fitness;
         }
+
+        public override string ToString() => $"[{this.Fitness}] {this.Candidate}";
     }
 
     public interface IGenotype

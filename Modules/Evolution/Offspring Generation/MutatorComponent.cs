@@ -1,12 +1,12 @@
 ﻿using Chinchillada.Foundation;
-using UnityEngine;
 
 namespace Chinchillada.Generation.Evolution
 {
+    using Sirenix.Serialization;
+
     public class MutatorComponent<T> : ChinchilladaBehaviour, IMutator<T>
     {
-        [SerializeField] private IMutator<T> mutator;
-        public float Chance => this.mutator.Chance;
+        [OdinSerialize] private IMutator<T> mutator;
 
         public T Mutate(T parent, IRNG random)
         {

@@ -9,8 +9,6 @@ namespace Chinchillada.Generation.Evolution
     {
         [SerializeField, Range(0, 1)] private float chance;
 
-        public float Chance => this.chance;
-        
         public abstract T Mutate(T parent, IRNG random);
     }
 }
