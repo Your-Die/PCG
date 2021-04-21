@@ -8,14 +8,17 @@ using UnityEngine;
 
 namespace Chinchillada.Generation
 {
+    using System.Diagnostics;
+    using Debug = UnityEngine.Debug;
+
     public abstract class AsyncGeneratorComponentBase<T> : ChinchilladaBehaviour, IAsyncGenerator<T>
     {
-        [SerializeField] private float asyncUpdate = 0.01f;
-
         [SerializeField] private bool invokeEventAsync;
 
         [SerializeField] private IRNG random = new UnityRandom();
-        
+
+        [SerializeField] private bool useStopWatch;
+
         private IEnumerator routine;
 
         public T Result { get; private set; }
@@ -38,7 +41,7 @@ namespace Chinchillada.Generation
         [Button]
         public void StartGenerateAsync()
         {
-            if (this.routine != null) 
+            if (this.routine != null)
                 this.StopCoroutine(this.routine);
 
             this.routine = this.GenerateAsyncRoutine(null);
@@ -47,22 +50,31 @@ namespace Chinchillada.Generation
 
         public IEnumerator GenerateAsyncRoutine(Action<T> callback)
         {
+            var stopWatch = new Stopwatch();
+
+            if (this.useStopWatch) 
+                stopWatch.Start();
+
             foreach (var generation in this.GenerateAsync())
             {
                 this.Result = generation;
                 callback?.Invoke(generation);
 
-                if (this.invokeEventAsync) 
+                if (this.useStopWatch)
+                    Debug.Log($"async step time: {stopWatch.Elapsed}");
+
+                if (this.invokeEventAsync)
                     this.OnGenerated();
 
-                yield return new WaitForSeconds(this.asyncUpdate);
+                yield return null;
+                stopWatch.Restart();
             }
 
             this.OnGenerated();
         }
 
         public abstract IEnumerable<T> GenerateAsync();
-        
+
         protected void OnGenerated() => this.Generated?.Invoke(this.Result);
 
         protected void OnGenerated(T result)

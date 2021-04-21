@@ -1,11 +1,11 @@
 ﻿namespace Chinchillada.Generation
 {
     using System.Collections.Generic;
-    using UnityEngine;
+    using Sirenix.Serialization;
 
     public class AsyncGeneratorComponent<T> : AsyncGeneratorComponentBase<T>
     {
-        [SerializeField] private IAsyncGenerator<T> generator;
+        [OdinSerialize] private IAsyncGenerator<T> generator;
         
         public override IEnumerable<T> GenerateAsync() => this.generator.GenerateAsync();
     }
