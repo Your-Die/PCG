@@ -3,7 +3,6 @@ namespace Chinchillada.Generation.Sampling
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Foundation;
     using Sirenix.Serialization;
     using UnityEngine;
 
