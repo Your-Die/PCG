@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Chinchillada.Foundation;
+using Chinchillada;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -92,5 +92,6 @@ namespace Chinchillada.Generation
         }
 
         T ISource<T>.Get() => this.Generate();
+        public IEnumerator Execute() => this.GenerateAsyncRoutine(null);
     }
 }

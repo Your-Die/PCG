@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 namespace Chinchillada.Generation
 {
-    public interface IAsyncGenerator<T> : IGenerator<T>
+    using Behavior;
+
+    public interface IAsyncGenerator<T> : IGenerator<T>, IExecutable
     {
         IEnumerable<T> GenerateAsync();
         IEnumerator GenerateAsyncRoutine(Action<T> callback = null);

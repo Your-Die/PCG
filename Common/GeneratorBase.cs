@@ -2,7 +2,7 @@
 
 namespace Chinchillada.Generation
 {
-    using Foundation;
+    using Chinchillada;
     using UnityEngine;
 
     public abstract class GeneratorBase<T> : IGenerator<T>

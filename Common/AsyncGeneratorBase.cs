@@ -38,5 +38,7 @@ namespace Chinchillada.Generation
             if (!this.registerResultEachIteration) 
                 this.RegisterResult(result);
         }
+
+        public IEnumerator Execute() => this.GenerateAsyncRoutine();
     }
 }

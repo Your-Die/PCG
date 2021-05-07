@@ -1,5 +1,5 @@
 ﻿using System;
-using Chinchillada.Foundation;
+using Chinchillada;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
