@@ -1,4 +1,4 @@
-namespace Chinchillada.Generation.Sampling
+namespace Chinchillada.PCG.Sampling
 {
     using System.Collections.Generic;
     using UnityEngine;

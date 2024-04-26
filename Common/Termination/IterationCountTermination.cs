@@ -2,7 +2,7 @@ using System;
 using Chinchillada;
 using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
     [Serializable]
     public class IterationCountTermination : ITerminationEvaluator

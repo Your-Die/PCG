@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
     using Chinchillada;
     using UnityEngine;
 
-    public abstract class GeneratorBase<T> : IGenerator<T>
+    public abstract class GeneratorBase<T> : Strategy, IGenerator<T>
     {
         [SerializeField] private IRNG random = new UnityRandom();
         
@@ -51,6 +51,5 @@ namespace Chinchillada.Generation
         {
         }
 
-        T ISource<T>.Get() => this.Generate();
     }
 }

@@ -1,9 +1,8 @@
-﻿using Chinchillada;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
-    public class TextureRenderer : ChinchilladaBehaviour, IVisualizer<Texture2D>, ISource<Texture2D>
+    public class TextureRenderer : AutoRefBehaviour, IVisualizer<Texture2D>, ISource<Texture2D>
     {
         [SerializeField] private FilterMode filterMode;
 

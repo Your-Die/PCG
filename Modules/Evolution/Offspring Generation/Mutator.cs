@@ -2,7 +2,7 @@ using System;
 using Chinchillada;
 using UnityEngine;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     [Serializable]
     public abstract class Mutator<T> : IMutator<T>

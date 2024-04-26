@@ -2,7 +2,7 @@ using System;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     [Serializable, UsedImplicitly]
     public class FitnessThresholdTermination :  ITerminationEvaluator<IEvolution>

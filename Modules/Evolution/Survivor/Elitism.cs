@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Chinchillada.Algorithms;
 using UnityEngine;
-using Utilities.Algorithms;
 
-namespace Chinchillada.Generation.Evolution.Survivor
+namespace Chinchillada.PCG.Evolution.Survivor
 {
     [Serializable]
     public class Elitism : ISurvivorSelector

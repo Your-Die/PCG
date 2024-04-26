@@ -1,17 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using Chinchillada;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
-namespace Chinchillada.Generation
+
+namespace Chinchillada.PCG
 {
-    using System.Diagnostics;
-    using Debug = UnityEngine.Debug;
-
-    public abstract class AsyncGeneratorComponentBase<T> : ChinchilladaBehaviour, IAsyncGenerator<T>
+    public abstract class AsyncGeneratorComponentBase<T> : AutoRefBehaviour, IAsyncGenerator<T>
     {
         [SerializeField] private bool invokeEventAsync;
 
@@ -52,7 +51,7 @@ namespace Chinchillada.Generation
         {
             var stopWatch = new Stopwatch();
 
-            if (this.useStopWatch) 
+            if (this.useStopWatch)
                 stopWatch.Start();
 
             foreach (var generation in this.GenerateAsync())
@@ -91,7 +90,6 @@ namespace Chinchillada.Generation
             this.Generated?.Invoke(this.Result);
         }
 
-        T ISource<T>.Get() => this.Generate();
         public IEnumerator Execute() => this.GenerateAsyncRoutine(null);
     }
 }

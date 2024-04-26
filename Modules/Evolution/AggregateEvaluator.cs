@@ -1,4 +1,4 @@
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     using System;
     using System.Collections.Generic;

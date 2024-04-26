@@ -1,4 +1,4 @@
-﻿namespace Chinchillada.Generation
+﻿namespace Chinchillada.PCG
 {
     public class StringGeneratorComponent : GeneratorComponent<string>
     {

@@ -1,4 +1,4 @@
-﻿namespace Chinchillada.Generation
+﻿namespace Chinchillada.PCG
 {
     using System;
     using UnityEngine;
@@ -6,7 +6,7 @@
     [Serializable]
     public class TerminationEvaluator<T> : ITerminationEvaluator<T>
     {
-        [SerializeField] private ITerminationEvaluator terminationEvaluator;
+        [SerializeReference] private ITerminationEvaluator terminationEvaluator;
         
         public void Reset() => this.terminationEvaluator.Reset();
 

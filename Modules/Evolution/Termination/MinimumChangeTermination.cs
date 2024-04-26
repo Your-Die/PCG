@@ -1,15 +1,14 @@
-using Chinchillada;
 using UnityEngine;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
-    public class MinimumChangeTermination : ChinchilladaBehaviour, ITerminationEvaluator<IEvolution>
+    public class MinimumChangeTermination : AutoRefBehaviour, ITerminationEvaluator<IEvolution>
     {
         [SerializeField] private float minimumChange = 0.1f;
 
         [SerializeField] private int terminationDelay = 10;
 
-        [SerializeField, FindComponent] private IEvolution evolution;
+        [SerializeReference, FindComponent] private IEvolution evolution;
         
         private float previousFittest;
 

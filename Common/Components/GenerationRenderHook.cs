@@ -1,12 +1,12 @@
 ﻿using Chinchillada;
 using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
-    public class GenerationRenderHook<T> : ChinchilladaBehaviour
+    public class GenerationRenderHook<T> : AutoRefBehaviour
     {
         [SerializeField, FindComponent(SearchStrategy.InScene)]
-        private IGenerator<T> generator;
+        private IObservableGenerator<T> generator;
 
         [SerializeField, FindComponent(SearchStrategy.InScene)]
         private IVisualizer<T> resultRenderer;

@@ -1,9 +1,9 @@
 ﻿using System;
 using Chinchillada;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
-    public abstract class GeneratorComponentBase<T> : ChinchilladaBehaviour, IGenerator<T>
+    public abstract class GeneratorComponentBase<T> : AutoRefBehaviour, IGenerator<T>
     {
         public T Result { get; private set; }
         
@@ -18,6 +18,5 @@ namespace Chinchillada.Generation
         }
 
         protected abstract T GenerateInternal();
-        T ISource<T>.Get() => this.Generate();
     }
 }

@@ -5,9 +5,9 @@ using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
-    public class MapElites<T> : ChinchilladaBehaviour, IParentSelector, ISurvivorSelector
+    public class MapElites<T> : AutoRefBehaviour, IParentSelector, ISurvivorSelector
     {
         [SerializeField] private MetricAxis diversityX;
         [SerializeField] private MetricAxis diversityY;
@@ -15,7 +15,7 @@ namespace Chinchillada.Generation.Evolution
         [SerializeField, Required, FindComponent]
         private Evolution<T> evolution;
 
-        [SerializeField] private IRNG random = new UnityRandom();
+        [SerializeReference] private IRNG random = new UnityRandom();
         
         public Genotype<T>[,] Map { get; private set; }
 

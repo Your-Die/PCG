@@ -2,7 +2,7 @@
 using Chinchillada.Distributions;
 using UnityEngine;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     [Serializable]
     public class MutatorComposite<T> : Mutator<T>

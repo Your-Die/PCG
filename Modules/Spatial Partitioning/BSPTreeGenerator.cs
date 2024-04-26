@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Chinchillada.Generation.BSP
+namespace Chinchillada.PCG.BSP
 {
     public class BSPTreeGenerator : AsyncGeneratorComponentBase<BSPTree>
     {

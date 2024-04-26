@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
     [Serializable]
     public class SequenceGenerator<T> : GeneratorBase<IList<T>>

@@ -1,4 +1,4 @@
-﻿namespace Chinchillada.Generation
+﻿namespace Chinchillada.PCG
 {
     using System.Collections.Generic;
     using Sirenix.Serialization;

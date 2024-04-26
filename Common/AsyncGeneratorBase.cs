@@ -5,7 +5,7 @@ using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
     [Serializable]
     public abstract class AsyncGeneratorBase<T> : GeneratorBase<T>, IAsyncGenerator<T>

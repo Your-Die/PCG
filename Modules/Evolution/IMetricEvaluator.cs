@@ -1,4 +1,4 @@
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     public interface IMetricEvaluator<T>
     {

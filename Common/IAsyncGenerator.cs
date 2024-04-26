@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
     using Behavior;
 

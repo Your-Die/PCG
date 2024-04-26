@@ -1,6 +1,6 @@
 using System;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     public interface IEvolution
     {

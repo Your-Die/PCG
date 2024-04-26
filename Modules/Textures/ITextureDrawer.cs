@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Chinchillada.Generation.Textures
+namespace Chinchillada.PCG.Textures
 {
     public interface ITextureDrawer
     {

@@ -1,7 +1,7 @@
-namespace Chinchillada.Generation.Textures
+namespace Chinchillada.PCG.Textures
 {
     using System;
-    using Generation;
+    using PCG;
     using Sirenix.Serialization;
     using UnityEngine;
 

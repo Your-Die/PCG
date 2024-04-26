@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     public class Genotype<T> : IGenotype
     {

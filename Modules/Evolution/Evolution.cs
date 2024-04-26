@@ -8,7 +8,7 @@ using Sirenix.Utilities;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     public class Evolution<T> : AsyncGeneratorBase<T>, IEvolution
     {

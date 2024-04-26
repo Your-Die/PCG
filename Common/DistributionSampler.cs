@@ -2,7 +2,7 @@
 using Chinchillada.Distributions;
 using UnityEngine;
 
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
     [Serializable]
     public class DistributionSampler<T> : GeneratorBase<T>

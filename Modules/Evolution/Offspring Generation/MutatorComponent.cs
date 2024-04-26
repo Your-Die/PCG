@@ -1,10 +1,8 @@
-﻿using Chinchillada;
-
-namespace Chinchillada.Generation.Evolution
+﻿namespace Chinchillada.PCG.Evolution
 {
     using Sirenix.Serialization;
 
-    public class MutatorComponent<T> : ChinchilladaBehaviour, IMutator<T>
+    public class MutatorComponent<T> : AutoRefBehaviour, IMutator<T>
     {
         [OdinSerialize] private IMutator<T> mutator;
 

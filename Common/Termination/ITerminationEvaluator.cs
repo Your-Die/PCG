@@ -1,4 +1,4 @@
-namespace Chinchillada.Generation
+namespace Chinchillada.PCG
 {
     public interface ITerminationEvaluator
     {

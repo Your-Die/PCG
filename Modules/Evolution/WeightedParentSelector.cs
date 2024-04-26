@@ -3,7 +3,7 @@ using System.Linq;
 using Chinchillada;
 using JetBrains.Annotations;
 
-namespace Chinchillada.Generation.Evolution
+namespace Chinchillada.PCG.Evolution
 {
     [UsedImplicitly]
     public class WeightedParentSelector : IParentSelector

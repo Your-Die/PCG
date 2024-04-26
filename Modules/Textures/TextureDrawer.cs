@@ -1,4 +1,4 @@
-namespace Chinchillada.Generation.Textures
+namespace Chinchillada.PCG.Textures
 {
     using System;
     using Chinchillada;
