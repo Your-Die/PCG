@@ -5,14 +5,14 @@ namespace Chinchillada.PCG.Sampling
 
     public class UniformPointSampler : GeneratorBase<IEnumerable<Vector2>>
     {
-        protected override IEnumerable<Vector2> GenerateInternal()
+        protected override IEnumerable<Vector2> GenerateInternal(IRNG random)
         {
             while (true)
             {
                 yield return new Vector2
                 {
-                    x = this.Random.Float(),
-                    y = this.Random.Float()
+                    x = random.Float(),
+                    y = random.Float()
                 };
             }
         }

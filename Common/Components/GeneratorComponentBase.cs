@@ -9,7 +9,7 @@ namespace Chinchillada.PCG
         
         public event Action<T> Generated;
         
-        public T Generate()
+        public T Generate(IRNG random)
         {
             this.Result = this.GenerateInternal();
             this.Generated?.Invoke(this.Result);

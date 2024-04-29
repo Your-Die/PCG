@@ -15,15 +15,15 @@ namespace Chinchillada.PCG
         [SerializeField, FoldoutGroup("Async settings")]
         private bool registerResultEachIteration;
 
-        protected override T GenerateInternal() => this.GenerateAsync().Last();
+        protected override T GenerateInternal(IRNG random) => this.GenerateAsync(random).Last();
 
-        public abstract IEnumerable<T> GenerateAsync();
+        public abstract IEnumerable<T> GenerateAsync(IRNG random);
 
-        public IEnumerator GenerateAsyncRoutine(Action<T> callback = null)
+        public IEnumerator GenerateAsyncRoutine(IRNG random, Action<T> callback = null)
         {
             T result = default;
             
-            foreach (var iteration in this.GenerateAsync())
+            foreach (var iteration in this.GenerateAsync(random))
             {
                 result = iteration;
                 
@@ -38,7 +38,5 @@ namespace Chinchillada.PCG
             if (!this.registerResultEachIteration) 
                 this.RegisterResult(result);
         }
-
-        public IEnumerator Execute() => this.GenerateAsyncRoutine();
     }
 }

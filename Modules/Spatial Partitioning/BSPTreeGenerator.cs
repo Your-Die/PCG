@@ -10,13 +10,11 @@ namespace Chinchillada.PCG.BSP
 
         [SerializeField] private BoundsInt minimumPartitionSize;
 
-        [SerializeField] private IRNG random = new UnityRandom();
-
         private readonly Queue<BSPTree> partitionQueue = new Queue<BSPTree>();
 
-        public BSPTree GenerateTree() => this.GenerateAsync().Last();
+        public BSPTree GenerateTree(IRNG random) => this.GenerateAsync(random).Last();
 
-        public override IEnumerable<BSPTree> GenerateAsync()
+        public override IEnumerable<BSPTree> GenerateAsync(IRNG random)
         {
             this.partitionQueue.Clear();
 
@@ -28,15 +26,15 @@ namespace Chinchillada.PCG.BSP
                 var node = this.partitionQueue.Dequeue();
                 yield return node;
 
-                this.Partition(node);
+                this.Partition(node, random);
             }
 
             yield return root;
         }
 
-        protected override BSPTree GenerateInternal() => this.GenerateTree();
+        protected override BSPTree GenerateInternal(IRNG random) => this.GenerateTree(random);
 
-        private void Partition(BSPTree node)
+        private void Partition(BSPTree node, IRNG random)
         {
             // Check how the node can be split.
             var canSplitHorizontal = node.Bounds.size.x > this.minimumPartitionSize.size.x * 2;
@@ -45,21 +43,21 @@ namespace Chinchillada.PCG.BSP
             // Choose if both directions possible.
             if (canSplitHorizontal && canSplitVertical)
             {
-                if (this.random.Flip())
-                    this.PartitionHorizontal(node);
+                if (random.Flip())
+                    this.PartitionHorizontal(node, random);
                 else
-                    this.PartitionVertical(node);
+                    this.PartitionVertical(node, random);
             }
             else if (canSplitHorizontal)
-                this.PartitionHorizontal(node);
+                this.PartitionHorizontal(node, random);
             else if (canSplitVertical)
-                this.PartitionVertical(node);
+                this.PartitionVertical(node, random);
         }
 
         /// <summary>
         /// Partitions the <paramref name="node"/> horizontally.
         /// </summary>
-        private void PartitionHorizontal(BSPTree node)
+        private void PartitionHorizontal(BSPTree node, IRNG random)
         {
             // Calculate the range of possible partition points.
             var minimumSize = this.minimumPartitionSize.size.x;
@@ -67,7 +65,7 @@ namespace Chinchillada.PCG.BSP
             var max = node.Bounds.xMax - minimumSize;
 
             // Choose partition point.
-            var partitionPoint = this.random.Range(min, max);
+            var partitionPoint = random.Range(min, max);
 
             var leftBounds = node.Bounds;
             var rightBounds = node.Bounds;
@@ -82,7 +80,7 @@ namespace Chinchillada.PCG.BSP
         /// <summary>
         /// Partitions the <paramref name="node"/> vertically.
         /// </summary>
-        private void PartitionVertical(BSPTree node)
+        private void PartitionVertical(BSPTree node, IRNG random)
         {
             // Calculate the range of possible partition points.
             var minimumSize = this.minimumPartitionSize.size.y;
@@ -90,7 +88,7 @@ namespace Chinchillada.PCG.BSP
             var max = node.Bounds.yMax - minimumSize;
 
             // Choose partition point.
-            var partitionPoint = this.random.Range(min, max);
+            var partitionPoint = random.Range(min, max);
             
             var topBounds = node.Bounds;
             var bottomBounds = node.Bounds;

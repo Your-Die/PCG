@@ -14,47 +14,39 @@ namespace Chinchillada.PCG
     {
         [SerializeField] private bool invokeEventAsync;
 
-        [SerializeField] private IRNG random = new UnityRandom();
-
         [SerializeField] private bool useStopWatch;
 
         private IEnumerator routine;
 
         public T Result { get; private set; }
 
-        public IRNG Random
-        {
-            get => this.random;
-            set => this.random = value;
-        }
-
         public event Action<T> Generated;
 
         [Button]
-        public T Generate()
+        public T Generate(IRNG random)
         {
-            this.GenerateWithEvent();
+            this.GenerateWithEvent(random);
             return this.Result;
         }
 
         [Button]
-        public void StartGenerateAsync()
+        public void StartGenerateAsync(IRNG random)
         {
             if (this.routine != null)
                 this.StopCoroutine(this.routine);
 
-            this.routine = this.GenerateAsyncRoutine(null);
+            this.routine = this.GenerateAsyncRoutine(random, null);
             this.StartCoroutine(this.routine);
         }
 
-        public IEnumerator GenerateAsyncRoutine(Action<T> callback)
+        public IEnumerator GenerateAsyncRoutine(IRNG random, Action<T> callback)
         {
             var stopWatch = new Stopwatch();
 
             if (this.useStopWatch)
                 stopWatch.Start();
 
-            foreach (var generation in this.GenerateAsync())
+            foreach (var generation in this.GenerateAsync(random))
             {
                 this.Result = generation;
                 callback?.Invoke(generation);
@@ -72,7 +64,7 @@ namespace Chinchillada.PCG
             this.OnGenerated();
         }
 
-        public abstract IEnumerable<T> GenerateAsync();
+        public abstract IEnumerable<T> GenerateAsync(IRNG random1);
 
         protected void OnGenerated() => this.Generated?.Invoke(this.Result);
 
@@ -82,14 +74,12 @@ namespace Chinchillada.PCG
             this.OnGenerated();
         }
 
-        protected virtual T GenerateInternal() => this.GenerateAsync().Last();
+        protected virtual T GenerateInternal(IRNG random) => this.GenerateAsync(random).Last();
 
-        private void GenerateWithEvent()
+        private void GenerateWithEvent(IRNG random)
         {
-            this.Result = this.GenerateInternal();
+            this.Result = this.GenerateInternal(random);
             this.Generated?.Invoke(this.Result);
         }
-
-        public IEnumerator Execute() => this.GenerateAsyncRoutine(null);
     }
 }

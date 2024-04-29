@@ -10,6 +10,6 @@ namespace Chinchillada.PCG
         [SerializeField] private IGenerator<T> generator;
 
         [Button]
-        public T Generate() => this.generator.Generate();
+        public T Generate(IRNG random) => this.generator.Generate(random);
     }
 }

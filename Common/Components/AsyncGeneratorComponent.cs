@@ -7,6 +7,6 @@
     {
         [OdinSerialize] private IAsyncGenerator<T> generator;
         
-        public override IEnumerable<T> GenerateAsync() => this.generator.GenerateAsync();
+        public override IEnumerable<T> GenerateAsync(IRNG random) => this.generator.GenerateAsync(random);
     }
 }

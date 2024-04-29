@@ -12,12 +12,12 @@ namespace Chinchillada.PCG.Sampling
 
         [SerializeField] private int sampleAttempts = 10;
         
-        protected override IEnumerable<Vector2> GenerateInternal()
+        protected override IEnumerable<Vector2> GenerateInternal(IRNG random)
         {
             var firstPoint = new Vector2
             {
-                x = this.Random.Float(),
-                y = this.Random.Float()
+                x = random.Float(),
+                y = random.Float()
             };
 
             var memory     = new List<Vector2> {firstPoint};
@@ -47,8 +47,8 @@ namespace Chinchillada.PCG.Sampling
             {
                 for (var i = 0; i < this.sampleAttempts; i++)
                 {
-                    var distance  = annulus.RandomInRange(this.Random);
-                    var direction = this.Random.Direction();
+                    var distance  = annulus.RandomInRange(random);
+                    var direction = random.Direction();
 
                     result = point + direction * distance;
                     if (IsValid(result))

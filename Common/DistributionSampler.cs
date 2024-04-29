@@ -9,6 +9,6 @@ namespace Chinchillada.PCG
     {
         [SerializeField] private IDistribution<T> distribution;
 
-        protected override T GenerateInternal() => this.distribution.Sample(this.Random);
+        protected override T GenerateInternal(IRNG random) => this.distribution.Sample(random);
     }
 }

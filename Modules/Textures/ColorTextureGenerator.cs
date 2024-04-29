@@ -12,7 +12,7 @@ namespace Chinchillada.PCG.Textures
 
         [OdinSerialize] private ISource<Color> colorSource;
         
-        protected override Texture2D GenerateInternal()
+        protected override Texture2D GenerateInternal(IRNG random)
         {
             var texture = new Texture2D(this.resolution.x, this.resolution.y);
 

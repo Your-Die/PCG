@@ -3,43 +3,24 @@
 namespace Chinchillada.PCG
 {
     using Chinchillada;
-    using UnityEngine;
 
     public abstract class GeneratorBase<T> : Strategy, IGenerator<T>
     {
-        [SerializeField] private IRNG random = new UnityRandom();
-        
         public T Result { get; private set; }
-
-        public IRNG Random
-        {
-            get => this.random;
-            set => this.random = value;
-        }
 
         public event Action<T> Generated;
 
-        public T Generate()
+        public T Generate(IRNG random)
         {
             this.OnBeforeGenerate();
             
-            var result = this.GenerateInternal();
+            var result = this.GenerateInternal(random);
             
             this.RegisterResult(result);
             return this.Result;
         }
 
-        protected T Generate(Func<T> generationFunction)
-        {
-            this.OnBeforeGenerate();
-
-            var result = generationFunction.Invoke();
-            
-            this.RegisterResult(result);
-            return this.Result;
-        }
-
-        protected abstract T GenerateInternal();
+        protected abstract T GenerateInternal(IRNG random);
 
         protected void RegisterResult(T result)
         {

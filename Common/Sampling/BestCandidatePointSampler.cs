@@ -13,13 +13,13 @@ namespace Chinchillada.PCG.Sampling
 
         [OdinSerialize] private IGenerator<IEnumerable<Vector2>> subSampler = new UniformPointSampler();
         
-        protected override IEnumerable<Vector2> GenerateInternal()
+        protected override IEnumerable<Vector2> GenerateInternal(IRNG random)
         {
             var memory = new List<Vector2>();
 
             while (true)
             {
-                var points = this.subSampler.Generate().Take(this.candidateCount);
+                var points = this.subSampler.Generate(random).Take(this.candidateCount);
                 var point  = points.ArgMax(DistanceToExisting);
 
                 yield return point;

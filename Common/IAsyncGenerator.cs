@@ -4,12 +4,14 @@ using System.Collections.Generic;
 
 namespace Chinchillada.PCG
 {
-    using Behavior;
-
-    public interface IAsyncGenerator<T> : IGenerator<T>, IExecutable
+    public interface IAsyncGenerator<T> : IGenerator<T>
     {
-        IEnumerable<T> GenerateAsync();
-        IEnumerator GenerateAsyncRoutine(Action<T> callback = null);
+        T Result { get; }
+
+        event Action<T> Generated;
+        
+        IEnumerable<T> GenerateAsync(IRNG random);
+        IEnumerator GenerateAsyncRoutine(IRNG random, Action<T> callback = null);
     }
 
 

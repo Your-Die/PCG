@@ -11,12 +11,12 @@ namespace Chinchillada.PCG
         
         [SerializeField] private int length;
         
-        protected override IList<T> GenerateInternal()
+        protected override IList<T> GenerateInternal(IRNG random)
         {
             var sequence = new T[this.length];
             
             for (var i = 0; i < this.length; i++) 
-                sequence[i] = this.itemGenerator.Generate();
+                sequence[i] = this.itemGenerator.Generate(random);
 
             return sequence;
         }

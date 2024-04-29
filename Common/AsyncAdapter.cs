@@ -9,9 +9,9 @@ namespace Chinchillada.PCG
     {
         [OdinSerialize] private IGenerator<T> generator;
 
-        public override IEnumerable<T> GenerateAsync()
+        public override IEnumerable<T> GenerateAsync(IRNG random)
         {
-            yield return this.generator.Generate();
+            yield return this.generator.Generate(random);
         }
     }
 }

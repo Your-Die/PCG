@@ -62,8 +62,6 @@ namespace Chinchillada.PCG.Evolution
         [SerializeField, FindComponent, Required]
         private  ITerminationEvaluator<IEvolution> terminationEvaluator;
 
-        [SerializeField] private IRNG random = new UnityRandom();
-
         #endregion
 
         private enum GoalType
@@ -97,25 +95,27 @@ namespace Chinchillada.PCG.Evolution
         /// <summary>
         /// Run the evolution.
         /// </summary>
+        /// <param name="random"></param>
         /// <returns>The fittest individual of the final generation.</returns>
         [Button]
-        public T Evolve()
+        public T Evolve(IRNG random)
         {
-            this.EvolveGenerationWise().Enumerate();
+            this.EvolveGenerationWise(random).Enumerate();
             return this.fittestIndividual.Candidate;
         }
 
         /// <summary>
         /// Enumerates the evolution process one generation at a time.
         /// </summary>
+        /// <param name="random"></param>
         /// <returns>An <see cref="IEnumerable{T}"/> of the best individuals of each generation.</returns>
-        public IEnumerable<Genotype<T>> EvolveGenerationWise()
+        public IEnumerable<Genotype<T>> EvolveGenerationWise(IRNG random)
         {
             // Call event.
             this.EvolutionStarted?.Invoke();
 
             // Generate initial population.
-            this.GenerateInitialPopulation();
+            this.GenerateInitialPopulation(random);
             yield return this.fittestIndividual;
 
             this.terminationEvaluator.Reset();
@@ -126,7 +126,7 @@ namespace Chinchillada.PCG.Evolution
             {
                 stopWatch.Restart();
                 // Evolve a single generation.
-                this.EvolveGeneration();
+                this.EvolveGeneration(random);
                 
                 Debug.Log($"generation {generation++}: {stopWatch.Elapsed}");
                 
@@ -137,16 +137,17 @@ namespace Chinchillada.PCG.Evolution
         /// <summary>
         /// Evolves a generation of individuals.
         /// </summary>
+        /// <param name="random"></param>
         /// <returns>The evolved generation.</returns>
         [Button]
-        public IEnumerable<Genotype<T>> EvolveGeneration()
+        public IEnumerable<Genotype<T>> EvolveGeneration(IRNG random)
         {
             // Select parents.
             var parentGenotypes = this.parentSelector.SelectParents(this.population);
             var parents = parentGenotypes.Select(genotype => ((Genotype<T>) genotype).Candidate);
 
             // Generate and evaluate offspring.
-            var offspringCandidates = this.offspringGenerator.GenerateOffspring(parents, this.offspringCount, this.random);
+            var offspringCandidates = this.offspringGenerator.GenerateOffspring(parents, this.offspringCount, random);
             var offspring = this.EvaluatePopulation(offspringCandidates);
 
             // Select survivors.
@@ -161,10 +162,11 @@ namespace Chinchillada.PCG.Evolution
         /// <summary>
         /// Generate a new population using the <see cref="initialPopulationGenerator"/>.
         /// </summary>
+        /// <param name="random"></param>
         [Button]
-        public void GenerateInitialPopulation()
+        public void GenerateInitialPopulation(IRNG random)
         {
-            var candidates = this.initialPopulationGenerator.Generate(this.initialPopulationCount);
+            var candidates = this.initialPopulationGenerator.Generate(this.initialPopulationCount, random);
             this.population = this.EvaluatePopulation(candidates);
 
             this.InitialPopulationGenerated?.Invoke(this.population);
@@ -172,14 +174,16 @@ namespace Chinchillada.PCG.Evolution
         }
 
 
+        /// <param name="random"></param>
         /// <inheritdoc/>
-        public override IEnumerable<T> GenerateAsync()
+        public override IEnumerable<T> GenerateAsync(IRNG random)
         {
-            return this.EvolveGenerationWise().Select(fittestGenotype => fittestGenotype.Candidate);
+            return this.EvolveGenerationWise(random).Select(fittestGenotype => fittestGenotype.Candidate);
         }
 
+        /// <param name="random"></param>
         /// <inheritdoc/>
-        protected override T GenerateInternal() => this.Evolve();
+        protected override T GenerateInternal(IRNG random) => this.Evolve(random);
 
         /// <summary>
         /// Evaluate the <paramref name="candidates"/>.
